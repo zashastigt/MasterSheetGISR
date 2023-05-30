@@ -28,7 +28,7 @@
 
     // Authorization scopes required by the API; multiple scopes can be
     // included, separated by spaces.
-    const SCOPES = 'https://www.googleapis.com/auth/spreadsheets.readonly';
+    const SCOPES = 'https://www.googleapis.com/auth/spreadsheets';
 
     let tokenClient;
     let gapiInited = false;
@@ -125,8 +125,8 @@
         try {
             // Fetch first 10 files
             response = await gapi.client.sheets.spreadsheets.values.get({
-                spreadsheetId: '1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms',
-                range: 'Class Data!A2:E',
+                spreadsheetId: '17LbbqsemrAKyXvfnGdZM2Aox32umyBAFhWvUwzK_Cw4',
+                range: 'StarRail Data!B3:J',
             });
         } catch (err) {
             document.getElementById('content').innerText = err.message;
