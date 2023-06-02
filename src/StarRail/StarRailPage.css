@@ -1,0 +1,73 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #1a1c1d;
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 75%;
+}
+
+.search {
+    width: 100%;
+    height: 50px;
+    background-color: #222324;
+    border: 3px solid #333;
+    border-radius: 25px;
+    padding: 3px;
+    color: #666;
+    font-size: 2em;
+    margin: 50px 0;
+}
+
+*:focus-visible {
+    outline: none;
+}
+
+.filters_container {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.filters {
+    height: 75px;
+    background-color: #222324;
+    border: 3px solid #333;
+    border-radius: 25px;
+    padding: 3px;
+}
+
+.filter_image {
+    height: 100%;
+    transition: transform 0.5s;
+}
+
+    .filter_image:hover {
+        transform: scale(1.1);
+    }
+
+.character_list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.SRcharacter {
+    display: flex;
+    background-color: #222324;
+    margin: 5px;
+}
+
+.SRcharacterInfo, .SRcharacterHave {
+    display: flex;
+    flex-direction: column;
+}
+
+.SRcharacterInfoImg {
+    height: 30px
+}

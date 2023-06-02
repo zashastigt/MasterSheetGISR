@@ -1,0 +1,83 @@
+body {
+    background-color: #1a1c1d;
+    color: #787168;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60%;
+}
+
+.search {
+    display: flex;
+    width: 80%;
+    margin: 1em;
+    background-color: #222324;
+    border: none;
+    border-radius: 25px;
+    padding: 1.5em;
+    color: #787168;
+    font-size: 18px;
+}
+
+*:focus-visible {
+    outline: none;
+}
+
+.filters {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.elements, .weapons {
+    display: flex;
+    justify-content: space-between;
+    background-color: #222324;
+    border-radius: 25px;
+    border-style: solid;
+    border-color: #787168;
+    width: fit-content;
+}
+
+.weapons {
+    float: right;
+}
+
+label {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    margin: 1em;
+}
+
+.element, .weapon {
+    min-height: 50px;
+    min-width: 50px;
+    max-height: 50px;
+    max-width: 50px;
+}
+
+.weapon {
+    background-color: #2A2C2D;
+    border-radius: 50%;
+}
+
+input[type=checkbox] {
+    display: none;
+}
+
+.characters {
+    display: flex;
+}
+
+.character {
+}
