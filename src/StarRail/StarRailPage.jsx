@@ -7,7 +7,7 @@ const MastersheetData = () => {
     const [data, setData] = useState(null);
 
     useEffect(() => {
-        fetch("https://sheets.googleapis.com/v4/spreadsheets/17LbbqsemrAKyXvfnGdZM2Aox32umyBAFhWvUwzK_Cw4?key=")
+        fetch(`https://sheets.googleapis.com/v4/spreadsheets/17LbbqsemrAKyXvfnGdZM2Aox32umyBAFhWvUwzK_Cw4?key=${import.meta.env.VITE_GOOGLE_API_KEY}`)
             .then((res) => res.json())
             .then((data) => setData(data));
     }, []);
