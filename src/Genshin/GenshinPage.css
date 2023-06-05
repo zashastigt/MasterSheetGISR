@@ -53,6 +53,7 @@ body {
     width: fit-content;
     flex-direction: column;
     border-left: none;
+    padding: 0;
 }
 
 .weapons {

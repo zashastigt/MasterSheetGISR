@@ -1,0 +1,22 @@
+{
+    "sword":    {
+        "label": "Sword",
+        "urlKey": "Sword"
+    },
+    "claymore": {
+        "label": "Claymore",
+        "urlKey": "Claymore"
+    },
+    "bow":      {
+        "label": "Bow",
+        "urlKey": "Bow"
+    },
+    "polearm":  {
+        "label": "Polearm",
+        "urlKey": "Pole"
+    },
+    "catalyst": {
+        "label": "Catalyst",
+        "urlKey": "Catalyst"
+    }
+}
