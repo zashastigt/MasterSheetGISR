@@ -54,10 +54,7 @@ body {
     flex-direction: column;
     border-left: none;
     padding: 0;
-}
-
-.weapons {
-    float: right;
+    margin: 0;
 }
 
 label {
@@ -93,4 +90,28 @@ input[type=checkbox] {
 }
 
 .character {
+    display: flex;
+    border-style: solid;
+    border-color: #787168;
+    border-radius: 25px;
+}
+
+.rarityFiveStar {
+    background-color: rgba(200,124,36);
+    height: 150px;
+    
+}
+
+.rarityFourStar {
+    background-color: rgba(148,112,187);
+}
+
+.characterInfo {
+    
+}
+
+.playerInfo {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    justify-items: centers;
 }

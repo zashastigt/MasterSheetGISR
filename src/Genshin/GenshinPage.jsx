@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { useState, useRef, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import './GenshinPage.css'
 import elements from '../data/elements.json'
 import weapons from '../data/weapons.json'
@@ -10,11 +10,9 @@ function SearchBar() {
     const [searchVisibility, setSearchVisibility] = useState(false)
     const [searchValue, setSearchValue] = useState('')
 
-    const searchRef = useRef();
-
     useEffect(() => {
         document.onkeydown = function (e) {
-            setSearchVisibility(true);
+            if (e.key.length === 1) setSearchVisibility(true);
         };
     });
 
@@ -26,7 +24,7 @@ function SearchBar() {
 
     return (
         <>
-            {searchVisibility && <input className="search" type="text" autoFocus ref={searchRef} value={searchValue} onChange={e => setSearchValue(e.target.value)} />}
+            {searchVisibility && <input className="search" type="text" autoFocus value={searchValue} onChange={e => setSearchValue(e.target.value)} />}
         </>
     )
 }
@@ -53,18 +51,29 @@ ReactDOM.createRoot(document.getElementById('root')).render(
                     {Object.keys(weapons).map((k)=>getFilterButton(k, weapons[k].label, `https://api.ambr.top/assets/UI/UI_GachaTypeIcon_${weapons[k].urlKey}.png`))}
                 </ul>
             </div>
-            <div className="characters">
-                <div className="character"></div>
-                <div className="character"></div>
-                <div className="character"></div>
-                <div className="character"></div>
-                <div className="character"></div>
-                <div className="character"></div>
-                <div className="character"></div>
-                <div className="character"></div>
-                <div className="character"></div>
-                <div className="character"></div>
-            </div>
+            <section className="characters">
+                <article className="character">
+                    <img className="rarityFiveStar"  src="https://api.ambr.top/assets/UI/UI_AvatarIcon_Yae.png" />
+                        <div>
+                            <h2>Yae Miko</h2>
+                            <img className="element" src="../assets/electro.svg" />
+                            <img className="weapon" src="https://api.ambr.top/assets/UI/UI_GachaTypeIcon_Catalyst.png" />
+                        </div>
+                        <div className="playerInfo">
+                        <button>/\</button>
+                            <button>/\</button>
+                            <button>/\</button>
+                            <button>\/</button>
+                            <button>\/</button>
+                            <button>\/</button>
+                            <h3>Zasha</h3>
+                            <h3>Wilco</h3>
+                            <h3>Rick</h3>
+                            
+
+                        </div>
+                </article>
+            </section>
         </div>
     </React.StrictMode>
 )
