@@ -7,7 +7,7 @@ const MastersheetData = () => {
     const [data, setData] = useState(null);
 
     useEffect(() => {
-        fetch("https://jsonplaceholder.typicode.com/todos")
+        fetch("https://sheets.googleapis.com/v4/spreadsheets/17LbbqsemrAKyXvfnGdZM2Aox32umyBAFhWvUwzK_Cw4?key=AIzaSyB0qY5nz7IRrgsuOWi-tHGeMagRbsvUpNU")
             .then((res) => res.json())
             .then((data) => setData(data));
     }, []);
