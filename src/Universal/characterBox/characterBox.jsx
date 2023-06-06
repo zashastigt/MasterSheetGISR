@@ -10,7 +10,6 @@ export default function CharacterBox() {
 
     return(
         <div className={'characterContainer'}>
-            <SheetData />
             <div className={'characterPortrait'}>
                 <img className={'characterImg'} alt={'img'} src={testCharacter.img}/>
                 <span className={'characterName'}>{testCharacter.name}</span>
