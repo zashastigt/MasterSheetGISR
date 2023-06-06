@@ -1,0 +1,57 @@
+.characterContainer {
+    display: flex;
+    height: 100px;
+    width: 450px;
+    border: #333333 3px solid;
+    border-radius: 20px;
+}
+
+.characterPortrait {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rebeccapurple;
+    border-radius: 15px 0 0 15px;
+}
+
+.characterImg {
+    height: 80%;
+}
+
+.characterName {
+    height: 20%;
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #ddd;
+}
+
+.characterInfo {
+    display: flex;
+    flex-direction: column;
+}
+
+.characterInfo > * {
+    height: 50px;
+}
+
+.characterCE {
+    display: flex;
+}
+
+.CE {
+    width: 75px;
+}
+
+.CE .personName {
+    height: 25%;
+    font-size: 1.2em;
+}
+
+.CE .CECount {
+    height: 50%;
+    font-size: 2em;
+}
+
+.CE .butons {
+    height: 25%;
+}

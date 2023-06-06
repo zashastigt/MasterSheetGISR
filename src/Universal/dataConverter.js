@@ -1,0 +1,1 @@
+// the E and C values need to be in a seperate array in the main array

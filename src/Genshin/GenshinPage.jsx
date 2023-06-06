@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import './GenshinPage.css'
 import elements from '../data/elements.json'
 import weapons from '../data/weapons.json'
+import CharacterBox from "../Universal/characterBox/characterBox.jsx";
 
 function SearchBar() {
 
@@ -69,11 +70,12 @@ ReactDOM.createRoot(document.getElementById('root')).render(
                             <h3>Zasha</h3>
                             <h3>Wilco</h3>
                             <h3>Rick</h3>
-                            
+
 
                         </div>
                 </article>
             </section>
+            <CharacterBox />
         </div>
     </React.StrictMode>
 )

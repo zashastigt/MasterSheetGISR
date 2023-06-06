@@ -5,12 +5,20 @@ import './StarRailPage.css'
 
 const MastersheetData = () => {
     const [data, setData] = useState(null);
+    const [loading, setLoading] = useState(true)
+
+    console.log(data)
 
     useEffect(() => {
         fetch(`https://sheets.googleapis.com/v4/spreadsheets/17LbbqsemrAKyXvfnGdZM2Aox32umyBAFhWvUwzK_Cw4?key=${import.meta.env.VITE_GOOGLE_API_KEY}`)
             .then((res) => res.json())
             .then((data) => setData(data));
+        setLoading(false)
     }, []);
+
+    if (loading) {
+        return <div>Loading...</div>
+    }
 
     return (
         <>
@@ -24,9 +32,9 @@ const MastersheetData = () => {
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-    <React.StrictMode>
+
         <MastersheetData />
-     </React.StrictMode>
+
 )
 /*
     < div className = "container" >
