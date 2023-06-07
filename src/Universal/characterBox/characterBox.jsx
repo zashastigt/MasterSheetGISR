@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import ReactDOM from 'react-dom/client'
 import testCharacter from '../../data/testCharacter.json'
 import './characterBox.css'
-import SheetData from "../../data/sheetData.js";
+// import SheetData from "../../data/sheetData.js";
 
 export default function CharacterBox() {
 
