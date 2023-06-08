@@ -1,0 +1,30 @@
+{
+    "abundance":    {
+        "label": "Abundance",
+        "urlKey": "Abundance"
+    },
+    "destruction":    {
+        "label": "Destruction",
+        "urlKey": "destruction"
+    },
+    "Erudition":   {
+        "label": "Erudition",
+        "urlKey": "Erudition"
+    },
+    "Harmony": {
+        "label": "Harmony",
+        "urlKey": "Harmony"
+    },
+    "Nihility":   {
+        "label": "Nihility",
+        "urlKey": "Nihility"
+    },
+    "Preservation":   {
+        "label": "Preservation",
+        "urlKey": "Preservation"
+    },
+    "Hunt":     {
+        "label": "Hunt",
+        "urlKey": "Hunt"
+    }
+}

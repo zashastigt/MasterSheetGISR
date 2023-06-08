@@ -1,0 +1,30 @@
+{
+    "fire":    {
+        "label": "Fire",
+        "urlKey": "Fire"
+    },
+    "ice":    {
+        "label": "Ice",
+        "urlKey": "Ice"
+    },
+    "physical":   {
+        "label": "Physical",
+        "urlKey": "Physical"
+    },
+    "lightning": {
+        "label": "Lightning",
+        "urlKey": "Lightning"
+    },
+    "wind":   {
+        "label": "Wind",
+        "urlKey": "Wind"
+    },
+    "imaginary":     {
+        "label": "Imaginary",
+        "urlKey": "Imaginary"
+    },
+    "quantum":  {
+        "label": "Quantum",
+        "urlKey":  "Quantum"
+    }
+}

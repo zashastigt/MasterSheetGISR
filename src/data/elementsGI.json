@@ -2,32 +2,26 @@
     "pyro":    {
         "label": "Pyro",
         "urlKey": "pyro"
-        
     },
     "cryo":    {
         "label": "Cryo",
         "urlKey": "cryo"
-        
     },
     "hydro":   {
         "label": "Hydro",
         "urlKey": "hydro"
-        
     },
     "electro": {
         "label": "Electro",
         "urlKey": "electro"
-        
     },
     "anemo":   {
         "label": "Anemo",
         "urlKey": "anemo"
-        
     },
     "geo":     {
         "label": "Geo",
         "urlKey": "geo"
-        
     },
     "dendro":  {
         "label": "Dendro",

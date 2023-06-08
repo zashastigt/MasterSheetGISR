@@ -11,16 +11,18 @@ export default function CharacterBox({characterList}) {
             return 'some'
         }
     }
+
+
      return characterList.map(character => {
         return(
-            <div key={character.name} className={'characterContainer'}>
-                <div className={'characterPortrait'}>
-                    <img className={'characterImg'} alt={'img'} src={character.img}/>
-                    <div className={'characterName'}>{character.name}</div>
+            <div key={character.Name} className={'characterContainer'}>
+                <div className={`characterPortrait ${parseInt(character.Rarity) === 5 ? 'rarityFiveStar' : 'rarityFourStar'}`}>
+                    <img className={'characterImg' } alt={'img'} src={character.Img}/>
+                    <div className={'characterName'}>{character.Name}</div>
                 </div>
                 <div className={'characterInfo'}>
-                    <img className={'characterElement'} alt={'img'} src={character.element}/>
-                    <img className={'characterGroup'} alt={'img'} src={character.group}/>
+                    <img className={'characterElement'} alt={'img'} src={character.Element}/>
+                    <img className={'characterGroup'} alt={'img'} src={character.Group}/>
                 </div>
                 <div className={'characterCE'}>
                     {Object.keys(character.CE).map(item => (

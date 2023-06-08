@@ -19,7 +19,15 @@
 }
 
 .characterImg {
-    height: 100%;
+    height: 80%;
+}
+
+.rarityFiveStar {
+    background-color: rgba(200,124,36);
+}
+
+.rarityFourStar {
+    background-color: rgba(148,112,187);
 }
 
 .characterName {

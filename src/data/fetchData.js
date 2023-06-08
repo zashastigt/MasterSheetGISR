@@ -1,5 +1,4 @@
 export async function getSheetDataJson() {
-    const jsonResponse = await fetch("https://script.google.com/macros/s/AKfycbz3ranY19jnz6fZLh2iMUIjUv8wubXuZ9uAFDgBgtnbUwvBDeKXjVmN8F3yDUokMm5-/exec")
+    return await fetch("https://script.google.com/macros/s/AKfycbwS4UPJpDj_JurJaNKaeY22Ffqorg7FGS-MKoYoKGA7YZAvJNiKKz3XXsUVAEDzQslQRg/exec")
     .then(response => { return response.json() });
-    return jsonResponse;
 }

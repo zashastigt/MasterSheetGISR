@@ -2,13 +2,35 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { useState, useEffect } from 'react'
 import './GenshinPage.css'
-import elements from '../data/elements.json'
+import elementsGI from '../data/elementsGI.json'
 import weapons from '../data/weapons.json'
-import testCharacter from '../data/testCharacter.json'
 import CharacterBox from "../Universal/characterBox/characterBox.jsx";
+import getSheetDataWithImages from "../data/addImagesToData.js";
+
+function GenshinCharacters() {
+    const [genshinData, setGenshinData] = useState({})
+    const [loading, setLoading] = useState(true)
+
+    useEffect(() => {
+        getSheetDataWithImages().then(data => {
+            setGenshinData(data.Genshin)
+            setLoading(false)
+        })
+    }, [])
+
+    console.log(genshinData)
+
+    if (loading) {
+        return <div>Loading...</div>
+    }
+
+    return (
+        <div className={'characterList'}><CharacterBox characterList={genshinData.Characters} /></div>
+    )
+}
+
 
 function SearchBar() {
-
     const [searchVisibility, setSearchVisibility] = useState(false)
     const [searchValue, setSearchValue] = useState('')
 
@@ -47,39 +69,13 @@ ReactDOM.createRoot(document.getElementById('root')).render(
             <SearchBar />
             <div className="filters">
                 <ul className="elements">
-                    {Object.keys(elements).map((k)=>getFilterButton(k, elements[k].label, `../assets/${elements[k].urlKey}.svg`))}
+                    {Object.keys(elementsGI).map((k)=>getFilterButton(k, elementsGI[k].label, `../assets/GenshinElementImgs/${elementsGI[k].urlKey}.svg`))}
                 </ul>
                 <ul className="weapons">
-                    {Object.keys(weapons).map((k)=>getFilterButton(k, weapons[k].label, `https://api.ambr.top/assets/UI/UI_GachaTypeIcon_${weapons[k].urlKey}.png`))}
+                    {Object.keys(weapons).map((k)=>getFilterButton(k, weapons[k].label, `../assets/GenshinWeaponImgs/${weapons[k].urlKey}.png`))}
                 </ul>
             </div>
-            <section className="characters">
-                <article className="character">
-                    <img className="rarityFiveStar"  src="https://api.ambr.top/assets/UI/UI_AvatarIcon_Yae.png" />
-                        <div>
-                            <h2>Yae Miko</h2>
-                            <img className="element" src="../assets/electro.svg" />
-                            <img className="weapon" src="https://api.ambr.top/assets/UI/UI_GachaTypeIcon_Catalyst.png" />
-                        </div>
-                        <div className="playerInfo">
-                        <button>/\</button>
-                            <button>/\</button>
-                            <button>/\</button>
-                            <button>\/</button>
-                            <button>\/</button>
-                            <button>\/</button>
-                            <h3>Zasha</h3>
-                            <h3>Wilco</h3>
-                            <h3>Rick</h3>
-
-
-                        </div>
-                </article>
-            </section>
-            <div className={'characterList'}><CharacterBox characterList={testCharacter} /></div>
-
-
-
+            <GenshinCharacters />
         </div>
     </React.StrictMode>
 )

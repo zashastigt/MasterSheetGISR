@@ -1,113 +1,154 @@
 import {getSheetDataJson} from './fetchData.js'
-import giAnemo from '../assets/anemo.svg'
-import giCryo from '../assets/cryo.svg'
-import giDendro from '../assets/dendro.svg'
-import giElectro from '../assets/electro.svg'
-import giGeo from '../assets/geo.svg'
-import giHydro from '../assets/hydro.svg'
-import giPyro from '../assets/pyro.svg'
-import srFire from '../assets/Fire.webp'
-import srIce from '../assets/Ice.webp'
-import srImaginary from '../assets/Imaginary.webp'
-import srLightning from '../assets/Lightning.webp'
-import srPhysical from '../assets/Physical.webp'
-import srQuantum from '../assets/Quantum.webp'
-import srWind from '../assets/Wind.webp'
-import srAbundance from '../assets/Abundance.webp'
-import srDestruction from '../assets/Destruction.webp'
-import srErudition from '../assets/Erudition.webp'
-import srHarmony from '../assets/Harmony.webp'
-import srNihility from '../assets/Nihility.webp'
-import srPersevation from '../assets/Persevation.webp'
-import srTheHunt from '../assets/TheHunt.webp'
+import giAnemo from '../assets/GenshinElementImgs/anemo.svg'
+import giCryo from '../assets/GenshinElementImgs/cryo.svg'
+import giDendro from '../assets/GenshinElementImgs/dendro.svg'
+import giElectro from '../assets/GenshinElementImgs/electro.svg'
+import giGeo from '../assets/GenshinElementImgs/geo.svg'
+import giHydro from '../assets/GenshinElementImgs/hydro.svg'
+import giPyro from '../assets/GenshinElementImgs/pyro.svg'
+import giSword from '../assets/GenshinWeaponImgs/Sword.png'
+import giClaymore from '../assets/GenshinWeaponImgs/Claymore.png'
+import giPole from '../assets/GenshinWeaponImgs/Pole.png'
+import giBow from '../assets/GenshinWeaponImgs/Bow.png'
+import giCatalyst from '../assets/GenshinWeaponImgs/Catalyst.png'
+import srFire from '../assets/StarRailElementImgs/Fire.webp'
+import srIce from '../assets/StarRailElementImgs/Ice.webp'
+import srImaginary from '../assets/StarRailElementImgs/Imaginary.webp'
+import srLightning from '../assets/StarRailElementImgs/Lightning.webp'
+import srPhysical from '../assets/StarRailElementImgs/Physical.webp'
+import srQuantum from '../assets/StarRailElementImgs/Quantum.webp'
+import srWind from '../assets/StarRailElementImgs/Wind.webp'
+import srAbundance from '../assets/StarRailPathImgs/Abundance.webp'
+import srDestruction from '../assets/StarRailPathImgs/Destruction.webp'
+import srErudition from '../assets/StarRailPathImgs/Erudition.webp'
+import srHarmony from '../assets/StarRailPathImgs/Harmony.webp'
+import srNihility from '../assets/StarRailElementImgs/Nihility.webp'
+import srPreservation from '../assets/StarRailPathImgs/Preservation.webp'
+import srHunt from '../assets/StarRailPathImgs/Hunt.webp'
+import {useState} from "react";
 
-export function getSheetDataWithImages() {
-    getSheetDataJson().then(function(data) {
-        data.Genshin.Characters = addImagesToGenshinCharacterData(data.Genshin.Characters)
-        data.StarRail.Characters = addImagesToStarRailCharacterData(data.StarRail.Characters)
-        console.log(data) 
-    });
-  }
-  
-  function addImagesToGenshinCharacterData(data) {
-    data.map((character) => {
-      switch (character.Element) {
-        case 'Anemo':
-          character.Element = giAnemo;
-          break;
-        case 'Cryo':
-          character.Element = giCryo;
-          break;
-        case 'Dendro':
-          character.Element = giDendro;
-          break;
-        case 'Electro':
-          character.Element = giElectro;
-          break;
-        case 'Geo':
-          character.Element = giGeo;
-          break;
-        case 'Hydro':
-          character.Element = giHydro;
-          break;
-        case 'Pyro':
-          character.Element = giPyro;
-          break;
-      }
-    })
-    return data;
-  }
-  
-  function addImagesToStarRailCharacterData(data) {
-    data.map((character) => {
-      switch (character.Element) {
-        case 'Fire':
-          character.Element = srFire;
-          break;
-        case 'Ice':
-          character.Element = srIce;
-          break;
-        case 'Imaginary':
-          character.Element = srImaginary;
-          break;
-        case 'Lightning':
-          character.Element = srLightning;
-          break;
-        case 'Physical':
-          character.Element = srPhysical;
-          break;
-        case 'Quantum':
-          character.Element = srQuantum;
-          break;
-        case 'Wind':
-          character.Element = srWind;
-          break;
-      }
+export default function getSheetDataWithImages() {
+  return getSheetDataJson().then(function(data) {
+    data.Genshin.Characters = addImagesToGenshinCharacterData(data.Genshin.Characters)
+    data.StarRail.Characters = addImagesToStarRailCharacterData(data.StarRail.Characters)
+    data.Genshin.Characters = getGenshinCharacterImgs(data.Genshin.Characters)
+    data.StarRail.Characters = getStarRailCharacterImgs(data.StarRail.Characters)
+    console.log(data)
+    return data
+  });
+}
 
-      switch (character.Path) {
-        case 'Anemo':
-          character.Path = srAbundance;
-          break;
-        case 'Cryo':
-          character.Path = srDestruction;
-          break;
-        case 'Dendro':
-          character.Path = srErudition;
-          break;
-        case 'Electro':
-          character.Path = srHarmony;
-          break;
-        case 'Geo':
-          character.Path = srNihility;
-          break;
-        case 'Hydro':
-          character.Path = srPersevation;
-          break;
-        case 'Pyro':
-          character.Path = srTheHunt;
-          break;
-      }
-    })
-    return data;
-  }
+function getGenshinCharacterImgs(data) {
+  return data.map(character => {
+    const name = character.Name.toLowerCase().replaceAll(' ', '_')
+    return {...character, Img: 'https://paimon.moe/images/characters/' + name + '.png'}
+  })
+}
+
+function getStarRailCharacterImgs(data) {
+  return data.map(character => {
+    const name = character.Name.toLowerCase().replaceAll(' ', '-')
+    return {...character, Img: 'https://hsr.honeyhunterworld.com/img/character/' + name + '-character_action_side_icon.webp'}
+  })
+}
+  
+function addImagesToGenshinCharacterData(data) {
+  data.map((character) => {
+    switch (character.Element) {
+      case 'Anemo':
+        character.Element = giAnemo;
+        break;
+      case 'Cryo':
+        character.Element = giCryo;
+        break;
+      case 'Dendro':
+        character.Element = giDendro;
+        break;
+      case 'Electro':
+        character.Element = giElectro;
+        break;
+      case 'Geo':
+        character.Element = giGeo;
+        break;
+      case 'Hydro':
+        character.Element = giHydro;
+        break;
+      case 'Pyro':
+        character.Element = giPyro;
+        break;
+    }
+
+    switch (character.Group) {
+      case 'Sword':
+        character.Group = giSword;
+        break;
+      case 'Claymore':
+        character.Group = giClaymore;
+        break;
+      case 'Polearm':
+        character.Group = giPole;
+        break;
+      case 'Catalyst':
+        character.Group = giCatalyst;
+        break;
+      case 'Bow':
+        character.Group = giBow;
+        break;
+    }
+  })
+  return data;
+}
+  
+function addImagesToStarRailCharacterData(data) {
+  data.map((character) => {
+    switch (character.Element) {
+      case 'Fire':
+        character.Element = srFire;
+        break;
+      case 'Ice':
+        character.Element = srIce;
+        break;
+      case 'Imaginary':
+        character.Element = srImaginary;
+        break;
+      case 'Lightning':
+        character.Element = srLightning;
+        break;
+      case 'Physical':
+        character.Element = srPhysical;
+        break;
+      case 'Quantum':
+        character.Element = srQuantum;
+        break;
+      case 'Wind':
+        character.Element = srWind;
+        break;
+    }
+
+    switch (character.Group) {
+      case 'Abundance':
+        character.Group = srAbundance;
+        break;
+      case 'Destruction':
+        character.Group = srDestruction;
+        break;
+      case 'Erudition':
+        character.Group = srErudition;
+        break;
+      case 'Harmony':
+        character.Group = srHarmony;
+        break;
+      case 'Nihility':
+        character.Group = srNihility;
+        break;
+      case 'Preservation':
+        character.Group = srPreservation;
+        break;
+      case 'Hunt':
+        character.Group = srHunt;
+        break;
+    }
+  })
+  return data;
+}
   

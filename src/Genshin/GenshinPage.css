@@ -96,16 +96,6 @@ input[type=checkbox] {
     border-radius: 25px;
 }
 
-.rarityFiveStar {
-    background-color: rgba(200,124,36);
-    height: 150px;
-    
-}
-
-.rarityFourStar {
-    background-color: rgba(148,112,187);
-}
-
 .characterInfo {
     
 }
