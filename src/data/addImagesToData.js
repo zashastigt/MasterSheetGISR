@@ -40,15 +40,45 @@ export default function getSheetDataWithImages() {
 
 function getGenshinCharacterImgs(data) {
   return data.map(character => {
-    const name = character.Name.toLowerCase().replaceAll(' ', '_')
+    let name = character.Name.toLowerCase().replaceAll(' ', '_')
+    if (name.includes('traveler')) {
+      name = 'traveler_electro'
+    }
     return {...character, Img: 'https://paimon.moe/images/characters/' + name + '.png'}
   })
 }
 
 function getStarRailCharacterImgs(data) {
   return data.map(character => {
-    const name = character.Name.toLowerCase().replaceAll(' ', '-')
-    return {...character, Img: 'https://hsr.honeyhunterworld.com/img/character/' + name + '-character_action_side_icon.webp'}
+    let name = character.Name.toLowerCase().replaceAll(' ', '-')
+    let which = ''
+    if (name.includes('trailblazer')) {
+      name = 'trailblazer'
+      switch (character.Element.split('/')[3]) {
+        case 'Physical.webp':
+          which = '-2'
+          break
+        case 'Fire.webp':
+          which = '-4'
+          break
+        case 'Ice.webp':
+          which = '-4'
+          break
+        case 'Lightning.webp':
+          which = '-4'
+          break
+        case 'Quantum.webp':
+          which = '-4'
+          break
+        case 'Imaginary.webp':
+          which = '-4'
+          break
+        case 'Wind.webp':
+          which = '-4'
+          break
+      }
+    }
+    return {...character, Img: 'https://hsr.honeyhunterworld.com/img/character/' + name + '-character' + which + '_action_side_icon.webp'}
   })
 }
   

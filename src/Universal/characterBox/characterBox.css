@@ -1,25 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* {
+    font-family: "Fira Sans", serif;
+}
+
+.characterBox {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 10px;
+}
+
 .characterContainer {
     display: flex;
     height: 100px;
     width: fit-content;
-    border-radius: 20px;
+    background-color: #252525;
+    border-radius: 20px 20px 20px 0;
     border: #333333 solid 3px;
-    margin: 20px 10px;
+
 }
 
 .characterPortrait {
-    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100px;
-    background-color: rebeccapurple;
+    width: 60px;
+    background-color: transparent;
     border-radius: 17px 0 0 16px;
     overflow: hidden;
 }
 
-.characterImg {
-    height: 80%;
+.characterName {
+    position: relative;
+    bottom: 0;
+    height: 1.3em;
+    padding: 0 10px;
+    width: fit-content;
+    min-width: 55px;
+    border-radius: 0 0 15px 15px;
+    text-align: center;
+    font-size: 1.1em;
+    font-weight: 400;
+    color: #ddd;
+    background-color: #333333;
+}
+
+.characterImgSR {
+    height: 100%;
+}
+
+.characterImgGI {
+    height: 100%;
+}
+
+.rarityStrip {
+    width: 5px;
 }
 
 .rarityFiveStar {
@@ -30,24 +65,9 @@
     background-color: rgba(148,112,187);
 }
 
-.characterName {
-    position: absolute;
-    bottom: 0;
-    height: 20%;
-    width: 100%;
-    border-radius: 0 10px 0 14px;
-    text-align: center;
-    font-size: 1.1em;
-    font-weight: bold;
-    color: #ddd;
-    background-color: #333333;
-
-}
-
 .characterInfo {
     display: flex;
     flex-direction: column;
-    background-color: #1a1c1d;
 }
 
 .characterInfo > * {
@@ -56,18 +76,18 @@
 
 .characterCE {
     display: flex;
-    background-color: #1a1c1d;
     border-radius:  0 20px 20px 0;
 }
 
 .CE {
     width: 60px;
-    margin: 0 5px;
+    margin: 0;
 }
 
 .CE .personName {
     height: 25%;
     font-size: 1.2em;
+    font-weight: 300;
     text-align: center;
 }
 
@@ -76,7 +96,16 @@
     font-size: 2.8em;
     color: #ddd;
     text-align: center;
-    border-radius: 5px;
+}
+
+.CE:first-child .CECount {
+    margin-left: 5px;
+    border-radius: 10px 0 0 10px;
+}
+
+.CE:last-child .CECount {
+    margin-right: 5px;
+    border-radius: 0 10px 10px 0;
 }
 
 .CE .all {

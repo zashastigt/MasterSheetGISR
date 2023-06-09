@@ -15,28 +15,53 @@ export default function CharacterBox({characterList}) {
 
      return characterList.map(character => {
         return(
-            <div key={character.Name} className={'characterContainer'}>
-                <div className={`characterPortrait ${parseInt(character.Rarity) === 5 ? 'rarityFiveStar' : 'rarityFourStar'}`}>
-                    <img className={'characterImg' } alt={'img'} src={character.Img}/>
-                    <div className={'characterName'}>{character.Name}</div>
-                </div>
-                <div className={'characterInfo'}>
-                    <img className={'characterElement'} alt={'img'} src={character.Element}/>
-                    <img className={'characterGroup'} alt={'img'} src={character.Group}/>
-                </div>
-                <div className={'characterCE'}>
-                    {Object.keys(character.CE).map(item => (
-                        <div key={item} className={'CE'}>
-                            <div className={'personName'}>{item}</div>
-                            <div className={`CECount ${ceColor(character.CE[item])}`} >{character.CE[item]}</div>
-                            <div className={'buttons'}>
-                                <button>+</button>
-                                <button>-</button>
+            <div key={character.Name} className={'characterBox'}>
+                <div className={'characterContainer'}>
+                    <div className={`characterPortrait`}>
+                        <img className={'characterImgSR'} alt={'img'} src={character.Img}/>
+                    </div>
+                    <div className={`rarityStrip ${parseInt(character.Rarity) === 5 ? 'rarityFiveStar' : 'rarityFourStar'}`}></div>
+                    <div className={'characterInfo'}>
+                        <img className={'characterElement'} alt={'img'} src={character.Element}/>
+                        <img className={'characterGroup'} alt={'img'} src={character.Group}/>
+                    </div>
+                    <div className={'characterCE'}>
+                        {Object.keys(character.CE).map(item => (
+                            <div key={item} className={'CE'}>
+                                <div className={'personName'}>{item}</div>
+                                <div className={`CECount ${ceColor(character.CE[item])}`} >{character.CE[item]}</div>
+                                <div className={'buttons'}>
+                                    {window.location.pathname.includes('StarRail') &&
+                                        <>
+                                            {character.CE[item] !== 'E6' &&
+                                                <button>+</button>
+                                            }
+                                            {character.CE[item] !== '' &&
+                                                <button>-</button>
+                                            }
+                                        </>
+                                    }
+                                    {window.location.pathname.includes('Genshin') &&
+                                        <>
+                                            {character.CE[item] !== 'C6' &&
+                                                <button>+</button>
+                                            }
+                                            {character.CE[item] !== '' &&
+                                                <button>-</button>
+                                            }
+                                        </>
+                                    }
+
+
+
+                                </div>
                             </div>
-                        </div>
-                    ))}
+                        ))}
+                    </div>
                 </div>
+                <div className={'characterName'}>{character.Name}</div>
             </div>
+
         )
     })
 }
