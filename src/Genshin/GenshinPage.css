@@ -14,7 +14,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 75%;
+    width: 85%;
 }
 
 .search {
@@ -47,7 +47,7 @@ body {
     display: flex;
     justify-content: space-between;
     background-color: #222324;
-    border-radius: 0px 15px 15px 0px;
+    border-radius: 0 15px 15px 0;
     border-style: solid;
     border-color: #787168;
     width: fit-content;

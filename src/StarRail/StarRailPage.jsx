@@ -5,15 +5,33 @@ import './StarRailPage.css'
 import elementsSR from '../data/elementsSR.json'
 import paths from '../data/paths.json'
 import CharacterBox from "../Universal/characterBox/characterBox.jsx";
-import getSheetDataWithImages from "../data/addImagesToData.js";
+import WeaponBox from "../Universal/weaponBox/weaponBox.jsx";
+import {getSheetDataWithImagesStarRail} from "../data/addImagesToData.js";
+
+
+function ListSwitchStarRail() {
+    const [listShown, setListShown] = useState(true)
+
+    return (
+        <>
+            <div className={'switch'}>
+                <button onClick={() => setListShown(!listShown)}>{listShown ? 'Show Light Cones' : 'Show Characters'}</button>
+            </div>
+            {listShown ?
+                <StarRailCharacters />:
+                <StarRailWeapons />
+            }
+        </>
+    )
+}
 
 function StarRailCharacters() {
     const [starRailData, setStarRailData] = useState({})
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
-        getSheetDataWithImages().then(data => {
-            setStarRailData(data.StarRail)
+        getSheetDataWithImagesStarRail().then(data => {
+            setStarRailData(data)
             setLoading(false)
         })
     }, [])
@@ -28,6 +46,29 @@ function StarRailCharacters() {
         <div className={'characterList'}><CharacterBox characterList={starRailData.Characters} /></div>
     )
 }
+
+function StarRailWeapons() {
+    const [starRailData, setStarRailData] = useState({})
+    const [loading, setLoading] = useState(true)
+
+    useEffect(() => {
+        getSheetDataWithImagesStarRail().then(data => {
+            setStarRailData(data)
+            setLoading(false)
+        })
+    }, [])
+
+    console.log(starRailData)
+
+    if (loading) {
+        return <div>Loading...</div>
+    }
+
+    return (
+        <div className={'weaponList'}><WeaponBox weaponList={starRailData.Weapons} /></div>
+    )
+}
+
 
 
 function SearchBar() {
@@ -75,7 +116,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
                     {Object.keys(paths).map((k)=>getFilterButton(k, paths[k].label, `../assets/StarRailPathImgs/${paths[k].urlKey}.webp`))}
                 </ul>
             </div>
-            <StarRailCharacters />
+            <ListSwitchStarRail />
         </div>
     </React.StrictMode>
 )

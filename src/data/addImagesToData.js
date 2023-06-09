@@ -27,14 +27,23 @@ import srPreservation from '../assets/StarRailPathImgs/Preservation.webp'
 import srHunt from '../assets/StarRailPathImgs/Hunt.webp'
 import {useState} from "react";
 
-export default function getSheetDataWithImages() {
+function getSheetDataWithImagesStarRail() {
+  return getSheetDataJson().then(function(data) {
+    data.StarRail.Characters = addImagesToStarRailCharacterData(data.StarRail.Characters)
+    data.StarRail.Characters = getStarRailCharacterImgs(data.StarRail.Characters)
+    data.StarRail.Weapons = addImagesToStarRailWeaponData(data.StarRail.Weapons)
+    data.StarRail.Weapons = getStarRailWeaponImgs(data.StarRail.Weapons)
+    console.log(data.StarRail)
+    return data.StarRail
+  });
+}
+
+function getSheetDataWithImagesGenshin() {
   return getSheetDataJson().then(function(data) {
     data.Genshin.Characters = addImagesToGenshinCharacterData(data.Genshin.Characters)
-    data.StarRail.Characters = addImagesToStarRailCharacterData(data.StarRail.Characters)
     data.Genshin.Characters = getGenshinCharacterImgs(data.Genshin.Characters)
-    data.StarRail.Characters = getStarRailCharacterImgs(data.StarRail.Characters)
     console.log(data)
-    return data
+    return data.Genshin
   });
 }
 
@@ -79,6 +88,17 @@ function getStarRailCharacterImgs(data) {
       }
     }
     return {...character, Img: 'https://hsr.honeyhunterworld.com/img/character/' + name + '-character' + which + '_action_side_icon.webp'}
+  })
+}
+
+function getStarRailWeaponImgs(data) {
+  return data.map(weapon => {
+    let name = weapon.Name.toLowerCase()
+        .replaceAll(' ', '-')
+        .replaceAll('!', '')
+        .replaceAll("'", '')
+        .replaceAll(',', '')
+    return {...weapon, Img: 'https://hsr.honeyhunterworld.com/img/item/' + name + '-item_icon.webp'}
   })
 }
   
@@ -181,4 +201,34 @@ function addImagesToStarRailCharacterData(data) {
   })
   return data;
 }
-  
+
+function addImagesToStarRailWeaponData(data) {
+  data.map((weapon) => {
+    switch (weapon.Group) {
+      case 'Abundance':
+        weapon.Group = srAbundance;
+        break;
+      case 'Destruction':
+        weapon.Group = srDestruction;
+        break;
+      case 'Erudition':
+        weapon.Group = srErudition;
+        break;
+      case 'Harmony':
+        weapon.Group = srHarmony;
+        break;
+      case 'Nihility':
+        weapon.Group = srNihility;
+        break;
+      case 'Preservation':
+        weapon.Group = srPreservation;
+        break;
+      case 'Hunt':
+        weapon.Group = srHunt;
+        break;
+    }
+  })
+  return data;
+}
+
+export {getSheetDataWithImagesStarRail, getSheetDataWithImagesGenshin}

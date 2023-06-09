@@ -5,15 +5,15 @@ import './GenshinPage.css'
 import elementsGI from '../data/elementsGI.json'
 import weapons from '../data/weapons.json'
 import CharacterBox from "../Universal/characterBox/characterBox.jsx";
-import getSheetDataWithImages from "../data/addImagesToData.js";
+import {getSheetDataWithImagesGenshin} from "../data/addImagesToData.js";
 
 function GenshinCharacters() {
     const [genshinData, setGenshinData] = useState({})
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
-        getSheetDataWithImages().then(data => {
-            setGenshinData(data.Genshin)
+        getSheetDataWithImagesGenshin().then(data => {
+            setGenshinData(data)
             setLoading(false)
         })
     }, [])
