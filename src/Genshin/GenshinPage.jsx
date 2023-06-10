@@ -36,7 +36,7 @@ function SearchBar() {
 
     useEffect(() => {
         document.onkeydown = function (e) {
-            if (e.key.length === 1) setSearchVisibility(true);
+            if (e.key.length === 1 && !e.metaKey && !e.ctrlKey && !e.altKey) setSearchVisibility(true);
         };
     });
 
