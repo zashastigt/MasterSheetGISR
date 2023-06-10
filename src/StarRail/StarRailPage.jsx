@@ -11,65 +11,38 @@ import {getSheetDataWithImagesStarRail} from "../data/addImagesToData.js";
 
 function ListSwitchStarRail() {
     const [listShown, setListShown] = useState(true)
+    const [starRailCharacters, setStarRailCharacters] = useState({})
+    const [starRailWeapons, setStarRailWeapons] = useState({})
+    const [loading, setLoading] = useState(true)
+
+    useEffect(() => {
+        getSheetDataWithImagesStarRail().then(data => {
+            setStarRailCharacters(data.Characters)
+            setStarRailWeapons(data.Weapons)
+            setLoading(false)
+        })
+    }, [])
+
+    if (loading) {
+        return <div>Loading...</div>
+    }
 
     return (
         <>
-            <div className={'switch'}>
-                <button onClick={() => setListShown(!listShown)}>{listShown ? 'Show Light Cones' : 'Show Characters'}</button>
+            <div className={`switch`}>
+                <img alt={'character'} src={'https://hsr.honeyhunterworld.com/img/menu/char.webp?x54196'}/>
+                <button className={``} onClick={() => setListShown(!listShown)}>
+                    <div className={`slider ${listShown ? 'sliderLeft' : 'sliderRight'}`}></div>
+                </button>
+                <img alt={'weapon'} src={'https://hsr.honeyhunterworld.com/img/menu/weapon.webp?x5419'}/>
             </div>
             {listShown ?
-                <StarRailCharacters />:
-                <StarRailWeapons />
+                <div className={'characterList'}><CharacterBox characterList={starRailCharacters} /></div>:
+                <div className={'weaponList'}><WeaponBox weaponList={starRailWeapons} /></div>
             }
         </>
     )
 }
-
-function StarRailCharacters() {
-    const [starRailData, setStarRailData] = useState({})
-    const [loading, setLoading] = useState(true)
-
-    useEffect(() => {
-        getSheetDataWithImagesStarRail().then(data => {
-            setStarRailData(data)
-            setLoading(false)
-        })
-    }, [])
-
-    console.log(starRailData)
-
-    if (loading) {
-        return <div>Loading...</div>
-    }
-
-    return (
-        <div className={'characterList'}><CharacterBox characterList={starRailData.Characters} /></div>
-    )
-}
-
-function StarRailWeapons() {
-    const [starRailData, setStarRailData] = useState({})
-    const [loading, setLoading] = useState(true)
-
-    useEffect(() => {
-        getSheetDataWithImagesStarRail().then(data => {
-            setStarRailData(data)
-            setLoading(false)
-        })
-    }, [])
-
-    console.log(starRailData)
-
-    if (loading) {
-        return <div>Loading...</div>
-    }
-
-    return (
-        <div className={'weaponList'}><WeaponBox weaponList={starRailData.Weapons} /></div>
-    )
-}
-
-
 
 function SearchBar() {
     const [searchVisibility, setSearchVisibility] = useState(false)
@@ -98,7 +71,7 @@ function getFilterButton(key, label, url){
     return (
         <label key={key} htmlFor={`#${key}`}>
             <input type="checkbox" value={key} id={key} />
-            <img className="element" src={url} />
+            <img alt={label} className="element" src={url} />
             <span>{label}</span>
         </label>
     )
