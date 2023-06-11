@@ -1,7 +1,9 @@
-import React from 'react'
+import React, {useState} from 'react'
 import './characterBox.css'
+import postData from "../../data/postData.js";
 
 export default function CharacterBox({characterList}) {
+    const [characters, setCharacters] = useState(characterList)
     function ceColor(CE) {
         if (CE === 'C6' || CE === 'E6') {
             return 'all'
@@ -11,9 +13,44 @@ export default function CharacterBox({characterList}) {
             return 'some'
         }
     }
+    if (characters.includes('Trailblazer')) {
+        console.log(true)
+    } else {
+        console.log(false)
+    }
+    console.log(characters.Name)
+    console.log(characters)
+
+    function changeLevel(direction, data, person, character) {
+        if (direction === 'up' && (data === 'E6' || data === 'C6')) {
+            console.log("Can't get much higher")
+        } else if(direction === 'down' && data === '') {
+            console.log("down in the dirt")
+        } else {
+            let count = data.charAt(1)
+            let newData = data.charAt(0) + count
+            if (direction === 'up') {
+                if (count === '') {
+                    count = 0
+                    newData = data.charAt(0) + count
+                } else {
+                    count++
+                    newData = data.charAt(0) + count
+                }
+            } else if (direction === 'down') {
+                if (count === '0') {
+                    newData = ''
+                } else {
+                    count--
+                    newData = data.charAt(0) + count
+                }
+            }
+            postData({newData, person, character})
+        }
+    }
 
 
-     return characterList.map(character => {
+     return characters.map(character => {
         return(
             <div key={character.Name} className={'characterBox'}>
                 <div className={'characterContainer'}>
@@ -26,7 +63,7 @@ export default function CharacterBox({characterList}) {
                         <img className={'characterGroup'} alt={'img'} src={character.Group}/>
                     </div>
                     <div className={'characterCE'}>
-                        {Object.keys(character.CE).map(item => (
+                        {Object.keys(character.CE).map((item) => (
                             <div key={item} className={'CE'}>
                                 <div className={'personName'}>{item}</div>
                                 <div className={`CECount ${ceColor(character.CE[item])}`} >{character.CE[item]}</div>
@@ -34,10 +71,10 @@ export default function CharacterBox({characterList}) {
                                     {window.location.pathname.includes('StarRail') &&
                                         <>
                                             {character.CE[item] !== 'E6' &&
-                                                <button>+</button>
+                                                <button onClick={() => changeLevel('up', character.CE[item], item, character.Name)}>+</button>
                                             }
                                             {character.CE[item] !== '' &&
-                                                <button>-</button>
+                                                <button onClick={() => changeLevel('down', character.CE[item], item, character.Name)}>-</button>
                                             }
                                         </>
                                     }
