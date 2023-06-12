@@ -25,7 +25,7 @@ function GenshinCharacters() {
     }
 
     return (
-        <div className={'characterList'}><CharacterBox characterList={genshinData.Characters} /></div>
+        <div className={'characterList'}><CharacterBox characterList={genshinData.Characters} game={'Genshin'} /></div>
     )
 }
 

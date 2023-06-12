@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import './characterBox.css'
 import postData from "../../data/postData.js";
 
-export default function CharacterBox({characterList}) {
+export default function CharacterBox({characterList, game}) {
     const [characters, setCharacters] = useState(characterList)
     function ceColor(CE) {
         if (CE === 'C6' || CE === 'E6') {
@@ -28,23 +28,32 @@ export default function CharacterBox({characterList}) {
             console.log("down in the dirt")
         } else {
             let count = data.charAt(1)
-            let newData = data.charAt(0) + count
+            let gameLetter = ''
+            let newData
+            if (game === 'StarRail') {
+                gameLetter = 'E'
+            } else if (game === 'Genshin') {
+                gameLetter = 'C'
+            }
             if (direction === 'up') {
                 if (count === '') {
                     count = 0
-                    newData = data.charAt(0) + count
                 } else {
                     count++
-                    newData = data.charAt(0) + count
                 }
             } else if (direction === 'down') {
                 if (count === '0') {
-                    newData = ''
+                    count = ''
                 } else {
                     count--
-                    newData = data.charAt(0) + count
                 }
             }
+            if (count === '') {
+                newData = ''
+            } else {
+                newData = gameLetter + count
+            }
+            console.log(newData)
             postData({newData, person, character})
         }
     }
@@ -81,10 +90,10 @@ export default function CharacterBox({characterList}) {
                                     {window.location.pathname.includes('Genshin') &&
                                         <>
                                             {character.CE[item] !== 'C6' &&
-                                                <button>+</button>
+                                                <button onClick={() => changeLevel('up', character.CE[item], item, character.Name)}>+</button>
                                             }
                                             {character.CE[item] !== '' &&
-                                                <button>-</button>
+                                                <button onClick={() => changeLevel('down', character.CE[item], item, character.Name)}>-</button>
                                             }
                                         </>
                                     }

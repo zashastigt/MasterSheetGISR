@@ -37,8 +37,8 @@ function ListSwitchStarRail() {
                 <img alt={'weapon'} src={'https://hsr.honeyhunterworld.com/img/menu/weapon.webp?x5419'}/>
             </div>
             {listShown ?
-                <div className={'characterList'}><CharacterBox characterList={starRailCharacters} /></div>:
-                <div className={'weaponList'}><WeaponBox weaponList={starRailWeapons} /></div>
+                <div className={'characterList'}><CharacterBox characterList={starRailCharacters} game={'StarRail'} /></div>:
+                <div className={'weaponList'}><WeaponBox weaponList={starRailWeapons} game={'StarRail'} /></div>
             }
         </>
     )
