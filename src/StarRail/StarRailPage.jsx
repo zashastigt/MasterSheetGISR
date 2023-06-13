@@ -27,6 +27,14 @@ function ListSwitchStarRail() {
         return <div>Loading...</div>
     }
 
+    const characterList = starRailCharacters.map(character => {
+        return <CharacterBox key={character.Name} starRailCharacter={character} game={'StarRail'} />
+    })
+
+    const weaponList = starRailCharacters.map(weapon => {
+        return <WeaponBox key={weapon.Name} starRailWeapon={starRailWeapons} game={'StarRail'} />
+    })
+
     return (
         <>
             <div className={`switch`}>
@@ -37,8 +45,13 @@ function ListSwitchStarRail() {
                 <img alt={'weapon'} src={'https://hsr.honeyhunterworld.com/img/menu/weapon.webp?x5419'}/>
             </div>
             {listShown ?
-                <div className={'characterList'}><CharacterBox characterList={starRailCharacters} game={'StarRail'} /></div>:
-                <div className={'weaponList'}><WeaponBox weaponList={starRailWeapons} game={'StarRail'} /></div>
+                <div className={'characterList'}>
+                    {characterList}
+                </div>
+                :
+                <div className={'weaponList'}>
+                    {weaponList}
+                </div>
             }
         </>
     )

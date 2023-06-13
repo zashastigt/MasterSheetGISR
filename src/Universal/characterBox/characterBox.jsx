@@ -2,8 +2,11 @@ import React, {useState} from 'react'
 import './characterBox.css'
 import postData from "../../data/postData.js";
 
-export default function CharacterBox({characterList, game}) {
-    const [characters, setCharacters] = useState(characterList)
+export default function CharacterBox({starRailCharacter, game}) {
+    const [characterCE, setCharacterCE] =useState(starRailCharacter.CE)
+    const [character, setCharacter] = useState({...starRailCharacter, CE: characterCE})
+
+    console.log(character.CE)
     function ceColor(CE) {
         if (CE === 'C6' || CE === 'E6') {
             return 'all'
@@ -13,15 +16,8 @@ export default function CharacterBox({characterList, game}) {
             return 'some'
         }
     }
-    if (characters.includes('Trailblazer')) {
-        console.log(true)
-    } else {
-        console.log(false)
-    }
-    console.log(characters.Name)
-    console.log(characters)
 
-    function changeLevel(direction, data, person, character) {
+    function changeLevel(direction, data, person) {
         if (direction === 'up' && (data === 'E6' || data === 'C6')) {
             console.log("Can't get much higher")
         } else if(direction === 'down' && data === '') {
@@ -54,12 +50,16 @@ export default function CharacterBox({characterList, game}) {
                 newData = gameLetter + count
             }
             console.log(newData)
-            postData({Level: newData, Person: person, Character: character, Game: game})
+            console.log(character.CE)
+
+
+            console.log(newCE)
+            setCharacterCE(newCE)
+            // postData({Level: newData, Person: person, Character: character.Name, Game: game})
         }
     }
 
 
-     return characters.map(character => {
         return(
             <div key={character.Name} className={'characterBox'}>
                 <div className={'characterContainer'}>
@@ -72,7 +72,7 @@ export default function CharacterBox({characterList, game}) {
                         <img className={'characterGroup'} alt={'img'} src={character.Group}/>
                     </div>
                     <div className={'characterCE'}>
-                        {Object.keys(character.CE).map((item) => (
+                        {Object.keys(character.CE).map(item => (
                             <div key={item} className={'CE'}>
                                 <div className={'personName'}>{item}</div>
                                 <div className={`CECount ${ceColor(character.CE[item])}`} >{character.CE[item]}</div>
@@ -90,10 +90,10 @@ export default function CharacterBox({characterList, game}) {
                                     {window.location.pathname.includes('Genshin') &&
                                         <>
                                             {character.CE[item] !== 'C6' &&
-                                                <button onClick={() => changeLevel('up', character.CE[item], item, character.Name)}>+</button>
+                                                <button onClick={() => changeLevel('up', character.CE[item], item)}>+</button>
                                             }
                                             {character.CE[item] !== '' &&
-                                                <button onClick={() => changeLevel('down', character.CE[item], item, character.Name)}>-</button>
+                                                <button onClick={() => changeLevel('down', character.CE[item], item)}>-</button>
                                             }
                                         </>
                                     }
@@ -109,5 +109,4 @@ export default function CharacterBox({characterList, game}) {
             </div>
 
         )
-    })
 }

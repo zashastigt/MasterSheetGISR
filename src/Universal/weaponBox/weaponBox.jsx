@@ -1,7 +1,9 @@
-import React from 'react'
+import React, {useState} from 'react'
 import './weaponBox.css'
 
-export default function WeaponBox({weaponList}) {
+export default function WeaponBox({starRailWeapon, game}) {
+    const [weapon, setWeapon] = useState(starRailWeapon)
+    console.log(weapon[0].CE)
     function ceColor(CE) {
         if (CE === 'R5' || CE === 'S5') {
             return 'all'
@@ -23,7 +25,6 @@ export default function WeaponBox({weaponList}) {
     }
 
 
-    return weaponList.map(weapon => {
         return(
             <div key={weapon.Name} className={'weaponBox'}>
                 <div className={'weaponContainer'}>
@@ -69,5 +70,4 @@ export default function WeaponBox({weaponList}) {
             </div>
 
         )
-    })
 }
