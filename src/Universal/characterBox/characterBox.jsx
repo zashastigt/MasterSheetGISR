@@ -54,7 +54,7 @@ export default function CharacterBox({characterList, game}) {
                 newData = gameLetter + count
             }
             console.log(newData)
-            postData({newData, person, character})
+            postData({Level: newData, Person: person, Character: character, Game: game})
         }
     }
 
