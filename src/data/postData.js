@@ -1,9 +1,8 @@
 export default async function postData(data = {}) {
-    const response = await fetch("https://script.google.com/macros/s/AKfycbwS4UPJpDj_JurJaNKaeY22Ffqorg7FGS-MKoYoKGA7YZAvJNiKKz3XXsUVAEDzQslQRg/exec", {
+    const response = await fetch("https://script.google.com/macros/s/AKfycbwd8fQ8bBxsd2becCeyCtR9BM4H_0S5i_viABB_-L_Mc5a7vVGfRelx7h_CPVO5Wjlvhw/exec", {
         method: "POST",
-        mode: "no-cors",
         headers: {
-            "Content-Type": "application/json",
+            "Content-Type": "text/plain",
         },
         body: JSON.stringify(data)
     });
