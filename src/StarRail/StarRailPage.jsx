@@ -28,11 +28,11 @@ function ListSwitchStarRail() {
     }
 
     const characterList = starRailCharacters.map(character => {
-        return <CharacterBox key={character.Name} starRailCharacter={character} game={'StarRail'} />
+        return <CharacterBox key={character.Name} gameCharacter={character} game={'StarRail'} />
     })
 
-    const weaponList = starRailCharacters.map(weapon => {
-        return <WeaponBox key={weapon.Name} starRailWeapon={starRailWeapons} game={'StarRail'} />
+    const weaponList = starRailWeapons.map(weapon => {
+        return <WeaponBox key={weapon.Name} gameWeapon={weapon} game={'StarRail'} />
     })
 
     return (

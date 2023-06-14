@@ -6,26 +6,53 @@ import elementsGI from '../data/elementsGI.json'
 import weapons from '../data/weapons.json'
 import CharacterBox from "../Universal/characterBox/characterBox.jsx";
 import {getSheetDataWithImagesGenshin} from "../data/addImagesToData.js";
+import WeaponBox from "../Universal/weaponBox/weaponBox.jsx";
 
-function GenshinCharacters() {
-    const [genshinData, setGenshinData] = useState({})
+function ListSwitchGenshin() {
+    const [listShown, setListShown] = useState(true)
+    const [genshinCharacters, setGenshinCharacters] = useState({})
+    const [genshinWeapons, setGenshinWeapons] = useState({})
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
         getSheetDataWithImagesGenshin().then(data => {
-            setGenshinData(data)
+            setGenshinCharacters(data.Characters)
+            setGenshinWeapons(data.Weapons)
             setLoading(false)
         })
     }, [])
-
-    console.log(genshinData)
 
     if (loading) {
         return <div>Loading...</div>
     }
 
+    const characterList = genshinCharacters.map(character => {
+        return <CharacterBox key={character.Name} gameCharacter={character} game={'Genshin'} />
+    })
+
+    const weaponList = genshinWeapons.map(weapon => {
+        return <WeaponBox key={weapon.Name} gameWeapon={weapons} game={'Genshin'} />
+    })
+
     return (
-        <div className={'characterList'}><CharacterBox characterList={genshinData.Characters} game={'Genshin'} /></div>
+        <>
+            <div className={`switch`}>
+                <img alt={'character'} src={'https://hsr.honeyhunterworld.com/img/menu/char.webp?x54196'}/>
+                <button className={``} onClick={() => setListShown(!listShown)}>
+                    <div className={`slider ${listShown ? 'sliderLeft' : 'sliderRight'}`}></div>
+                </button>
+                <img alt={'weapon'} src={'https://hsr.honeyhunterworld.com/img/menu/weapon.webp?x5419'}/>
+            </div>
+            {listShown ?
+                <div className={'characterList'}>
+                    {characterList}
+                </div>
+                :
+                <div className={'weaponList'}>
+                    {weaponList}
+                </div>
+            }
+        </>
     )
 }
 
@@ -75,7 +102,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
                     {Object.keys(weapons).map((k)=>getFilterButton(k, weapons[k].label, `../assets/GenshinWeaponImgs/${weapons[k].urlKey}.png`))}
                 </ul>
             </div>
-            <GenshinCharacters />
+            <ListSwitchGenshin />
         </div>
     </React.StrictMode>
 )

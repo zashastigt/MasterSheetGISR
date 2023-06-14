@@ -1,9 +1,11 @@
 import React, {useState} from 'react'
 import './weaponBox.css'
+import convert from "../convertArrayObject.js";
+import postData from "../../data/postData.js";
 
-export default function WeaponBox({starRailWeapon, game}) {
-    const [weapon, setWeapon] = useState(starRailWeapon)
-    console.log(weapon[0].CE)
+export default function WeaponBox({gameWeapon, game}) {
+    const [weapon, setWeapon] = useState(gameWeapon)
+    console.log(weapon)
     function ceColor(CE) {
         if (CE === 'R5' || CE === 'S5') {
             return 'all'
@@ -21,6 +23,55 @@ export default function WeaponBox({starRailWeapon, game}) {
             return 'rarityFourStar'
         } else {
             return 'rarityThreeStar'
+        }
+    }
+
+    function changeLevel(direction, data, person) {
+        if (direction === 'up' && (data === 'S5' || data === 'R5')) {
+            console.log("Can't get much higher")
+        } else if(direction === 'down' && data === '') {
+            console.log("down in the dirt")
+        } else {
+            let count = data.charAt(1)
+            let gameLetter = ''
+            let newData
+
+            if (game === 'StarRail') {
+                gameLetter = 'S'
+            } else if (game === 'Genshin') {
+                gameLetter = 'R'
+            }
+
+            if (direction === 'up') {
+                if (count === '') {
+                    count = 0
+                } else {
+                    count++
+                }
+            } else if (direction === 'down') {
+                if (count === '0') {
+                    count = ''
+                } else {
+                    count--
+                }
+            }
+
+            if (count === '') {
+                newData = ''
+            } else {
+                newData = gameLetter + count
+            }
+
+            const newCE = Object.keys(weapon.CE).map(key => {
+                if (key === person) {
+                    return {[key]: newData}
+                } else {
+                    return {[key]: weapon.CE[key]}
+                }
+            })
+
+            setWeapon({...weapon, CE: convert(newCE)})
+            postData({Level: newData, Person: person, Name: weapon.Name, Game: game, Group: 'Weapon'})
         }
     }
 
@@ -44,20 +95,20 @@ export default function WeaponBox({starRailWeapon, game}) {
                                     {window.location.pathname.includes('StarRail') &&
                                         <>
                                             {weapon.CE[item] !== 'S5' &&
-                                                <button>+</button>
+                                                <button onClick={() => changeLevel('up', weapon.CE[item], item, weapon.Name)}>+</button>
                                             }
                                             {weapon.CE[item] !== '' &&
-                                                <button>-</button>
+                                                <button onClick={() => changeLevel('down', weapon.CE[item], item, weapon.Name)}>-</button>
                                             }
                                         </>
                                     }
                                     {window.location.pathname.includes('Genshin') &&
                                         <>
                                             {weapon.CE[item] !== 'R5' &&
-                                                <button>+</button>
+                                                <button onClick={() => changeLevel('up', weapon.CE[item], item, weapon.Name)}>+</button>
                                             }
                                             {weapon.CE[item] !== '' &&
-                                                <button>-</button>
+                                                <button onClick={() => changeLevel('down', weapon.CE[item], item, weapon.Name)}>-</button>
                                             }
                                         </>
                                     }
