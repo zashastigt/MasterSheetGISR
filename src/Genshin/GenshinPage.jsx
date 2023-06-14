@@ -5,8 +5,8 @@ import './GenshinPage.css'
 import elementsGI from '../data/elementsGI.json'
 import weapons from '../data/weapons.json'
 import CharacterBox from "../Universal/characterBox/characterBox.jsx";
-import {getSheetDataWithImagesGenshin} from "../data/addImagesToData.js";
 import WeaponBox from "../Universal/weaponBox/weaponBox.jsx";
+import {getSheetDataWithImagesGenshin} from "../data/addImagesToData.js";
 
 function ListSwitchGenshin() {
     const [listShown, setListShown] = useState(true)
@@ -31,17 +31,17 @@ function ListSwitchGenshin() {
     })
 
     const weaponList = genshinWeapons.map(weapon => {
-        return <WeaponBox key={weapon.Name} gameWeapon={weapons} game={'Genshin'} />
+        return <WeaponBox key={weapon.Name} gameWeapon={weapon} game={'Genshin'} />
     })
 
     return (
         <>
             <div className={`switch`}>
-                <img alt={'character'} src={'https://hsr.honeyhunterworld.com/img/menu/char.webp?x54196'}/>
+                <img alt={'character'} src={'https://genshin.honeyhunterworld.com/img/icons/char_35.webp?x50246'}/>
                 <button className={``} onClick={() => setListShown(!listShown)}>
                     <div className={`slider ${listShown ? 'sliderLeft' : 'sliderRight'}`}></div>
                 </button>
-                <img alt={'weapon'} src={'https://hsr.honeyhunterworld.com/img/menu/weapon.webp?x5419'}/>
+                <img alt={'weapon'} src={'https://genshin.honeyhunterworld.com/img/icons/weapons_35.webp?x50246'}/>
             </div>
             {listShown ?
                 <div className={'characterList'}>

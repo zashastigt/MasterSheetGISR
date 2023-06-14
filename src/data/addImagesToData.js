@@ -42,7 +42,9 @@ function getSheetDataWithImagesGenshin() {
   return getSheetDataJson().then(function(data) {
     data.Genshin.Characters = addImagesToGenshinCharacterData(data.Genshin.Characters)
     data.Genshin.Characters = getGenshinCharacterImgs(data.Genshin.Characters)
-    console.log(data)
+    data.Genshin.Weapons = addImagesToGenshinWeaponData(data.Genshin.Weapons)
+    data.Genshin.Weapons = getGenshinWeaponImgs(data.Genshin.Weapons)
+    console.log(data.Genshin)
     return data.Genshin
   });
 }
@@ -54,6 +56,15 @@ function getGenshinCharacterImgs(data) {
       name = 'traveler_electro'
     }
     return {...character, Img: 'https://paimon.moe/images/characters/' + name + '.png'}
+  })
+}
+
+function getGenshinWeaponImgs(data) {
+  return data.map(weapon => {
+    let name = weapon.Name.toLowerCase()
+        .replaceAll(' ', '_')
+        .replaceAll("'", '')
+    return {...weapon, Img: "https://paimon.moe/images/weapons/" + name + ".png"}
   })
 }
 
@@ -106,47 +117,70 @@ function addImagesToGenshinCharacterData(data) {
   data.map((character) => {
     switch (character.Element) {
       case 'Anemo':
-        character.Element = giAnemo;
-        break;
+        character.Element = giAnemo
+        break
       case 'Cryo':
-        character.Element = giCryo;
-        break;
+        character.Element = giCryo
+        break
       case 'Dendro':
-        character.Element = giDendro;
-        break;
+        character.Element = giDendro
+        break
       case 'Electro':
-        character.Element = giElectro;
-        break;
+        character.Element = giElectro
+        break
       case 'Geo':
-        character.Element = giGeo;
-        break;
+        character.Element = giGeo
+        break
       case 'Hydro':
-        character.Element = giHydro;
-        break;
+        character.Element = giHydro
+        break
       case 'Pyro':
-        character.Element = giPyro;
-        break;
+        character.Element = giPyro
+        break
     }
 
     switch (character.Group) {
       case 'Sword':
-        character.Group = giSword;
-        break;
+        character.Group = giSword
+        break
       case 'Claymore':
-        character.Group = giClaymore;
-        break;
+        character.Group = giClaymore
+        break
       case 'Polearm':
-        character.Group = giPole;
-        break;
+        character.Group = giPole
+        break
       case 'Catalyst':
-        character.Group = giCatalyst;
-        break;
+        character.Group = giCatalyst
+        break
       case 'Bow':
-        character.Group = giBow;
-        break;
+        character.Group = giBow
+        break
     }
   })
-  return data;
+  return data
+}
+
+function addImagesToGenshinWeaponData(data) {
+  data.map((weapon) => {
+    switch (weapon.Group) {
+      case 'Sword':
+        weapon.Group = giSword
+        break
+      case 'Claymore':
+        weapon.Group = giClaymore
+        break
+      case 'Polearm':
+        weapon.Group = giPole
+        break
+      case 'Catalyst':
+        weapon.Group = giCatalyst
+        break
+      case 'Bow':
+        weapon.Group = giBow
+        break
+    }
+  })
+  return data
 }
   
 function addImagesToStarRailCharacterData(data) {

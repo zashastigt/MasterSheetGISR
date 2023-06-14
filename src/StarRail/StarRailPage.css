@@ -149,10 +149,6 @@ input[type=checkbox] {
     border-radius: 25px;
 }
 
-.characterInfo {
-
-}
-
 .playerInfo {
     display: grid;
     grid-template-columns: auto auto auto;
