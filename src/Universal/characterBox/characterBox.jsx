@@ -3,10 +3,10 @@ import './characterBox.css'
 import postData from "../../data/postData.js";
 
 export default function CharacterBox({starRailCharacter, game}) {
-    const [characterCE, setCharacterCE] =useState(starRailCharacter.CE)
-    const [character, setCharacter] = useState({...starRailCharacter, CE: characterCE})
+    const [character, setCharacter] = useState(starRailCharacter)
 
-    console.log(character.CE)
+    console.log(character)
+
     function ceColor(CE) {
         if (CE === 'C6' || CE === 'E6') {
             return 'all'
@@ -26,11 +26,13 @@ export default function CharacterBox({starRailCharacter, game}) {
             let count = data.charAt(1)
             let gameLetter = ''
             let newData
+
             if (game === 'StarRail') {
                 gameLetter = 'E'
             } else if (game === 'Genshin') {
                 gameLetter = 'C'
             }
+
             if (direction === 'up') {
                 if (count === '') {
                     count = 0
@@ -44,21 +46,32 @@ export default function CharacterBox({starRailCharacter, game}) {
                     count--
                 }
             }
+
             if (count === '') {
                 newData = ''
             } else {
                 newData = gameLetter + count
             }
-            console.log(newData)
-            console.log(character.CE)
 
+            const newCE = Object.keys(character.CE).map(key => {
+                if (key === person) {
+                    return {[key]: newData}
+                } else {
+                    return {[key]: character.CE[key]}
+                }
+            })
 
-            console.log(newCE)
-            setCharacterCE(newCE)
-            // postData({Level: newData, Person: person, Character: character.Name, Game: game})
+            const convertedObject = Object.keys(newCE).reduce((acc, key) => {
+                const innerObject = newCE[key]
+                const innerKey = Object.keys(innerObject)[0]
+                acc[innerKey] = innerObject[innerKey]
+                return acc
+            }, {})
+
+            setCharacter({...character, CE: convertedObject})
+            postData({Level: newData, Person: person, Character: character.Name, Game: game})
         }
     }
-
 
         return(
             <div key={character.Name} className={'characterBox'}>
