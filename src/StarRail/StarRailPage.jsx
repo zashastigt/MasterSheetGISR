@@ -18,6 +18,7 @@ function ListSwitchStarRail() {
     const [starRailCharacters, setStarRailCharacters] = useState({})
     const [starRailWeapons, setStarRailWeapons] = useState({})
     const [loading, setLoading] = useState(true)
+    const [searchValue, setSearchValue] = useState('')
 
     useEffect(() => {
         getSheetDataWithImagesStarRail().then(data => {
@@ -31,16 +32,17 @@ function ListSwitchStarRail() {
         return <div>Loading...</div>
     }
 
-    const characterList = starRailCharacters.map(character => {
+    const characterList = starRailCharacters.filter(filter => filter.Name.toLowerCase().includes(searchValue.toLowerCase())).map(character => {
         return <CharacterBox key={character.Name} gameCharacter={character} game={'StarRail'} />
     })
 
-    const weaponList = starRailWeapons.map(weapon => {
+    const weaponList = starRailWeapons.filter(filter => filter.Name.toLowerCase().includes(searchValue.toLowerCase())).map(weapon => {
         return <WeaponBox key={weapon.Name} gameWeapon={weapon} game={'StarRail'} />
     })
 
     return (
         <>
+            <SearchBar searchValue={searchValue} setSearchValue={setSearchValue}/>
             <div className={`switch`}>
                 <img alt={'character'} src={'https://hsr.honeyhunterworld.com/img/menu/char.webp?x54196'}/>
                 <button className={``} onClick={() => setListShown(!listShown)}>
@@ -64,7 +66,6 @@ function ListSwitchStarRail() {
 ReactDOM.createRoot(document.getElementById('root')).render(
     <React.StrictMode>
         <div className="container">
-            <SearchBar />
             <div className="filters">
                 <ul className="elements">
                     {Object.keys(elementsSR).map((k)=>GetFilterButton(k, elementsSR[k].label, `../assets/StarRailElementImgs/${elementsSR[k].urlKey}.webp`))}

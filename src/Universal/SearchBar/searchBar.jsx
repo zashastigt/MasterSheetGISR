@@ -1,9 +1,9 @@
 
 import { useState, useEffect } from 'react'
 
-export default function SearchBar() {
+export default function SearchBar({searchValue, setSearchValue}) {
     const [searchVisibility, setSearchVisibility] = useState(false)
-    const [searchValue, setSearchValue] = useState('')
+
 
     useEffect(() => {
         document.onkeydown = function (e) {

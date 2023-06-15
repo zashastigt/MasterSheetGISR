@@ -17,6 +17,7 @@ function ListSwitchGenshin() {
     const [genshinCharacters, setGenshinCharacters] = useState({})
     const [genshinWeapons, setGenshinWeapons] = useState({})
     const [loading, setLoading] = useState(true)
+    const [searchValue, setSearchValue] = useState('')
 
     useEffect(() => {
         getSheetDataWithImagesGenshin().then(data => {
@@ -30,16 +31,17 @@ function ListSwitchGenshin() {
         return <div>Loading...</div>
     }
 
-    const characterList = genshinCharacters.map(character => {
+    const characterList = genshinCharacters.filter(filter => filter.Name.toLowerCase().includes(searchValue.toLowerCase())).map(character => {
         return <CharacterBox key={character.Name} gameCharacter={character} game={'Genshin'} />
     })
 
-    const weaponList = genshinWeapons.map(weapon => {
+    const weaponList = genshinWeapons.filter(filter => filter.Name.toLowerCase().includes(searchValue.toLowerCase())).map(weapon => {
         return <WeaponBox key={weapon.Name} gameWeapon={weapon} game={'Genshin'} />
     })
 
     return (
         <>
+            <SearchBar searchValue={searchValue} setSearchValue={setSearchValue}/>
             <div className={`switch`}>
                 <img alt={'character'} src={'https://genshin.honeyhunterworld.com/img/icons/char_35.webp?x50246'}/>
                 <button className={``} onClick={() => setListShown(!listShown)}>
@@ -63,7 +65,6 @@ function ListSwitchGenshin() {
 ReactDOM.createRoot(document.getElementById('root')).render(
     <React.StrictMode>
         <div className="container">
-            <SearchBar />
             <div className="filters">
                 <ul className="elements">
                     {Object.keys(elementsGI).map((k)=>GetFilterButton(k, elementsGI[k].label, `../assets/GenshinElementImgs/${elementsGI[k].urlKey}.svg`))}
