@@ -7,6 +7,7 @@ import paths from '../data/paths.json'
 import CharacterBox from "../Universal/characterBox/characterBox.jsx";
 import WeaponBox from "../Universal/weaponBox/weaponBox.jsx";
 import {getSheetDataWithImagesStarRail} from "../data/addImagesToData.js";
+import PityBox from "../Universal/pityBox/pityBox.jsx";
 
 
 function ListSwitchStarRail() {
@@ -46,10 +47,12 @@ function ListSwitchStarRail() {
             </div>
             {listShown ?
                 <div className={'characterList'}>
+                    <PityBox />
                     {characterList}
                 </div>
                 :
                 <div className={'weaponList'}>
+
                     {weaponList}
                 </div>
             }

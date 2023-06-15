@@ -1,0 +1,81 @@
+.pityBox {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 10px;
+}
+
+.pityContainer {
+    display: flex;
+    height: 100px;
+    width: fit-content;
+    background-color: #252525;
+    border-radius: 20px 20px 20px 0;
+    border: #333333 solid 3px;
+    padding: 0 10px;
+}
+
+.pityBoxName {
+    position: relative;
+    bottom: 0;
+    height: 1.3em;
+    padding: 0 10px;
+    width: fit-content;
+    min-width: 55px;
+    border-radius: 0 0 15px 15px;
+    text-align: center;
+    font-size: 1.1em;
+    font-weight: 400;
+    color: #ddd;
+    background-color: #333333;
+}
+
+.pityInfo {
+    display: flex;
+    flex-direction: column;
+    margin: 0 5px;
+}
+.pityName {
+    text-align: center;
+}
+
+.pityPity {
+    display: flex;
+}
+
+.pityColumn {
+    display: flex;
+    flex-direction: column;
+}
+
+.pityBarColor {
+    height: 3px;
+    width: 25px;
+}
+
+.pity4Color {
+    background-color: rgba(148,112,187);;
+}
+
+.pity5Color {
+    background-color: rgba(200,124,36);
+}
+
+.pityNoColor {
+    background-color: #252525;
+}
+
+.pityAColor {
+    background-color: #333333;
+}
+
+.pityButton {
+    height: 1em;
+    width: 1em;
+    color: #888;
+    background-color: dimgray;
+    border-width: 0;
+    font-size: 0.8em;
+    font-style: inherit;
+    line-height: inherit;
+    padding: 0;
+}
