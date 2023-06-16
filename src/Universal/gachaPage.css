@@ -93,6 +93,10 @@ body {
     margin: 0;
 }
 
+.elementsHidden {
+    display: none;
+}
+
 label {
     cursor: pointer;
     display: flex;
