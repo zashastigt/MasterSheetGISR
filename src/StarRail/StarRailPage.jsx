@@ -5,6 +5,7 @@ import './StarRailPage.css'
 import '../Universal/gachaPage.css'
 import elementsSR from '../data/elementsSR.json'
 import paths from '../data/paths.json'
+import PityBox from "../Universal/pityBox/pityBox.jsx";
 import {getSheetDataWithImagesStarRail} from '../data/addImagesToData.js'
 import SearchBar from '../Universal/SearchBar/searchBar.jsx'
 import '../Universal/SearchBar/searchBar.css'
@@ -48,10 +49,12 @@ function ListSwitchStarRail() {
             </div>
             {listShown ?
                 <div className={'characterList'}>
+                    <PityBox />
                     {characterList}
                 </div>
                 :
                 <div className={'weaponList'}>
+
                     {weaponList}
                 </div>
             }
