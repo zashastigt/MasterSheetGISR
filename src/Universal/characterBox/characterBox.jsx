@@ -85,20 +85,20 @@ export default function CharacterBox({gameCharacter, game}) {
                                 {window.location.pathname.includes('StarRail') &&
                                     <>
                                         {character.CE[item] !== 'E6' &&
-                                            <button onClick={() => changeLevel('up', character.CE[item], item, character.Name)}>+</button>
+                                            <button className="up" onClick={() => changeLevel('up', character.CE[item], item, character.Name)}>+</button>
                                         }
                                         {character.CE[item] !== '' &&
-                                            <button onClick={() => changeLevel('down', character.CE[item], item, character.Name)}>-</button>
+                                            <button className="down" onClick={() => changeLevel('down', character.CE[item], item, character.Name)}>-</button>
                                         }
                                     </>
                                 }
                                 {window.location.pathname.includes('Genshin') &&
                                     <>
                                         {character.CE[item] !== 'C6' &&
-                                            <button onClick={() => changeLevel('up', character.CE[item], item)}>+</button>
+                                            <button className="up" onClick={() => changeLevel('up', character.CE[item], item)}>+</button>
                                         }
                                         {character.CE[item] !== '' &&
-                                            <button onClick={() => changeLevel('down', character.CE[item], item)}>-</button>
+                                            <button className="down" onClick={() => changeLevel('down', character.CE[item], item)}>-</button>
                                         }
                                     </>
                                 }
