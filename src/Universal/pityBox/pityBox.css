@@ -62,11 +62,11 @@
 }
 
 .pity4Color {
-    background-color: rgba(148,112,187);
+    background-color: rgba(148, 112, 187);
 }
 
 .pity5Color {
-    background-color: rgba(200,124,36);
+    background-color: rgba(200, 124, 36);
 }
 
 .pityNoColor {
@@ -110,7 +110,7 @@
 }
 
 .star5 {
-    background-color: rgba(200,124,36);
+    background-color: rgba(200, 124, 36);
     color: black;
     padding: 0 2px;
     border-radius: 5px;
@@ -118,7 +118,7 @@
   }
 
 .star4 {
-    background-color: rgba(148,112,187);
+    background-color: rgba(148, 112, 187);
     color: black;
     padding: 0 2px;
     border-radius: 5px;
