@@ -2,10 +2,6 @@ import React, {useState} from "react";
 import './pityBox.css'
 
 export default function PityBox() {
-    const [selectedPerson, setSelectedPerson] = useState('')
-    const [regular4Pity, setRegular4Pity] = useState(0)
-    const [weapon4Pity, setWeapon4Pity] = useState(0)
-    const [character4Pity, setCharacter4Pity] = useState(0)
 
     const testPity = [
         {
@@ -38,6 +34,28 @@ export default function PityBox() {
         }
     ]
 
+    const [pities, setpities] = useState(testPity)
+    const [selectedPerson, setSelectedPerson] = useState('')
+    const [regular4Pity, setRegular4Pity] = useState(0)
+    const [weapon4Pity, setWeapon4Pity] = useState(0)
+    const [character4Pity, setCharacter4Pity] = useState(0)
+
+    console.log(pities)
+
+    function addPity(who, what) {
+        pities.map(pity => {
+            if (who === pity.Name) {
+                console.log(what)
+
+            } else {
+                console.log('no')
+            }
+        })
+    }
+
+    function resetPity({who, what}) {
+
+    }
 
     function Pity({pity}) {
 
@@ -76,7 +94,7 @@ export default function PityBox() {
                         <div>Normal</div>
                         <div className={'star5'}>{selectedPerson.Regular}</div>
                         <div className={'star4'}>{regular4Pity}</div>
-                        <button className={'button'}>+1</button>
+                        <button className={'button'} onClick={() => addPity(selectedPerson.Name, selectedPerson.Regular)}>+1</button>
                         <div>
                             <button className={'reset star4'}>4<img alt={'reset'} src={'/assets/reset.png'}></img></button>
                             <button className={'reset star5'}>5<img alt={'reset'} src={'/assets/reset.png'}></img></button>
@@ -129,7 +147,7 @@ export default function PityBox() {
                             <div>Event</div>
                             <div>50/50</div>
                         </div>
-                        {testPity.map(pity => {
+                        {pities.map(pity => {
                             return <Pity pity={pity}/>
                         })}
                     </>
