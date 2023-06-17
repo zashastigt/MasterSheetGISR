@@ -121,14 +121,12 @@
 }
 
 .CE .buttons {
-    display: flex;
+    display: grid;
     height: 25%;
-    justify-content: space-evenly;
+    grid-template-columns: repeat(5, 1fr);
 }
 
 .CE .buttons button {
-    height: 20px;
-    width: 20px;
     color: #888;
     background-color: transparent;
     border-width: 0;
@@ -136,4 +134,10 @@
     font-style: inherit;
     line-height: inherit;
     padding: 0;
+}
+.CE .buttons button.up{
+    grid-column: 2;
+}
+.CE .buttons button.down{
+    grid-column: 4;
 }
