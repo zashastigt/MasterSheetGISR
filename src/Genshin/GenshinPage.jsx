@@ -5,12 +5,10 @@ import './GenshinPage.css'
 import '../Universal/gachaPage.css'
 import elementsGI from '../data/elementsGI.json'
 import weapons from '../data/weapons.json'
-import CharacterBox from '../Universal/characterBox/characterBox.jsx'
-import WeaponBox from '../Universal/weaponBox/weaponBox.jsx'
 import {getSheetDataWithImagesGenshin} from '../data/addImagesToData.js'
 import SearchBar from '../Universal/SearchBar/searchBar.jsx'
 import '../Universal/SearchBar/searchBar.css'
-import GetFilterButton from '../Universal/filterButton.jsx' 
+import Filters, {Filtering} from '../Universal/filterButton.jsx' 
 
 function ListSwitchGenshin() {
     const [listShown, setListShown] = useState(true)
@@ -18,6 +16,7 @@ function ListSwitchGenshin() {
     const [genshinWeapons, setGenshinWeapons] = useState({})
     const [loading, setLoading] = useState(true)
     const [searchValue, setSearchValue] = useState('')
+    const [filter, setFilter] = useState([])
 
     useEffect(() => {
         getSheetDataWithImagesGenshin().then(data => {
@@ -31,16 +30,13 @@ function ListSwitchGenshin() {
         return <div>Loading...</div>
     }
 
-    const characterList = genshinCharacters.filter(filter => filter.Name.toLowerCase().includes(searchValue.toLowerCase())).map(character => {
-        return <CharacterBox key={character.Name} gameCharacter={character} game={'Genshin'} />
-    })
+    const characterList = Filtering(genshinCharacters, 'Genshin', searchValue, filter, 'Character')
 
-    const weaponList = genshinWeapons.filter(filter => filter.Name.toLowerCase().includes(searchValue.toLowerCase())).map(weapon => {
-        return <WeaponBox key={weapon.Name} gameWeapon={weapon} game={'Genshin'} />
-    })
+    const weaponList = Filtering(genshinWeapons, 'Genshin', searchValue, filter, 'Weapon')
 
     return (
         <>
+            <Filters listShown={listShown} filter={filter} setFilter={setFilter} element={elementsGI} elementImgs={'GenshinElementImgs'} elementExt={'svg'} group={weapons} groupImgs={'GenshinWeaponImgs'} groupExt={'png'}/>
             <SearchBar searchValue={searchValue} setSearchValue={setSearchValue}/>
             <div className={`switch`}>
                 <img alt={'character'} src={'https://genshin.honeyhunterworld.com/img/icons/char_35.webp?x50246'}/>
@@ -65,14 +61,6 @@ function ListSwitchGenshin() {
 ReactDOM.createRoot(document.getElementById('root')).render(
     <React.StrictMode>
         <div className="container">
-            <div className="filters">
-                <ul className="elements">
-                    {Object.keys(elementsGI).map((k)=>GetFilterButton(k, elementsGI[k].label, `../assets/GenshinElementImgs/${elementsGI[k].urlKey}.svg`))}
-                </ul>
-                <ul className="weapons">
-                    {Object.keys(weapons).map((k)=>GetFilterButton(k, weapons[k].label, `../assets/GenshinWeaponImgs/${weapons[k].urlKey}.png`))}
-                </ul>
-            </div>
             <ListSwitchGenshin />
         </div>
     </React.StrictMode>
