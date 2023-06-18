@@ -4,7 +4,7 @@ import postData from "../../data/postData.js";
 import {getSheetDataJson} from "../../data/fetchData.js";
 
 export default function PityBox({game}) {
-    const [pities, setPities] = useState({})
+    const [pities, setPities] = useState([])
     const [selectedPerson, setSelectedPerson] = useState({})
     const [regular4Pity, setRegular4Pity] = useState(0)
     const [weapon4Pity, setWeapon4Pity] = useState(0)
@@ -21,6 +21,11 @@ export default function PityBox({game}) {
             setLoading(false)
         })
     }, [])
+
+    useEffect(() => {
+       transferPity()
+    }, [selectedPerson, regular4Pity, weapon4Pity, character4Pity])
+
 
     if (loading) {
         return <div>Loading...</div>
@@ -40,7 +45,6 @@ export default function PityBox({game}) {
         }
 
         setSelectedPerson({...selectedPerson, [what]: selectedPerson[what] + 1})
-        transferPity()
     }
 
     function resetPity(who, what, star) {
@@ -72,7 +76,6 @@ export default function PityBox({game}) {
                     break
             }
         }
-        transferPity()
     }
 
     function transferPity() {
@@ -160,13 +163,11 @@ export default function PityBox({game}) {
                             } else if(selectedPerson.Guarantee === 'Yes') {
                                 setSelectedPerson({...selectedPerson, Guarantee: 'No'})
                             }
-                            transferPity()
                         }}>{selectedPerson.Guarantee}</div>
                     </div>
                 </div>
 
                 <button className={'close button'} onClick={() => {
-                    transferPity()
                     setSelectedPerson({})
                 }}>X</button>
             </div>
