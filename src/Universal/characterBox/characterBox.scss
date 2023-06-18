@@ -1,0 +1,140 @@
+@import "../base";
+
+.characterBox {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 10px;
+    
+    .characterContainer {
+        display: flex;
+        height: 100px;
+        width: fit-content;
+        background-color: $color-cardBackground;
+        border-radius: 20px 20px 20px 0;
+        border: $color-cardBorder solid 3px;
+
+        .characterPortrait {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 60px;
+            background-color: transparent;
+            border-radius: 17px 0 0 16px;
+            overflow: hidden;
+
+            .characterImgSR {
+                height: 100%;
+            }
+
+            .characterImgGI {
+                height: 100%;
+            }
+        }
+
+        .rarityStrip {
+            width: 5px;
+            
+            &.rarityFourStar {
+                background-color: $color-fourstar;
+            }
+
+            &.rarityFiveStar {
+                background-color: $color-fivestar;
+            }
+        }
+
+        .characterInfo {
+            display: flex;
+            flex-direction: column;
+            
+            > * {
+                height: 50px;
+            }
+        }
+
+        .characterCE {
+            display: flex;
+            border-radius:  0 20px 20px 0;
+
+            .CE {
+                width: 60px;
+                margin: 0;
+
+                .personName {
+                    height: 25%;
+                    font-size: 1.2em;
+                    font-weight: 300;
+                    text-align: center;
+                }
+
+                .CECount {
+                    height: 50%;
+                    font-size: 2.8em;
+                    color: $color-font;
+                    text-align: center;
+                }
+
+                &:first-child .CECount {
+                    margin-left: 5px;
+                    border-radius: 10px 0 0 10px;
+                }
+
+                &:last-child .CECount {
+                    margin-right: 5px;
+                    border-radius: 0 10px 10px 0;
+                }
+
+                .all {
+                    background-color: $color-complete;
+                }
+
+                .some {
+                    background-color: $color-some;
+                }
+
+                .none {
+                    background-color: $color-none;
+                }
+
+                .buttons {
+                    display: grid;
+                    height: 25%;
+                    grid-template-columns: repeat(5, 1fr);
+
+                    button {
+                        color: $color-cardButton;
+                        background-color: transparent;
+                        border-width: 0;
+                        font-size: 1.5em;
+                        font-style: inherit;
+                        line-height: inherit;
+                        padding: 0;
+                        
+                        &.up{
+                            grid-column: 2;
+                        }
+
+                        &.down{
+                            grid-column: 4;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .characterName {
+        position: relative;
+        bottom: 0;
+        height: 1.3em;
+        padding: 0 10px;
+        width: fit-content;
+        min-width: 55px;
+        border-radius: 0 0 15px 15px;
+        text-align: center;
+        font-size: 1.1em;
+        font-weight: 400;
+        color: $color-font;
+        background-color: $color-cardBorder;
+    }
+}

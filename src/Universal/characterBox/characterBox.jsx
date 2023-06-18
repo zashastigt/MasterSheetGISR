@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import './characterBox.css'
+import './characterBox.scss'
 import postData from "../../data/postData.js";
 import convert from "../convertArrayObject.js";
 
