@@ -1,48 +1,30 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import './pityBox.css'
 import postData from "../../data/postData.js";
+import {getSheetDataJson} from "../../data/fetchData.js";
 
 export default function PityBox({game}) {
-
-    const testPity = [
-        {
-            Name: 'Zasha',
-            Regular: 51,
-            Weapon: 0,
-            Character: 75,
-            Guarantee: 'Yes'
-        },
-        {
-            Name: 'Wilco',
-            Regular: 51,
-            Weapon: 0,
-            Character: 14,
-            Guarantee: 'No'
-        },
-        {
-            Name: 'Wilfred',
-            Regular: 50,
-            Weapon: 0,
-            Character: 69,
-            Guarantee: 'Yes'
-        },
-        {
-            Name: 'Rick',
-            Regular: 0,
-            Weapon: 0,
-            Character: 0,
-            Guarantee: 'No'
-        }
-    ]
-
-    const [pities, setPities] = useState(testPity)
+    const [pities, setPities] = useState({})
     const [selectedPerson, setSelectedPerson] = useState({})
     const [regular4Pity, setRegular4Pity] = useState(0)
     const [weapon4Pity, setWeapon4Pity] = useState(0)
     const [character4Pity, setCharacter4Pity] = useState(0)
+    const [loading, setLoading] = useState(true)
 
-    console.log(pities)
-    console.log(selectedPerson)
+    useEffect(() => {
+        getSheetDataJson().then(data => {
+            if (game === 'StarRail') {
+                setPities(data.SRPity)
+            } else if (game === 'Genshin') {
+                setPities(data.GIPity)
+            }
+            setLoading(false)
+        })
+    }, [])
+
+    if (loading) {
+        return <div>Loading...</div>
+    }
 
     function addPity(who, what) {
         switch (what) {
@@ -102,7 +84,8 @@ export default function PityBox({game}) {
             }
         })
         setPities(newPity)
-        postData({...selectedPerson, Pity: game})
+        console.log(selectedPerson)
+        postData({...selectedPerson, Pity: game, Character4: character4Pity, Weapon4: weapon4Pity, Regular4: regular4Pity})
     }
 
     function Pity({pity}) {

@@ -35,7 +35,7 @@ function getSheetDataWithImagesStarRail() {
     data.StarRail.Weapons = getStarRailWeaponImgs(data.StarRail.Weapons)
     console.log(data.StarRail)
     return data.StarRail
-  });
+  })
 }
 
 function getSheetDataWithImagesGenshin() {
