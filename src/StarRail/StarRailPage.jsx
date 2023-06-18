@@ -49,7 +49,7 @@ function ListSwitchStarRail() {
             </div>
             {listShown ?
                 <div className={'characterList'}>
-                    <PityBox />
+                    <PityBox game={'StarRail'}/>
                     {characterList}
                 </div>
                 :

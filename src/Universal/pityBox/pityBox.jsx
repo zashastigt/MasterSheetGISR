@@ -1,7 +1,8 @@
 import React, {useState} from "react";
 import './pityBox.css'
+import postData from "../../data/postData.js";
 
-export default function PityBox() {
+export default function PityBox({game}) {
 
     const testPity = [
         {
@@ -101,7 +102,7 @@ export default function PityBox() {
             }
         })
         setPities(newPity)
-
+        postData({...selectedPerson, Pity: game})
     }
 
     function Pity({pity}) {
@@ -204,8 +205,8 @@ export default function PityBox() {
                             <div>Event</div>
                             <div>50/50</div>
                         </div>
-                        {pities.map(pity => {
-                            return <Pity pity={pity}/>
+                        {pities.map((pity, index) => {
+                            return <Pity key={index} pity={pity}/>
                         })}
                     </>
 
