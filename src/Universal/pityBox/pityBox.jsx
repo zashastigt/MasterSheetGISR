@@ -34,26 +34,73 @@ export default function PityBox() {
         }
     ]
 
-    const [pities, setpities] = useState(testPity)
-    const [selectedPerson, setSelectedPerson] = useState('')
+    const [pities, setPities] = useState(testPity)
+    const [selectedPerson, setSelectedPerson] = useState({})
     const [regular4Pity, setRegular4Pity] = useState(0)
     const [weapon4Pity, setWeapon4Pity] = useState(0)
     const [character4Pity, setCharacter4Pity] = useState(0)
 
     console.log(pities)
+    console.log(selectedPerson)
 
     function addPity(who, what) {
-        pities.map(pity => {
-            if (who === pity.Name) {
-                console.log(what)
+        switch (what) {
+            case 'Regular':
+                setRegular4Pity(regular4Pity + 1)
+                break
+            case 'Weapon':
+                setWeapon4Pity(weapon4Pity + 1)
+                break
+            case 'Character':
+                setCharacter4Pity(character4Pity + 1)
+                break
+        }
 
-            } else {
-                console.log('no')
-            }
-        })
+        setSelectedPerson({...selectedPerson, [what]: selectedPerson[what] + 1})
+        transferPity()
     }
 
-    function resetPity({who, what}) {
+    function resetPity(who, what, star) {
+        if (star === 5){
+            switch (what) {
+                case 'Regular':
+                    setRegular4Pity(0)
+                    setSelectedPerson({...selectedPerson, [what]: 0})
+                    break
+                case 'Weapon':
+                    setWeapon4Pity(0)
+                    setSelectedPerson({...selectedPerson, [what]: 0})
+                    break
+                case 'Character':
+                    setCharacter4Pity(0)
+                    setSelectedPerson({...selectedPerson, [what]: 0})
+                    break
+            }
+        } else if(star === 4) {
+            switch (what) {
+                case 'Regular':
+                    setRegular4Pity(0)
+                    break
+                case 'Weapon':
+                    setWeapon4Pity(0)
+                    break
+                case 'Character':
+                    setCharacter4Pity(0)
+                    break
+            }
+        }
+        transferPity()
+    }
+
+    function transferPity() {
+        const newPity = pities.map(pity => {
+            if (selectedPerson.Name === pity.Name) {
+                return selectedPerson
+            } else {
+                return pity
+            }
+        })
+        setPities(newPity)
 
     }
 
@@ -68,7 +115,7 @@ export default function PityBox() {
                     <div>{pity.Regular}</div>
                     <div>{pity.Weapon}</div>
                     <div>{pity.Character}</div>
-                    <div>{pity.Guarantee ? 'yes' : 'no'}</div>
+                    <div>{pity.Guarantee}</div>
                 </div>
                 <div className={'pityColumn'}>
                     <div className={'pityBarColor pity4Color'}></div>
@@ -94,10 +141,10 @@ export default function PityBox() {
                         <div>Normal</div>
                         <div className={'star5'}>{selectedPerson.Regular}</div>
                         <div className={'star4'}>{regular4Pity}</div>
-                        <button className={'button'} onClick={() => addPity(selectedPerson.Name, selectedPerson.Regular)}>+1</button>
+                        <button className={'button'} onClick={() => addPity(selectedPerson.Name, 'Regular')}>+1</button>
                         <div>
-                            <button className={'reset star4'}>4<img alt={'reset'} src={'/assets/reset.png'}></img></button>
-                            <button className={'reset star5'}>5<img alt={'reset'} src={'/assets/reset.png'}></img></button>
+                            <button className={'reset star4'} onClick={() => resetPity(selectedPerson.Name, 'Regular', 4)}>4<img alt={'reset'} src={'/assets/reset.png'}></img></button>
+                            <button className={'reset star5'} onClick={() => resetPity(selectedPerson.Name, 'Regular', 5)}>5<img alt={'reset'} src={'/assets/reset.png'}></img></button>
                         </div>
 
                     </div>
@@ -105,29 +152,39 @@ export default function PityBox() {
                         <div>Weapon</div>
                         <div className={'star5'}>{selectedPerson.Weapon}</div>
                         <div className={'star4'}>{weapon4Pity}</div>
-                        <button className={'button'}>+1</button>
+                        <button className={'button'} onClick={() => addPity(selectedPerson.Name, 'Weapon')}>+1</button>
                         <div>
-                            <button className={'reset star4'}>4<img alt={'reset'} src={'/assets/reset.png'}></img></button>
-                            <button className={'reset star5'}>5<img alt={'reset'} src={'/assets/reset.png'}></img></button>
+                            <button className={'reset star4'} onClick={() => resetPity(selectedPerson.Name, 'Weapon', 4)}>4<img alt={'reset'} src={'/assets/reset.png'}></img></button>
+                            <button className={'reset star5'} onClick={() => resetPity(selectedPerson.Name, 'Weapon', 5)}>5<img alt={'reset'} src={'/assets/reset.png'}></img></button>
                         </div>
                     </div>
                     <div className={'pityInputCell'}>
                         <div>Character</div>
                         <div className={'star5'}>{selectedPerson.Character}</div>
                         <div className={'star4'}>{character4Pity}</div>
-                        <button className={'button'}>+1</button>
+                        <button className={'button'} onClick={() => addPity(selectedPerson.Name, 'Character')}>+1</button>
                         <div>
-                            <button className={'reset star4'}>4<img alt={'reset'} src={'/assets/reset.png'}></img></button>
-                            <button className={'reset star5'}>5<img alt={'reset'} src={'/assets/reset.png'}></img></button>
+                            <button className={'reset star4'} onClick={() => resetPity(selectedPerson.Name, 'Character', 4)}>4<img alt={'reset'} src={'/assets/reset.png'}></img></button>
+                            <button className={'reset star5'} onClick={() => resetPity(selectedPerson.Name, 'Character', 5)}>5<img alt={'reset'} src={'/assets/reset.png'}></img></button>
                         </div>
                     </div>
                     <div className={'pityInputCell'}>
                         <div>50/50</div>
-                        <div className={'star5'}>{selectedPerson.Guarantee}</div>
+                        <div className={'star5'} onClick={() => {
+                            if (selectedPerson.Guarantee === 'No'){
+                                setSelectedPerson({...selectedPerson, Guarantee: 'Yes'})
+                            } else if(selectedPerson.Guarantee === 'Yes') {
+                                setSelectedPerson({...selectedPerson, Guarantee: 'No'})
+                            }
+                            transferPity()
+                        }}>{selectedPerson.Guarantee}</div>
                     </div>
                 </div>
 
-                <button className={'close button'} onClick={() => setSelectedPerson('')}>X</button>
+                <button className={'close button'} onClick={() => {
+                    transferPity()
+                    setSelectedPerson({})
+                }}>X</button>
             </div>
         )
     }
@@ -137,7 +194,7 @@ export default function PityBox() {
 
             <div className={'pityContainer'}>
 
-                {selectedPerson === '' ?
+                {Object.keys(selectedPerson).length === 0 ?
                     <>
                         <div className={'pityInputCell'}>
                             <div>Who</div>
