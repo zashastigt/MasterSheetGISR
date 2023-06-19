@@ -44,12 +44,12 @@ export default function WeaponBox({gameWeapon, game}) {
 
             if (direction === 'up') {
                 if (count === '') {
-                    count = 0
+                    count = 1
                 } else {
                     count++
                 }
             } else if (direction === 'down') {
-                if (count === '0') {
+                if (count === '1') {
                     count = ''
                 } else {
                     count--
