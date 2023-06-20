@@ -23,7 +23,9 @@ export default function PityBox({game}) {
     }, [])
 
     useEffect(() => {
-       transferPity()
+        if (selectedPerson.Name === 'Zasha' || selectedPerson.Name === 'Wilco' || selectedPerson.Name === 'Wilfred' || selectedPerson.Name === 'Rick') {
+            transferPity()
+        }
     }, [selectedPerson, regular4Pity, weapon4Pity, character4Pity])
 
 
@@ -87,7 +89,6 @@ export default function PityBox({game}) {
             }
         })
         setPities(newPity)
-        console.log(selectedPerson)
         postData({...selectedPerson, Pity: game, Character4: character4Pity, Weapon4: weapon4Pity, Regular4: regular4Pity})
     }
 
