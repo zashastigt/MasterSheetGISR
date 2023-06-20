@@ -54,7 +54,7 @@ function ListSwitchStarRail() {
                 </div>
                 :
                 <div className={'weaponList'}>
-
+                    <PityBox game={'StarRail'}/>
                     {weaponList}
                 </div>
             }

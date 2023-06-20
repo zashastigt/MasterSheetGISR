@@ -8,7 +8,8 @@ import weapons from '../data/weapons.json'
 import {getSheetDataWithImagesGenshin} from '../data/addImagesToData.js'
 import SearchBar from '../Universal/SearchBar/searchBar.jsx'
 import '../Universal/SearchBar/searchBar.css'
-import Filters, {Filtering} from '../Universal/filterButton.jsx' 
+import Filters, {Filtering} from '../Universal/filterButton.jsx'
+import PityBox from "../Universal/pityBox/pityBox.jsx";
 
 function ListSwitchGenshin() {
     const [listShown, setListShown] = useState(true)
@@ -47,10 +48,12 @@ function ListSwitchGenshin() {
             </div>
             {listShown ?
                 <div className={'characterList'}>
+                    <PityBox game={'Genshin'}/>
                     {characterList}
                 </div>
                 :
                 <div className={'weaponList'}>
+                    <PityBox game={'Genshin'}/>
                     {weaponList}
                 </div>
             }

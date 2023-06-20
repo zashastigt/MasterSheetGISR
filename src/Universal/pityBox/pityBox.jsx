@@ -159,9 +159,12 @@ export default function PityBox({game}) {
                     <div className={'pityInputCell'}>
                         <div>50/50</div>
                         <div className={'star5'} onClick={() => {
+                            console.log(selectedPerson.Guarantee)
                             if (selectedPerson.Guarantee === 'No'){
+                                console.log(1)
                                 setSelectedPerson({...selectedPerson, Guarantee: 'Yes'})
                             } else if(selectedPerson.Guarantee === 'Yes') {
+                                console.log(2)
                                 setSelectedPerson({...selectedPerson, Guarantee: 'No'})
                             }
                         }}>{selectedPerson.Guarantee}</div>
