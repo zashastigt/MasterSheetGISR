@@ -8,7 +8,7 @@ import giHydro from '../assets/GenshinElementImgs/hydro.svg'
 import giPyro from '../assets/GenshinElementImgs/pyro.svg'
 import giSword from '../assets/GenshinWeaponImgs/Sword.png'
 import giClaymore from '../assets/GenshinWeaponImgs/Claymore.png'
-import giPole from '../assets/GenshinWeaponImgs/Pole.png'
+import giPolearm from '../assets/GenshinWeaponImgs/Polearm.png'
 import giBow from '../assets/GenshinWeaponImgs/Bow.png'
 import giCatalyst from '../assets/GenshinWeaponImgs/Catalyst.png'
 import srFire from '../assets/StarRailElementImgs/Fire.webp'
@@ -25,7 +25,6 @@ import srHarmony from '../assets/StarRailPathImgs/Harmony.webp'
 import srNihility from '../assets/StarRailElementImgs/Nihility.webp'
 import srPreservation from '../assets/StarRailPathImgs/Preservation.webp'
 import srHunt from '../assets/StarRailPathImgs/Hunt.webp'
-import {useState} from "react";
 
 function getSheetDataWithImagesStarRail() {
   return getSheetDataJson().then(function(data) {
@@ -33,7 +32,6 @@ function getSheetDataWithImagesStarRail() {
     data.StarRail.Characters = getStarRailCharacterImgs(data.StarRail.Characters)
     data.StarRail.Weapons = addImagesToStarRailWeaponData(data.StarRail.Weapons)
     data.StarRail.Weapons = getStarRailWeaponImgs(data.StarRail.Weapons)
-    console.log(data.StarRail)
     return data.StarRail
   })
 }
@@ -44,7 +42,6 @@ function getSheetDataWithImagesGenshin() {
     data.Genshin.Characters = getGenshinCharacterImgs(data.Genshin.Characters)
     data.Genshin.Weapons = addImagesToGenshinWeaponData(data.Genshin.Weapons)
     data.Genshin.Weapons = getGenshinWeaponImgs(data.Genshin.Weapons)
-    console.log(data.Genshin)
     return data.Genshin
   });
 }
@@ -147,7 +144,7 @@ function addImagesToGenshinCharacterData(data) {
         character.Group = giClaymore
         break
       case 'Polearm':
-        character.Group = giPole
+        character.Group = giPolearm
         break
       case 'Catalyst':
         character.Group = giCatalyst
@@ -170,7 +167,7 @@ function addImagesToGenshinWeaponData(data) {
         weapon.Group = giClaymore
         break
       case 'Polearm':
-        weapon.Group = giPole
+        weapon.Group = giPolearm
         break
       case 'Catalyst':
         weapon.Group = giCatalyst

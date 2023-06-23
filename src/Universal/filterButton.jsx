@@ -4,10 +4,18 @@ import { useState, useEffect } from 'react'
 
 function GetFilterButton(listShown, filter, {setFilter}, key, label, url){
     const [cbChecked, setChecked] = useState(false)
+    const [opaque, setOpaque] = useState('')
     
     const handleChange = (event) => {
         setChecked(event.target.checked)
-        event.target.checked ? setFilter([...filter, label]) :  setFilter(filter.filter(item => !item.includes(label)))
+        if (event.target.checked) {
+            setFilter([...filter, label])
+            setOpaque('opaque')
+        }
+        else {
+            setFilter(filter.filter(item => !item.includes(label)))
+            setOpaque('')
+        }
       }
 
       useEffect(() => {
@@ -18,7 +26,7 @@ function GetFilterButton(listShown, filter, {setFilter}, key, label, url){
     return (
         <label key={key}>
             <input type="checkbox" value={key} onChange={handleChange} checked={cbChecked} />
-            <img alt={label} className="element" src={url} />
+            <img alt={label} className={`element ${opaque}`} src={url} />
             <span>{label}</span>
         </label>
     )
