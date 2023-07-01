@@ -64,10 +64,10 @@ export default function Filters({filter, setFilter, listShown, element, elementI
     return (
         <div className="filters">
             <ul className={`elements ${listShown ? '' : 'elementsHidden'}`}>
-                {Object.keys(element).map((k)=>GetFilterButton(listShown, filter, setFilter[k]={setFilter}, k, element[k].label, `../assets/${elementImgs}/${element[k].urlKey}.${elementExt}`))}
+                {Object.keys(element).map((k)=>GetFilterButton(listShown, filter, setFilter[k]={setFilter}, k, element[k].label,  new URL(`../assets/${elementImgs}/${element[k].urlKey}.${elementExt}`, import.meta.url).href))}
             </ul>
             <ul className="weapons">
-                {Object.keys(group).map((k)=>GetFilterButton(listShown, filter, setFilter[k]={setFilter}, k, group[k].label, `../assets/${groupImgs}/${group[k].urlKey}.${groupExt}`))}
+                {Object.keys(group).map((k)=>GetFilterButton(listShown, filter, setFilter[k]={setFilter}, k, group[k].label, new URL(`../assets/${groupImgs}/${group[k].urlKey}.${groupExt}`, import.meta.url).href))}
             </ul>
         </div>
     )
