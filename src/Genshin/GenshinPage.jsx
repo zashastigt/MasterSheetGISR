@@ -18,11 +18,13 @@ function ListSwitchGenshin() {
     const [loading, setLoading] = useState(true)
     const [searchValue, setSearchValue] = useState('')
     const [filter, setFilter] = useState([])
+    const [pity, setPity] = useState([])
 
     useEffect(() => {
         getSheetDataWithImagesGenshin().then(data => {
             setGenshinCharacters(data.Characters)
             setGenshinWeapons(data.Weapons)
+            setPity(data.GIPity)
             setLoading(false)
         })
     }, [])
@@ -48,12 +50,12 @@ function ListSwitchGenshin() {
             </div>
             {listShown ?
                 <div className={'characterList'}>
-                    <PityBox game={'Genshin'}/>
+                    <PityBox game={'Genshin'} pities={pity} setPities={setPity}/>
                     {characterList}
                 </div>
                 :
                 <div className={'weaponList'}>
-                    <PityBox game={'Genshin'}/>
+                    <PityBox game={'Genshin'} pities={pity} setPities={setPity}/>
                     {weaponList}
                 </div>
             }
