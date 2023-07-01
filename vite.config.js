@@ -16,8 +16,8 @@ export default defineConfig({
         rollupOptions: {
             input: {
                 main: resolve(root, 'index.html'),
-                genshin: resolve(root, 'Genshin', 'indexl.html'),
-                starrail: resolve(root, 'StarRail', 'indexl.html'),
+                genshin: resolve(root, 'Genshin', 'index.html'),
+                starRail: resolve(root, 'StarRail', 'index.html'),
             }
         }
     }
