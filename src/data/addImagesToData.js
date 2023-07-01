@@ -71,26 +71,26 @@ function getStarRailCharacterImgs(data) {
     let which = ''
     if (name.includes('trailblazer')) {
       name = 'trailblazer'
-      switch (character.Element.split('/')[3]) {
-        case 'Physical.webp':
+      switch (character.Element.split('/')[3].split('-')[0]) {
+        case 'Physical':
           which = '-2'
           break
-        case 'Fire.webp':
+        case 'Fire':
           which = '-4'
           break
-        case 'Ice.webp':
+        case 'Ice':
           which = '-4'
           break
-        case 'Lightning.webp':
+        case 'Lightning':
           which = '-4'
           break
-        case 'Quantum.webp':
+        case 'Quantum':
           which = '-4'
           break
-        case 'Imaginary.webp':
+        case 'Imaginary':
           which = '-4'
           break
-        case 'Wind.webp':
+        case 'Wind':
           which = '-4'
           break
       }
