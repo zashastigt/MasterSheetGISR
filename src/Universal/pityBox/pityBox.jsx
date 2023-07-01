@@ -1,34 +1,15 @@
 import React, {useEffect, useState} from "react";
 import './pityBox.css'
 import postData from "../../data/postData.js";
-import {getSheetDataJson} from "../../data/fetchData.js";
 
-export default function PityBox({game}) {
-    const [pities, setPities] = useState([])
+export default function PityBox({game, pities, setPities}) {
     const [selectedPerson, setSelectedPerson] = useState({})
-    const [loading, setLoading] = useState(true)
-
-    useEffect(() => {
-        getSheetDataJson().then(data => {
-            if (game === 'StarRail') {
-                setPities(data.SRPity)
-            } else if (game === 'Genshin') {
-                setPities(data.GIPity)
-            }
-            setLoading(false)
-        })
-    }, [])
 
     useEffect(() => {
         if (selectedPerson.Name === 'Zasha' || selectedPerson.Name === 'Wilco' || selectedPerson.Name === 'Wilfred' || selectedPerson.Name === 'Rick') {
             transferPity()
         }
     }, [selectedPerson])
-
-
-    if (loading) {
-        return <div>Loading...</div>
-    }
 
     function addPity(what) {
         setSelectedPerson({...selectedPerson, [what]: selectedPerson[what] + 1, [what+4]: selectedPerson[what+4] + 1})

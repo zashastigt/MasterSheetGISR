@@ -19,11 +19,13 @@ function ListSwitchStarRail() {
     const [loading, setLoading] = useState(true)
     const [searchValue, setSearchValue] = useState('')
     const [filter, setFilter] = useState([])
+    const [pity, setPity] = useState([])
 
     useEffect(() => {
         getSheetDataWithImagesStarRail().then(data => {
             setStarRailCharacters(data.Characters)
             setStarRailWeapons(data.Weapons)
+            setPity(data.SRPity)
             setLoading(false)
         })
     }, [])
@@ -49,12 +51,12 @@ function ListSwitchStarRail() {
             </div>
             {listShown ?
                 <div className={'characterList'}>
-                    <PityBox game={'StarRail'}/>
+                    <PityBox game={'StarRail'} pities={pity} setPities={setPity}/>
                     {characterList}
                 </div>
                 :
                 <div className={'weaponList'}>
-                    <PityBox game={'StarRail'}/>
+                    <PityBox game={'StarRail'} pities={pity} setPities={setPity}/>
                     {weaponList}
                 </div>
             }

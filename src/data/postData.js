@@ -1,5 +1,5 @@
 export default async function postData(data = {}) {
-    await fetch("https://script.google.com/macros/s/AKfycbyEAVb46vqxOtPeJLX9uADXoMFM7c4S6M-c4r75YV043J62jxfHseUmQZIp48WXBwz4Pg/exec", {
+    await fetch("https://script.google.com/macros/s/AKfycbzKG0-oeNqKFtwGhVnio1C3ItM8A__vJdbCb9xN7QLVtgQi3MTfhkhJiJE1xDeWAX1s-A/exec", {
         method: "POST",
         headers: {
             "Content-Type": "text/plain",
