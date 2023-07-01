@@ -11,6 +11,7 @@ export default defineConfig({
     root,
     plugins: [react()],
     build: {
+        assetsInlineLimit: 0,
         outDir,
         emptyOutDir: true,
         rollupOptions: {

@@ -22,7 +22,7 @@ import srAbundance from '../assets/StarRailPathImgs/Abundance.webp'
 import srDestruction from '../assets/StarRailPathImgs/Destruction.webp'
 import srErudition from '../assets/StarRailPathImgs/Erudition.webp'
 import srHarmony from '../assets/StarRailPathImgs/Harmony.webp'
-import srNihility from '../assets/StarRailElementImgs/Nihility.webp'
+import srNihility from '../assets/StarRailPathImgs/Nihility.webp'
 import srPreservation from '../assets/StarRailPathImgs/Preservation.webp'
 import srHunt from '../assets/StarRailPathImgs/Hunt.webp'
 
