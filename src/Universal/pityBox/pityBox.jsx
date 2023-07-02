@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import './pityBox.css'
 import postData from "../../data/postData.js";
+import resetButton from '/assets/reset.png';
 
 export default function PityBox({game, pities, setPities}) {
     const [selectedPerson, setSelectedPerson] = useState({})
@@ -94,8 +95,8 @@ export default function PityBox({game, pities, setPities}) {
                         <div className={'star4'}>{selectedPerson.Regular4}</div>
                         <button className={'button'} onClick={() => addPity('Regular')}>+1</button>
                         <div>
-                            <button className={'reset star4'} onClick={() => resetPity('Regular', 4)}>4<img alt={'reset'} src={'/assets/reset.png'}></img></button>
-                            <button className={'reset star5'} onClick={() => resetPity('Regular', 5)}>5<img alt={'reset'} src={'/assets/reset.png'}></img></button>
+                            <button className={'reset star4'} onClick={() => resetPity('Regular', 4)}>4<img alt={'reset'} src={resetButton}></img></button>
+                            <button className={'reset star5'} onClick={() => resetPity('Regular', 5)}>5<img alt={'reset'} src={resetButton}></img></button>
                         </div>
 
                     </div>
@@ -105,8 +106,8 @@ export default function PityBox({game, pities, setPities}) {
                         <div className={'star4'}>{selectedPerson.Weapon4}</div>
                         <button className={'button'} onClick={() => addPity('Weapon')}>+1</button>
                         <div>
-                            <button className={'reset star4'} onClick={() => resetPity('Weapon', 4)}>4<img alt={'reset'} src={'/assets/reset.png'}></img></button>
-                            <button className={'reset star5'} onClick={() => resetPity('Weapon', 5)}>5<img alt={'reset'} src={'/assets/reset.png'}></img></button>
+                            <button className={'reset star4'} onClick={() => resetPity('Weapon', 4)}>4<img alt={'reset'} src={resetButton}></img></button>
+                            <button className={'reset star5'} onClick={() => resetPity('Weapon', 5)}>5<img alt={'reset'} src={resetButton}></img></button>
                         </div>
                     </div>
                     <div className={'pityInputCell'}>
@@ -115,8 +116,8 @@ export default function PityBox({game, pities, setPities}) {
                         <div className={'star4'}>{selectedPerson.Character4}</div>
                         <button className={'button'} onClick={() => addPity('Character')}>+1</button>
                         <div>
-                            <button className={'reset star4'} onClick={() => resetPity('Character', 4)}>4<img alt={'reset'} src={'/assets/reset.png'}></img></button>
-                            <button className={'reset star5'} onClick={() => resetPity('Character', 5)}>5<img alt={'reset'} src={'/assets/reset.png'}></img></button>
+                            <button className={'reset star4'} onClick={() => resetPity('Character', 4)}>4<img alt={'reset'} src={resetButton}></img></button>
+                            <button className={'reset star5'} onClick={() => resetPity('Character', 5)}>5<img alt={'reset'} src={resetButton}></img></button>
                         </div>
                     </div>
                     <div className={'pityInputCell'}>
