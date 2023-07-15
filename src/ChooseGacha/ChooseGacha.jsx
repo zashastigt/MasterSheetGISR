@@ -1,7 +1,7 @@
 import Kafka from '../assets/Character_Kafka_Splash_Art.png';
 import Eula from '../assets/Character_Eula_Full_Wish.png';
 import './ChooseGacha.css'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 function ChooseGacha() {
     const [cookie, setCookie] = useState('')
@@ -17,6 +17,10 @@ function ChooseGacha() {
             setCookieTotal(document.cookie.length)
         }
     }
+
+    useEffect(() => {
+        setCookieTotal(document.cookie.length)
+    }, []);
 
     if (cookieTotal === 0) {
         return (
