@@ -1,0 +1,4 @@
+.BuildPage {
+    display: flex;
+    flex-direction: column;
+}

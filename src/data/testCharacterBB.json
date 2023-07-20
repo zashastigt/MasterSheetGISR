@@ -1,0 +1,30 @@
+{
+  "Hook": {
+    "name": "Hook",
+    "img": "https://hsr.honeyhunterworld.com/img/character/hook-character_action_side_icon.webp",
+    "rarity": "4",
+    "element": "https://starrailstation.com/assets/f497912f929db891b819dc17d9c0124a9c13233f3e02be5b85192af534f17a3c.webp",
+    "group": "https://starrailstation.com/assets/618288e8d5b3090ac84a269acad5cb4e22ee3c8d9b8e96af17cd5f240e23e9f9.webp",
+    "stats": {
+      "HP": "1340.64",
+      "ATK": "617.4",
+      "DEF": "352.8",
+      "SPD": "94",
+      "Max Energy": "120"
+    },
+    "Dan_Heng": {
+      "name": "Dan Heng",
+      "img": "https://hsr.honeyhunterworld.com/img/character/dan-heng-character_action_side_icon.webp",
+      "rarity": "4",
+      "element": "https://starrailstation.com/assets/547617e1b5c7374fde58450573bf7376fb2cee3079955e09f934fb822a6d5d11.webp",
+      "group": "https://starrailstation.com/assets/178667e15978094450c68cafdd608450c2b72d644c18fcf18439ca30a000c9cf.webp",
+      "stats": {
+        "HP": "882",
+        "ATK": "546.84",
+        "DEF": "396.9",
+        "SPD": "110",
+        "Max Energy": "100"
+      }
+    }
+  }
+}

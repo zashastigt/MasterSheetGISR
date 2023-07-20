@@ -1,0 +1,27 @@
+.CharacterBB {
+    display: flex;
+    border: darkred 3px solid;
+    margin: 15px;
+}
+
+.CharacterBB > * {
+    border: black 3px solid;
+    margin: 3px;
+}
+
+.BBBox {
+    display: flex;
+}
+
+.BBInfo {
+    display: flex;
+    flex-direction: column;
+}
+
+.BBInfo > img {
+    height: 100px;
+}
+
+.BBGroups {
+    height: 50px;
+}
