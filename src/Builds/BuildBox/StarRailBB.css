@@ -4,9 +4,14 @@
     margin: 15px;
 }
 
-.CharacterBB > * {
+.CharacterBB > div {
     border: black 3px solid;
     margin: 3px;
+    width: 31%;
+}
+
+.CharacterBB > div:last-child {
+    width: 13%;
 }
 
 .BBBox {
@@ -24,4 +29,25 @@
 
 .BBGroups {
     height: 50px;
+}
+
+.ChooseMainStat option {
+    background-color: #333333;
+    color: #eee;
+}
+
+select {
+    background-color: #333333;
+    color: #eee;
+    border: none;
+    border-radius: 5px;
+    width: 120px;
+    height: 40px;
+}
+
+.WeaponBB {
+    display: flex;
+}
+
+.WeaponBB > div {
 }

@@ -12,7 +12,7 @@ function BuildStarRail() {
     return (
         <div className={'BuildPage'}>
             <StarRailBB selectedCharacter={'Hook'} />
-            <StarRailBB selectedCharacter={'Hook'} />
+            <StarRailBB selectedCharacter={'DanHeng'} />
         </div>
     )
 }

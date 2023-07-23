@@ -1,0 +1,20 @@
+{
+  "RegularRelic": {
+    "Messenger Traversing Hackerspace": {
+      "set2": "Increases SPD by 6%.",
+      "set4": "When the wearer uses their Ultimate on an ally, SPD for all allies increases by 12% for 1 turn(s). This effect cannot be stacked."
+    },
+    "Knights of Purity Palace": {
+      "set2": "Increases DEF by 15%.",
+      "set4": "Increases the max DMG that can be absorbed by the Shield created by the wearer by 20%."
+    }
+  },
+  "PlanarRelic": {
+    "Rutilant Arena": {
+      "set2": "Increases the wearer's CRIT Rate by 8%. When the wearer's current CRIT Rate reaches 70% or higher, the wearer's Basic ATK and Skill DMG increase by 20%."
+    },
+    "Sprightly Vonwacq": {
+      "set2": "Increases the wearer's Energy Regeneration Rate by 5%. When the wearer's SPD reaches 120 or higher, the wearer's action is Advanced Forward by 40% immediately upon entering battle."
+    }
+  }
+}

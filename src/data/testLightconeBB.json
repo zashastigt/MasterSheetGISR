@@ -1,0 +1,55 @@
+{
+  "None": {
+    "name": "Select Light Cone",
+    "img": "",
+    "rarity": "",
+    "group": "",
+    "groupImg": "",
+    "stats": {},
+    "effect": {
+      "lv1" : "1",
+      "lv2" : "2",
+      "lv3" : "3",
+      "lv4" : "4",
+      "lv5" : "5"
+    }
+  },
+  "Woof! Walk Time!": {
+    "name": "Woof! Walk Time!",
+    "img": "https://hsr.honeyhunterworld.com/img/item/woof-walk-time-item_icon.webp",
+    "rarity": "4",
+    "group": "Destruction",
+    "groupImg": "https://starrailstation.com/assets/618288e8d5b3090ac84a269acad5cb4e22ee3c8d9b8e96af17cd5f240e23e9f9.webp",
+    "stats": {
+      "HP": "952",
+      "ATK": "476",
+      "DEF": "330"
+    },
+    "effect": {
+      "lv1" : "Increases the wearer's ATK by 10%, and increases their DMG to enemies afflicted with Burn or Bleed by 16%. This also applies to DoT.",
+      "lv2" : "Increases the wearer's ATK by 12%, and increases their DMG to enemies afflicted with Burn or Bleed by 20%. This also applies to DoT.",
+      "lv3" : "Increases the wearer's ATK by 15%, and increases their DMG to enemies afflicted with Burn or Bleed by 24%. This also applies to DoT.",
+      "lv4" : "Increases the wearer's ATK by 17%, and increases their DMG to enemies afflicted with Burn or Bleed by 28%. This also applies to DoT.",
+      "lv5" : "Increases the wearer's ATK by 20%, and increases their DMG to enemies afflicted with Burn or Bleed by 32%. This also applies to DoT."
+    }
+  },
+  "Before the Tutotial Mission Starts": {
+    "name": "Before the Tutotial Mission Starts",
+    "img": "https://hsr.honeyhunterworld.com/img/item/before-the-tutorial-mission-starts-item_icon.webp",
+    "rarity": "4",
+    "group": "Nihility",
+    "groupImg": "https://starrailstation.com/assets/219d7f753cdf2f5d6b8e5f2e9e80865b38cf3587ca7cbe0d26db6d539dcd3060.webp",
+    "stats": {
+      "HP": "952",
+      "ATK": "476",
+      "DEF": "330"
+    },
+    "effect": {
+      "lv1" : "Increases the wearer's Effect Hit Rate by 20%. When the wearer attacks DEF-reduced enemies, regenerates 4 Energy.",
+      "lv2" : "Increases the wearer's Effect Hit Rate by 25%. When the wearer attacks DEF-reduced enemies, regenerates 5 Energy.",
+      "lv3" : "Increases the wearer's Effect Hit Rate by 30%. When the wearer attacks DEF-reduced enemies, regenerates 6 Energy.",
+      "lv4" : "Increases the wearer's Effect Hit Rate by 35%. When the wearer attacks DEF-reduced enemies, regenerates 7 Energy.",
+      "lv5" : "Increases the wearer's Effect Hit Rate by 40%. When the wearer attacks DEF-reduced enemies, regenerates 8 Energy."
+    }
+  }
+}
