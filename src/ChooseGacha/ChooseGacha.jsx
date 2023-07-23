@@ -4,30 +4,30 @@ import './ChooseGacha.css'
 import { useEffect, useState } from 'react'
 
 function ChooseGacha() {
-    const [cookie, setCookie] = useState('')
-    const [cookieTotal, setCookieTotal] = useState(0)
+    const [storageKey, setStorageKey] = useState('')
+    let key = ''
 
     const handleChange = (e) => {
-        setCookie(e.target.value)
+        key = e.target.value
     }
 
     const handleClick = () => {
-        if (cookie.length !== 0) {
-            document.cookie = cookie
-            setCookieTotal(document.cookie.length)
+        if (key.length !== 0) {
+            localStorage.setItem('Key', key)
+            setStorageKey(key)
         }
     }
-
+    
     useEffect(() => {
-        setCookieTotal(document.cookie.length)
+        setStorageKey(localStorage.getItem('Key'))
     }, []);
-
-    if (cookieTotal === 0) {
+    
+    if (storageKey === null) {
         return (
             <div className="container">
-                <div className="cookie_container">
-                    <input className='cookie_text' type="text" onChange={handleChange}/>
-                    <button className='cookie_button' onClick={handleClick}>Submit</button>
+                <div className="storage_container">
+                    <input className="storage_text" type="text" onChange={handleChange}/>
+                    <button className="storage_button" onClick={handleClick}>Submit</button>
                 </div>
             </div>
         )
