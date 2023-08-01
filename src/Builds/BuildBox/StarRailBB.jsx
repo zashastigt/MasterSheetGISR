@@ -4,12 +4,13 @@ import weaponInfo from '../../data/testLightconeBB.json'
 import relicInfo from '../../data/testRelicBB.json'
 import {useEffect, useState} from "react";
 
-export default function StarRailBB({selectedCharacter}) {
+export default function StarRailBB({selectedCharacter, selectedWeapon, selectedRegularRelic1, selectedRegularRelic2, PlanarRelic, Body, Boots, Sphere, Link}) {
 
+    console.log(selectedCharacter.Name)
 
     return (
         <div className={'CharacterBB'}>
-            <CharacterStats selectedCharacter={selectedCharacter} />
+            <CharacterStats selectedCharacter={selectedCharacter.Name} />
             <ChooseWeapon />
             <ChooseSet />
             <ChooseMainStats />
@@ -20,10 +21,12 @@ export default function StarRailBB({selectedCharacter}) {
 function CharacterStats({selectedCharacter}) {
     const [character, setCharacter] = useState(characterInfo[selectedCharacter])
 
+    console.log(character)
+
     const stats = Object.keys(character.stats).map((item, index) => (
         <tr key={index}>
             <td>{item}</td>
-            <td>{character.stats[item]}</td>
+            <td>{Math.round(character.stats[item])}</td>
         </tr>
     ))
 
@@ -105,24 +108,62 @@ function ChooseWeapon() {
 }
 
 function ChooseSet() {
-    const [regularRelic, setRegularRelic] = useState()
-    const [planarRelic, setPlanarRelic] = useState()
+    const [regularRelic1, setRegularRelic1] = useState(relicInfo.RegularRelic["None"])
+    const [regularRelic2, setRegularRelic2] = useState(relicInfo.RegularRelic["None"])
+    const [planarRelic, setPlanarRelic] = useState(relicInfo.PlanarRelic["None"])
 
-    console.log(relicInfo)
+    function RegularRelicEffect() {
+        if (regularRelic1 === regularRelic2) {
+            return (
+                <div>
+                    <p>{regularRelic1.set2}</p>
+                    <p>{regularRelic1.set4}</p>
+                </div>
+            )
+        } else {
+            return (
+                <div>
+                    <p>{regularRelic1.set2}</p>
+                    <p>{regularRelic2.set2}</p>
+                </div>
+            )
+        }
+    }
 
     return (
-        <div>
+        <div className={'selectRelic'}>
             <div>
-                <select></select>
-                <select></select>
+                <p>Regular relic set</p>
+                <div>
+                    <select defaultValue={'None'} onChange={e => {setRegularRelic1(relicInfo.RegularRelic[e.target.value])}}>
+                        {Object.keys(relicInfo.RegularRelic).map((item, index) => (
+                            <option key={index}>{item}</option>
+                        ))}
+                    </select>
+                    <select defaultValue={'None'} onChange={e => {setRegularRelic2(relicInfo.RegularRelic[e.target.value])}}>
+                        {Object.keys(relicInfo.RegularRelic).map((item, index) => (
+                            <option key={index}>{item}</option>
+                        ))}
+                    </select>
+                    <div>
+                        <RegularRelicEffect />
+                    </div>
+                </div>
             </div>
             <div>
-                <select defaultValue={'None'} onChange={e => {setPlanarRelic(weaponInfo[e.target.value])}}>
-                    {Object.keys(relicInfo.PlanarRelic).map((item, index) => (
-                        <option key={index}>{item}</option>
-                    ))}
-                </select>
+                <p>Planar relic set</p>
+                <div>
+                    <select defaultValue={'None'} onChange={e => {setPlanarRelic(relicInfo.PlanarRelic[e.target.value])}}>
+                        {Object.keys(relicInfo.PlanarRelic).map((item, index) => (
+                            <option key={index}>{item}</option>
+                        ))}
+                    </select>
+                </div>
+                <div>
+                    <p>{planarRelic.set2}</p>
+                </div>
             </div>
+
 
         </div>
     )

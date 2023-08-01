@@ -51,3 +51,7 @@ select {
 
 .WeaponBB > div {
 }
+
+.selectRelic input[type='checkbox'] {
+    display: block;
+}
