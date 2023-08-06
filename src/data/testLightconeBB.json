@@ -33,6 +33,25 @@
       "lv5" : "Increases the wearer's ATK by 20%, and increases their DMG to enemies afflicted with Burn or Bleed by 32%. This also applies to DoT."
     }
   },
+  "Patience Is All You Need": {
+    "name": "Patience Is All You Need",
+    "img": "https://hsr.honeyhunterworld.com/img/item/patience-is-all-you-need-item_icon.webp",
+    "rarity": "5",
+    "group": "Nihility",
+    "groupImg": "https://starrailstation.com/assets/219d7f753cdf2f5d6b8e5f2e9e80865b38cf3587ca7cbe0d26db6d539dcd3060.webp",
+    "stats": {
+      "HP": "1058",
+      "ATK": "582",
+      "DEF": "463"
+    },
+    "effect": {
+      "lv1" : "Increases DMG dealt by the wearer by 24%. After every attack launched by wearer, their SPD increases by 4.8%, stacking up to 3 times. If the wearer hits an enemy target that is not afflicted by Erode, there is a 100% base chance to inflict Erode to the target. Enemies afflicted with Erode are also considered to be Shocked and will receive Lightning DoT at the start of each turn equal to 60% of the wearer's ATK, lasting for 1 turn(s).",
+      "lv2" : "Increases DMG dealt by the wearer by 28%. After every attack launched by wearer, their SPD increases by 5.6%, stacking up to 3 times. If the wearer hits an enemy target that is not afflicted by Erode, there is a 100% base chance to inflict Erode to the target. Enemies afflicted with Erode are also considered to be Shocked and will receive Lightning DoT at the start of each turn equal to 70% of the wearer's ATK, lasting for 1 turn(s).",
+      "lv3" : "Increases DMG dealt by the wearer by 32%. After every attack launched by wearer, their SPD increases by 6.4%, stacking up to 3 times. If the wearer hits an enemy target that is not afflicted by Erode, there is a 100% base chance to inflict Erode to the target. Enemies afflicted with Erode are also considered to be Shocked and will receive Lightning DoT at the start of each turn equal to 80% of the wearer's ATK, lasting for 1 turn(s).",
+      "lv4" : "Increases DMG dealt by the wearer by 36%. After every attack launched by wearer, their SPD increases by 7.2%, stacking up to 3 times. If the wearer hits an enemy target that is not afflicted by Erode, there is a 100% base chance to inflict Erode to the target. Enemies afflicted with Erode are also considered to be Shocked and will receive Lightning DoT at the start of each turn equal to 90% of the wearer's ATK, lasting for 1 turn(s).",
+      "lv5" : "Increases DMG dealt by the wearer by 40%. After every attack launched by wearer, their SPD increases by 8.0%, stacking up to 3 times. If the wearer hits an enemy target that is not afflicted by Erode, there is a 100% base chance to inflict Erode to the target. Enemies afflicted with Erode are also considered to be Shocked and will receive Lightning DoT at the start of each turn equal to 100% of the wearer's ATK, lasting for 1 turn(s)."
+    }
+  },
   "Before the Tutotial Mission Starts": {
     "name": "Before the Tutotial Mission Starts",
     "img": "https://hsr.honeyhunterworld.com/img/item/before-the-tutorial-mission-starts-item_icon.webp",

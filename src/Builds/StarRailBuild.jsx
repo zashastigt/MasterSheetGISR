@@ -7,50 +7,76 @@ import StarRailBB from "./BuildBox/StarRailBB.jsx";
 import characterInfo from '../data/testCharacterBB.json'
 
 
+
 function BuildStarRail() {
+    const [charList, setCharList] = useState(JSON.parse(localStorage.getItem('characterlist')))
+    const [loading, setLoading] = useState(true)
 
-    const gt = {
-        Hook: {
-            Name: "Hook",
-            Weapon: "Woof! Walk Time!",
-            RegularRelic1: "Messenger Traversing Hackerspace",
-            RegularRelic2: "Messenger Traversing Hackerspace",
-            PlanarRelic: "Rutilant Arena",
-            Body: "CRIT Rate",
-            Boots: "Speed",
-            Sphere: "Elemental DMG",
-            Link: "ATK%"
-        },
-        DanHeng: {
-            Name: "DanHeng",
-            Weapon: "Woof! Walk Time!",
-            RegularRelic1: "Messenger Traversing Hackerspace",
-            RegularRelic2: "Messenger Traversing Hackerspace",
-            PlanarRelic: "Rutilant Arena",
-            Body: "CRIT Rate",
-            Boots: "Speed",
-            Sphere: "Elemental DMG",
-            Link: "ATK%"
-        }
+    console.log(charList)
 
+    React.useEffect(() => {
+
+        window.addEventListener('storage', () => {
+            // When local storage changes, dump the list to
+            // the console.
+            setCharList(JSON.parse(localStorage.getItem('characterlist')) || [])
+        });
+
+
+    }, [])
+
+    useEffect(() => {
+        localStorage.setItem("characterlist", JSON.stringify(charList))
+    }, [charList])
+
+    useEffect(() => {
+        if (charList === null)
+            setCharList({})
+            setLoading(false)
+    }, [])
+
+    if (loading) {
+        return <div>Loading...</div>
     }
 
     return (
         <>
-            <div className={'BuildPage'}>
-                <StarRailBB selectedCharacter={'Hook'} selectedWeapon={"2"} />
-                <StarRailBB selectedCharacter={'DanHeng'} />
-            </div>
+            {Object.keys(characterInfo).map((character, index) => (
+                <button key={index} onClick={() => setCharList({
+                    ...charList,
+                    [character]: {
+                        Name: character,
+                        Weapon: "None",
+                        WeaponLv: "lv1",
+                        RegularRelic1: "None",
+                        RegularRelic2: "None",
+                        PlanarRelic: "None",
+                        Body: "None",
+                        Boots: "None",
+                        Sphere: "None",
+                        Link: "None"
+                    }
+                })}>{character}</button>
+            ))}
             <div>
-                {Object.keys(gt).map(item => (
+                {Object.keys(charList).map((character, index) => (
                     <StarRailBB
-                        selectedCharacter={gt[item]}
+                        key={index}
+                        selectedCharacter={charList[character]}
+                        deleteFrom={deleteInStorage}
                     />
                 ))}
             </div>
-        </>
 
+        </>
     )
+
+    function deleteInStorage(characterToDelete) {
+        console.log(characterToDelete)
+        const {[characterToDelete]: deleted, ...newList} = JSON.parse(localStorage.getItem('characterlist'))
+        console.log(newList)
+        setCharList(newList)
+    }
 }
 
 ReactDOM.createRoot(document.getElementById('root')).render(

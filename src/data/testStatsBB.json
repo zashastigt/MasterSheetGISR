@@ -1,0 +1,6 @@
+{
+  "Body": ["None", "ATK%", "HP%", "DEF%", "CRIT Rate", "CRIT DMG", "Effect Hit Rate", "Healing Bonus"],
+  "Boots": ["None", "ATK%", "HP%", "DEF%", "Speed"],
+  "Sphere": ["None", "ATK%", "HP%", "DEF%", "Elemental DMG"],
+  "Link": ["None", "ATK%", "HP%", "DEF%", "Energy Regen", "Break Effect"]
+}

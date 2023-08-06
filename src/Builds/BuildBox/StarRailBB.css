@@ -1,21 +1,40 @@
 .CharacterBB {
     display: flex;
-    border: darkred 3px solid;
+    width: fit-content;
     margin: 15px;
+
 }
 
-.CharacterBB > div {
-    border: black 3px solid;
-    margin: 3px;
-    width: 31%;
+.CharacterBB button {
+    text-decoration: none;
+    background-color: rgba(0, 0, 0, 0);
+    color: #787168;
+    border: none;
+    text-align: center;
+    padding: 0;
+    z-index: 2;
 }
 
-.CharacterBB > div:last-child {
-    width: 13%;
+.CharacterBB button:hover > div {
+    background-color: #333;
+}
+
+.CharacterBBCM {
+    display: flex;
+}
+
+.CharacterBBCM > div {
+    height: available;
 }
 
 .BBBox {
     display: flex;
+    width: fit-content;
+    max-width: 400px;
+    border-radius: 20px 20px 20px 20px;
+    border: #333333 solid 3px;
+    background-color: #252525;
+    padding: 0 10px 5px 10px;
 }
 
 .BBInfo {
@@ -31,6 +50,24 @@
     height: 50px;
 }
 
+.BBName {
+    height: 1.3em;
+    padding: 0 10px;
+    width: fit-content;
+    min-width: 55px;
+    border-radius: 0 0 15px 15px;
+    text-align: center;
+    font-size: 1.1em;
+    font-weight: 400;
+    color: #ddd;
+    background-color: #333333;
+}
+
+.ChooseMainStat {
+    display: flex;
+    flex-direction: column;
+}
+
 .ChooseMainStat option {
     background-color: #333333;
     color: #eee;
@@ -42,16 +79,30 @@ select {
     border: none;
     border-radius: 5px;
     width: 120px;
-    height: 40px;
+    height: fit-content;
+    padding: 2px 0;
 }
 
 .WeaponBB {
     display: flex;
+    flex-direction: column;
 }
 
-.WeaponBB > div {
+.WeaponBB select {
+    width: fit-content;
+    padding: 3px;
+    border-radius: 0 0 15px 15px;
 }
 
-.selectRelic input[type='checkbox'] {
-    display: block;
+.WeaponBBStats {
+    display: flex;
+}
+
+.WeaponBBStats table {
+    height: fit-content;
+}
+
+.selectRelic {
+    display: flex;
+    flex-direction: column;
 }
