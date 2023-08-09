@@ -9,6 +9,10 @@ export default function StarRailBB({selectedCharacter, deleteFrom}) {
     const [characterPicked, setCharacterPicked] = useState(selectedCharacter)
     const [folded, setFolded] = useState(false)
 
+    useEffect(() => {
+        setCharacterPicked(selectedCharacter)
+    }, [selectedCharacter])
+
     return (
         <div className={'CharacterBB'}>
             {folded ?
@@ -23,7 +27,10 @@ export default function StarRailBB({selectedCharacter, deleteFrom}) {
                         <ChooseWeapon selectedCharacter={characterPicked}/>
                     </div>
                     <ChooseSet selectedCharacter={characterPicked}/>
-                    <button onClick={() => deleteFrom(characterPicked.Name)}>delete</button>
+                    <button onClick={() => {
+                        deleteFrom(characterPicked.Name)
+                        setFolded(!folded)
+                    }}>delete</button>
                 </>
                 :
                 <>

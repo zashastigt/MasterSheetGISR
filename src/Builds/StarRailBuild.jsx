@@ -4,25 +4,19 @@ import { useState, useEffect } from 'react'
 import './StarRailBuild.css'
 import '../Universal/gachaPage.css'
 import StarRailBB from "./BuildBox/StarRailBB.jsx";
+import SelectCharacter from "../Universal/selectCharacter/selectCharacter.jsx";
 import characterInfo from '../data/testCharacterBB.json'
-
-
 
 function BuildStarRail() {
     const [charList, setCharList] = useState(JSON.parse(localStorage.getItem('characterlist')))
     const [loading, setLoading] = useState(true)
 
-    console.log(charList)
-
     React.useEffect(() => {
-
         window.addEventListener('storage', () => {
             // When local storage changes, dump the list to
             // the console.
             setCharList(JSON.parse(localStorage.getItem('characterlist')) || [])
         });
-
-
     }, [])
 
     useEffect(() => {
@@ -41,23 +35,7 @@ function BuildStarRail() {
 
     return (
         <>
-            {Object.keys(characterInfo).map((character, index) => (
-                <button key={index} onClick={() => setCharList({
-                    ...charList,
-                    [character]: {
-                        Name: character,
-                        Weapon: "None",
-                        WeaponLv: "lv1",
-                        RegularRelic1: "None",
-                        RegularRelic2: "None",
-                        PlanarRelic: "None",
-                        Body: "None",
-                        Boots: "None",
-                        Sphere: "None",
-                        Link: "None"
-                    }
-                })}>{character}</button>
-            ))}
+            <SelectCharacter addCharacter={addCharacter} />
             <div>
                 {Object.keys(charList).map((character, index) => (
                     <StarRailBB
@@ -67,15 +45,30 @@ function BuildStarRail() {
                     />
                 ))}
             </div>
-
         </>
     )
 
     function deleteInStorage(characterToDelete) {
-        console.log(characterToDelete)
-        const {[characterToDelete]: deleted, ...newList} = JSON.parse(localStorage.getItem('characterlist'))
-        console.log(newList)
-        setCharList(newList)
+        const {[characterToDelete]: deleted, ...newList2} = charList
+        setCharList(newList2)
+    }
+
+    function addCharacter(character) {
+        setCharList({
+            ...charList,
+            [character]: {
+                Name: character,
+                Weapon: "None",
+                WeaponLv: "lv1",
+                RegularRelic1: "None",
+                RegularRelic2: "None",
+                PlanarRelic: "None",
+                Body: "None",
+                Boots: "None",
+                Sphere: "None",
+                Link: "None"
+            }
+        })
     }
 }
 
