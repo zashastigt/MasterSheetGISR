@@ -1,66 +1,34 @@
 {
-  "FuXuan": {
-    "name": "Fu Xuan",
-    "img": "https://hsr.honeyhunterworld.com/img/character/hook-character_action_side_icon.webp",
+  "Arlan": {
+    "name": "Arlan",
+    "img": "https://hsr.honeyhunterworld.com/img/character/arlan-character_action_side_icon.webp",
     "rarity": "4",
-    "element": "Fire",
-    "elementImg": "https://starrailstation.com/assets/f497912f929db891b819dc17d9c0124a9c13233f3e02be5b85192af534f17a3c.webp",
+    "element": "Lightning",
+    "elementImg": "https://starrailstation.com/assets/2494da0973fa611a4ff07798992cf2496faa89f7557b6713da75ee5d11eed2ba.webp",
     "group": "Destruction",
     "groupImg": "https://starrailstation.com/assets/618288e8d5b3090ac84a269acad5cb4e22ee3c8d9b8e96af17cd5f240e23e9f9.webp",
     "stats": {
-      "HP": "1340.64",
-      "ATK": "617.4",
-      "DEF": "352.8",
-      "SPD": "94",
-      "MaxEnergy": "120"
+      "HP": "1199.52",
+      "ATK": "599.76",
+      "DEF": "330.75",
+      "SPD": "102",
+      "MaxEnergy": "110"
     }
   },
-  "March7th": {
-    "name": "March 7th",
-    "img": "https://hsr.honeyhunterworld.com/img/character/hook-character_action_side_icon.webp",
-    "rarity": "4",
-    "element": "Fire",
+  "Clara": {
+    "name": "Clara",
+    "img": "https://hsr.honeyhunterworld.com/img/character/clara-character_action_side_icon.webp",
+    "rarity": "5",
+    "element": "Physical",
     "elementImg": "https://starrailstation.com/assets/f497912f929db891b819dc17d9c0124a9c13233f3e02be5b85192af534f17a3c.webp",
     "group": "Destruction",
     "groupImg": "https://starrailstation.com/assets/618288e8d5b3090ac84a269acad5cb4e22ee3c8d9b8e96af17cd5f240e23e9f9.webp",
     "stats": {
-      "HP": "1340.64",
-      "ATK": "617.4",
-      "DEF": "352.8",
-      "SPD": "94",
-      "MaxEnergy": "120"
-    }
-  },
-  "Gepard": {
-    "name": "Gepard",
-    "img": "https://hsr.honeyhunterworld.com/img/character/hook-character_action_side_icon.webp",
-    "rarity": "4",
-    "element": "Fire",
-    "elementImg": "https://starrailstation.com/assets/f497912f929db891b819dc17d9c0124a9c13233f3e02be5b85192af534f17a3c.webp",
-    "group": "Destruction",
-    "groupImg": "https://starrailstation.com/assets/618288e8d5b3090ac84a269acad5cb4e22ee3c8d9b8e96af17cd5f240e23e9f9.webp",
-    "stats": {
-      "HP": "1340.64",
-      "ATK": "617.4",
-      "DEF": "352.8",
-      "SPD": "94",
-      "MaxEnergy": "120"
-    }
-  },
-  "TrailblazerFire": {
-    "name": "Trailblazer Fire",
-    "img": "https://hsr.honeyhunterworld.com/img/character/hook-character_action_side_icon.webp",
-    "rarity": "4",
-    "element": "Fire",
-    "elementImg": "https://starrailstation.com/assets/f497912f929db891b819dc17d9c0124a9c13233f3e02be5b85192af534f17a3c.webp",
-    "group": "Destruction",
-    "groupImg": "https://starrailstation.com/assets/618288e8d5b3090ac84a269acad5cb4e22ee3c8d9b8e96af17cd5f240e23e9f9.webp",
-    "stats": {
-      "HP": "1340.64",
-      "ATK": "617.4",
-      "DEF": "352.8",
-      "SPD": "94",
-      "MaxEnergy": "120"
+      "HP": "1241.86",
+      "ATK": "737.35",
+      "DEF": "485.1",
+      "SPD": "90",
+      "MaxEnergy": "110"
     }
   },
   "Hook": {
@@ -76,6 +44,54 @@
       "ATK": "617.4",
       "DEF": "352.8",
       "SPD": "94",
+      "MaxEnergy": "120"
+    }
+  },
+  "Blade": {
+    "name": "Blade",
+    "img": "https://hsr.honeyhunterworld.com/img/character/blade-character_action_side_icon.webp",
+    "rarity": "5",
+    "element": "Wind",
+    "elementImg": "https://starrailstation.com/assets/547617e1b5c7374fde58450573bf7376fb2cee3079955e09f934fb822a6d5d11.webp",
+    "group": "Destruction",
+    "groupImg": "https://starrailstation.com/assets/618288e8d5b3090ac84a269acad5cb4e22ee3c8d9b8e96af17cd5f240e23e9f9.webp",
+    "stats": {
+      "HP": "1358.28",
+      "ATK": "543.31",
+      "DEF": "485.1",
+      "SPD": "97",
+      "MaxEnergy": "130"
+    }
+  },
+  "DanHengImbibitorLunae": {
+    "name": "Dan Heng - Imbibitor Lunae",
+    "img": "https://hsr.honeyhunterworld.com/img/character/dan-heng--imbibitor-lunae-character_action_side_icon.webp",
+    "rarity": "5",
+    "element": "Imaginary",
+    "elementImg": "https://starrailstation.com/assets/7a40dc5e267fd0b411f265237403a3408433f863d5d1b94b4a9d82e2bab33e32.webp",
+    "group": "Destruction",
+    "groupImg": "https://starrailstation.com/assets/618288e8d5b3090ac84a269acad5cb4e22ee3c8d9b8e96af17cd5f240e23e9f9.webp",
+    "stats": {
+      "HP": "1241.86",
+      "ATK": "698.54",
+      "DEF": "363.83",
+      "SPD": "102",
+      "MaxEnergy": "140"
+    }
+  },
+  "TrailblazerPhysical": {
+    "name": "Trailblazer Physical",
+    "img": "https://hsr.honeyhunterworld.com/img/character/trailblazer-character-2_action_side_icon.webp",
+    "rarity": "5",
+    "element": "Physical",
+    "elementImg": "https://starrailstation.com/assets/f497912f929db891b819dc17d9c0124a9c13233f3e02be5b85192af534f17a3c.webp",
+    "group": "Destruction",
+    "groupImg": "https://starrailstation.com/assets/618288e8d5b3090ac84a269acad5cb4e22ee3c8d9b8e96af17cd5f240e23e9f9.webp",
+    "stats": {
+      "HP": "1203.05",
+      "ATK": "620.93",
+      "DEF": "460.84",
+      "SPD": "100",
       "MaxEnergy": "120"
     }
   },
@@ -95,20 +111,420 @@
       "MaxEnergy": "100"
     }
   },
+  "Seele": {
+    "name": "Seele",
+    "img": "https://hsr.honeyhunterworld.com/img/character/seele-character_action_side_icon.webp",
+    "rarity": "5",
+    "element": "Quantum",
+    "elementImg": "https://starrailstation.com/assets/f67326acd380eb6b452659943906fa6248745b7d58d634b399307b028b9605c0.webp",
+    "group": "Hunt",
+    "groupImg": "https://starrailstation.com/assets/178667e15978094450c68cafdd608450c2b72d644c18fcf18439ca30a000c9cf.webp",
+    "stats": {
+      "HP": "931.39",
+      "ATK": "640.33",
+      "DEF": "363.83",
+      "SPD": "115",
+      "MaxEnergy": "120"
+    }
+  },
+  "Sushang": {
+    "name": "Sushang",
+    "img": "https://hsr.honeyhunterworld.com/img/character/sushang-character_action_side_icon.webp",
+    "rarity": "4",
+    "element": "Physical",
+    "elementImg": "https://starrailstation.com/assets/541166f5d3254a75e30a3263ab3ccad1c503085220a3bdb0f58f9893874eb111.webp",
+    "group": "Hunt",
+    "groupImg": "https://starrailstation.com/assets/178667e15978094450c68cafdd608450c2b72d644c18fcf18439ca30a000c9cf.webp",
+    "stats": {
+      "HP": "917.28",
+      "ATK": "564.48",
+      "DEF": "418.95",
+      "SPD": "107",
+      "MaxEnergy": "120"
+    }
+  },
+  "Yanqing": {
+    "name": "Yanqing",
+    "img": "https://hsr.honeyhunterworld.com/img/character/yanqing-character_action_side_icon.webp",
+    "rarity": "5",
+    "element": "Ice",
+    "elementImg": "https://starrailstation.com/assets/547617e1b5c7374fde58450573bf7376fb2cee3079955e09f934fb822a6d5d11.webp",
+    "group": "Hunt",
+    "groupImg": "https://starrailstation.com/assets/178667e15978094450c68cafdd608450c2b72d644c18fcf18439ca30a000c9cf.webp",
+    "stats": {
+      "HP": "892.58",
+      "ATK": "679.14",
+      "DEF": "412.34",
+      "SPD": "109",
+      "MaxEnergy": "140"
+    }
+  },
+  "Himeko": {
+    "name": "Himeko",
+    "img": "https://hsr.honeyhunterworld.com/img/character/himeko-character_action_side_icon.webp",
+    "rarity": "5",
+    "element": "Fire",
+    "elementImg": "https://starrailstation.com/assets/f497912f929db891b819dc17d9c0124a9c13233f3e02be5b85192af534f17a3c.webp",
+    "group": "Erudition",
+    "groupImg": "https://starrailstation.com/assets/8166f3b40ec56e5f9cc34e0a92f87a826241f315b28658c9f27ddf92b6f016a2.webp",
+    "stats": {
+      "HP": "1047.82",
+      "ATK": "756.76",
+      "DEF": "436.59",
+      "SPD": "96",
+      "MaxEnergy": "120"
+    }
+  },
+  "Herta": {
+    "name": "Herta",
+    "img": "https://hsr.honeyhunterworld.com/img/character/herta-character_action_side_icon.webp",
+    "rarity": "4",
+    "element": "Ice",
+    "elementImg": "https://starrailstation.com/assets/5f1b104c55cb14b081b2c004245c64dd39e94dd128a9880cd3a2efeb830170a1.webp",
+    "group": "Erudition",
+    "groupImg": "https://starrailstation.com/assets/8166f3b40ec56e5f9cc34e0a92f87a826241f315b28658c9f27ddf92b6f016a2.webp",
+    "stats": {
+      "HP": "952.56",
+      "ATK": "582.12",
+      "DEF": "396.9",
+      "SPD": "100",
+      "MaxEnergy": "110"
+    }
+  },
+  "Serval": {
+    "name": "Serval",
+    "img": "https://hsr.honeyhunterworld.com/img/character/serval-character_action_side_icon.webp",
+    "rarity": "4",
+    "element": "Lightning",
+    "elementImg": "https://starrailstation.com/assets/2494da0973fa611a4ff07798992cf2496faa89f7557b6713da75ee5d11eed2ba.webp",
+    "group": "Erudition",
+    "groupImg": "https://starrailstation.com/assets/8166f3b40ec56e5f9cc34e0a92f87a826241f315b28658c9f27ddf92b6f016a2.webp",
+    "stats": {
+      "HP": "917.28",
+      "ATK": "652.68",
+      "DEF": "374.85",
+      "SPD": "104",
+      "MaxEnergy": "100"
+    }
+  },
+  "Qingque": {
+    "name": "Qingque",
+    "img": "https://hsr.honeyhunterworld.com/img/character/hook-character_action_side_icon.webp",
+    "rarity": "4",
+    "element": "Quantum",
+    "elementImg": "https://starrailstation.com/assets/f67326acd380eb6b452659943906fa6248745b7d58d634b399307b028b9605c0.webp",
+    "group": "Erudition",
+    "groupImg": "https://starrailstation.com/assets/8166f3b40ec56e5f9cc34e0a92f87a826241f315b28658c9f27ddf92b6f016a2.webp",
+    "stats": {
+      "HP": "1023.12",
+      "ATK": "652.68",
+      "DEF": "441",
+      "SPD": "98",
+      "MaxEnergy": "140"
+    }
+  },
+  "JingYuan": {
+    "name": "Jing Yuan",
+    "img": "https://hsr.honeyhunterworld.com/img/character/jing-yuan-character_action_side_icon.webp",
+    "rarity": "5",
+    "element": "Lightning",
+    "elementImg": "https://starrailstation.com/assets/2494da0973fa611a4ff07798992cf2496faa89f7557b6713da75ee5d11eed2ba.webp",
+    "group": "Erudition",
+    "groupImg": "https://starrailstation.com/assets/8166f3b40ec56e5f9cc34e0a92f87a826241f315b28658c9f27ddf92b6f016a2.webp",
+    "stats": {
+      "HP": "917.28",
+      "ATK": "652.68",
+      "DEF": "485.1",
+      "SPD": "99",
+      "MaxEnergy": "130"
+    }
+  },
+  "Asta": {
+    "name": "Asta",
+    "img": "https://hsr.honeyhunterworld.com/img/character/asta-character_action_side_icon.webp",
+    "rarity": "4",
+    "element": "Fire",
+    "elementImg": "https://starrailstation.com/assets/f497912f929db891b819dc17d9c0124a9c13233f3e02be5b85192af534f17a3c.webp",
+    "group": "Harmony",
+    "groupImg": "https://starrailstation.com/assets/c9af24fddf3b697e229cf8f7d5937fd7582fee965aa8920603cbbd15426efcbe.webp",
+    "stats": {
+      "HP": "1023.12",
+      "ATK": "511.56",
+      "DEF": "463.05",
+      "SPD": "106",
+      "MaxEnergy": "120"
+    }
+  },
+  "Bronya": {
+    "name": "Bronya",
+    "img": "https://hsr.honeyhunterworld.com/img/character/bronya-character_action_side_icon.webp",
+    "rarity": "5",
+    "element": "Wind",
+    "elementImg": "https://starrailstation.com/assets/547617e1b5c7374fde58450573bf7376fb2cee3079955e09f934fb822a6d5d11.webp",
+    "group": "Harmony",
+    "groupImg": "https://starrailstation.com/assets/c9af24fddf3b697e229cf8f7d5937fd7582fee965aa8920603cbbd15426efcbe.webp",
+    "stats": {
+      "HP": "1241.86",
+      "ATK": "582.12",
+      "DEF": "533.61",
+      "SPD": "99",
+      "MaxEnergy": "120"
+    }
+  },
+  "Tingyun": {
+    "name": "Tingyun",
+    "img": "https://hsr.honeyhunterworld.com/img/character/tingyun-character_action_side_icon.webp",
+    "rarity": "4",
+    "element": "Lightning",
+    "elementImg": "https://starrailstation.com/assets/2494da0973fa611a4ff07798992cf2496faa89f7557b6713da75ee5d11eed2ba.webp",
+    "group": "Harmony",
+    "groupImg": "https://starrailstation.com/assets/c9af24fddf3b697e229cf8f7d5937fd7582fee965aa8920603cbbd15426efcbe.webp",
+    "stats": {
+      "HP": "846.72",
+      "ATK": "529.2",
+      "DEF": "396.9",
+      "SPD": "112",
+      "MaxEnergy": "130"
+    }
+  },
+  "Yukong": {
+    "name": "Yukong",
+    "img": "https://hsr.honeyhunterworld.com/img/character/yukong-character_action_side_icon.webp",
+    "rarity": "4",
+    "element": "Imaginary",
+    "elementImg": "https://starrailstation.com/assets/7a40dc5e267fd0b411f265237403a3408433f863d5d1b94b4a9d82e2bab33e32.webp",
+    "group": "Harmony",
+    "groupImg": "https://starrailstation.com/assets/c9af24fddf3b697e229cf8f7d5937fd7582fee965aa8920603cbbd15426efcbe.webp",
+    "stats": {
+      "HP": "917.28",
+      "ATK": "529.2",
+      "DEF": "396.9",
+      "SPD": "107",
+      "MaxEnergy": "130"
+    }
+  },
+  "Welt": {
+    "name": "Welt",
+    "img": "https://hsr.honeyhunterworld.com/img/character/welt-character_action_side_icon.webp",
+    "rarity": "5",
+    "element": "Imaginary",
+    "elementImg": "https://starrailstation.com/assets/7a40dc5e267fd0b411f265237403a3408433f863d5d1b94b4a9d82e2bab33e32.webp",
+    "group": "Nihility",
+    "groupImg": "https://starrailstation.com/assets/219d7f753cdf2f5d6b8e5f2e9e80865b38cf3587ca7cbe0d26db6d539dcd3060.webp",
+    "stats": {
+      "HP": "1125.43",
+      "ATK": "620.93",
+      "DEF": "509.36",
+      "SPD": "102",
+      "MaxEnergy": "120"
+    }
+  },
+  "Kafka": {
+    "name": "Kafka",
+    "img": "https://hsr.honeyhunterworld.com/img/character/kafka-character_action_side_icon.webp",
+    "rarity": "5",
+    "element": "Lightning",
+    "elementImg": "https://starrailstation.com/assets/2494da0973fa611a4ff07798992cf2496faa89f7557b6713da75ee5d11eed2ba.webp",
+    "group": "Nihility",
+    "groupImg": "https://starrailstation.com/assets/219d7f753cdf2f5d6b8e5f2e9e80865b38cf3587ca7cbe0d26db6d539dcd3060.webp",
+    "stats": {
+      "HP": "1086.62",
+      "ATK": "679.14",
+      "DEF": "485.1",
+      "SPD": "100",
+      "MaxEnergy": "120"
+    }
+  },
+  "SilverWolf": {
+    "name": "Silver Wolf",
+    "img": "https://hsr.honeyhunterworld.com/img/character/silver-wolf-character_action_side_icon.webp",
+    "rarity": "5",
+    "element": "Quantum",
+    "elementImg": "https://starrailstation.com/assets/f67326acd380eb6b452659943906fa6248745b7d58d634b399307b028b9605c0.webp",
+    "group": "Nihility",
+    "groupImg": "https://starrailstation.com/assets/219d7f753cdf2f5d6b8e5f2e9e80865b38cf3587ca7cbe0d26db6d539dcd3060.webp",
+    "stats": {
+      "HP": "1047.82",
+      "ATK": "640.33",
+      "DEF": "460.84",
+      "SPD": "107",
+      "MaxEnergy": "110"
+    }
+  },
+  "Pela": {
+    "name": "Pela",
+    "img": "https://hsr.honeyhunterworld.com/img/character/pela-character_action_side_icon.webp",
+    "rarity": "4",
+    "element": "Ice",
+    "elementImg": "https://starrailstation.com/assets/5f1b104c55cb14b081b2c004245c64dd39e94dd128a9880cd3a2efeb830170a1.webp",
+    "group": "Nihility",
+    "groupImg": "https://starrailstation.com/assets/219d7f753cdf2f5d6b8e5f2e9e80865b38cf3587ca7cbe0d26db6d539dcd3060.webp",
+    "stats": {
+      "HP": "987.84",
+      "ATK": "546.84",
+      "DEF": "396.9",
+      "SPD": "105",
+      "MaxEnergy": "110"
+    }
+  },
   "Sampo": {
     "name": "Sampo",
     "img": "https://hsr.honeyhunterworld.com/img/character/sampo-character_action_side_icon.webp",
     "rarity": "4",
     "element": "Wind",
     "elementImg": "https://starrailstation.com/assets/547617e1b5c7374fde58450573bf7376fb2cee3079955e09f934fb822a6d5d11.webp",
-    "group": "Hunt",
+    "group": "Nihility",
     "groupImg": "https://starrailstation.com/assets/219d7f753cdf2f5d6b8e5f2e9e80865b38cf3587ca7cbe0d26db6d539dcd3060.webp",
     "stats": {
       "HP": "1023.12",
       "ATK": "617.4",
       "DEF": "396.9",
-      "SPD": "110",
+      "SPD": "102",
       "MaxEnergy": "120"
+    }
+  },
+  "Luka": {
+    "name": "Luka",
+    "img": "https://hsr.honeyhunterworld.com/img/character/luka-character_action_side_icon.webp",
+    "rarity": "4",
+    "element": "physical",
+    "elementImg": "https://starrailstation.com/assets/541166f5d3254a75e30a3263ab3ccad1c503085220a3bdb0f58f9893874eb111.webp",
+    "group": "Nihility",
+    "groupImg": "https://starrailstation.com/assets/219d7f753cdf2f5d6b8e5f2e9e80865b38cf3587ca7cbe0d26db6d539dcd3060.webp",
+    "stats": {
+      "HP": "917.28",
+      "ATK": "582.12",
+      "DEF": "485.1",
+      "SPD": "103",
+      "MaxEnergy": "130"
+    }
+  },
+  "FuXuan": {
+    "name": "Fu Xuan",
+    "img": "https://hsr.honeyhunterworld.com/img/character/fu-xuan-character_action_side_icon.webp",
+    "rarity": "5",
+    "element": "Quantum",
+    "elementImg": "https://starrailstation.com/assets/f67326acd380eb6b452659943906fa6248745b7d58d634b399307b028b9605c0.webp",
+    "group": "Preservation",
+    "groupImg": "https://starrailstation.com/assets/cdd75ec501d6bc616bd43877737e767d305153fe612edc8c5fced575e21f798d.webp",
+    "stats": {
+      "HP": "1474.7",
+      "ATK": "465.7",
+      "DEF": "606.37",
+      "SPD": "100",
+      "MaxEnergy": "135"
+    }
+  },
+  "March7th": {
+    "name": "March 7th",
+    "img": "https://hsr.honeyhunterworld.com/img/character/march-7th-character_action_side_icon.webp?",
+    "rarity": "4",
+    "element": "Ice",
+    "elementImg": "https://starrailstation.com/assets/5f1b104c55cb14b081b2c004245c64dd39e94dd128a9880cd3a2efeb830170a1.webp",
+    "group": "Preservation",
+    "groupImg": "https://starrailstation.com/assets/cdd75ec501d6bc616bd43877737e767d305153fe612edc8c5fced575e21f798d.webp",
+    "stats": {
+      "HP": "1058.4",
+      "ATK": "511.56",
+      "DEF": "573.3",
+      "SPD": "101",
+      "MaxEnergy": "120"
+    }
+  },
+  "Gepard": {
+    "name": "Gepard",
+    "img": "https://hsr.honeyhunterworld.com/img/character/gepard-character_action_side_icon.webp",
+    "rarity": "5",
+    "element": "Ice",
+    "elementImg": "https://starrailstation.com/assets/5f1b104c55cb14b081b2c004245c64dd39e94dd128a9880cd3a2efeb830170a1.webp",
+    "group": "Preservation",
+    "groupImg": "https://starrailstation.com/assets/cdd75ec501d6bc616bd43877737e767d305153fe612edc8c5fced575e21f798d.webp",
+    "stats": {
+      "HP": "1397.09",
+      "ATK": "543.31",
+      "DEF": "654.89",
+      "SPD": "92",
+      "MaxEnergy": "100"
+    }
+  },
+  "TrailblazerFire": {
+    "name": "Trailblazer Fire",
+    "img": "https://hsr.honeyhunterworld.com/img/character/trailblazer-character-4_action_side_icon.webp?",
+    "rarity": "5",
+    "element": "Fire",
+    "elementImg": "https://starrailstation.com/assets/f497912f929db891b819dc17d9c0124a9c13233f3e02be5b85192af534f17a3c.webp",
+    "group": "Preservation",
+    "groupImg": "https://starrailstation.com/assets/cdd75ec501d6bc616bd43877737e767d305153fe612edc8c5fced575e21f798d.webp",
+    "stats": {
+      "HP": "1241.86",
+      "ATK": "601.52",
+      "DEF": "606.37",
+      "SPD": "95",
+      "MaxEnergy": "120"
+    }
+  },
+  "Natasha": {
+    "name": "Natasha",
+    "img": "https://hsr.honeyhunterworld.com/img/character/natasha-character_action_side_icon.webp",
+    "rarity": "4",
+    "element": "Physical",
+    "elementImg": "https://starrailstation.com/assets/541166f5d3254a75e30a3263ab3ccad1c503085220a3bdb0f58f9893874eb111.webp",
+    "group": "Abundance",
+    "groupImg": "https://starrailstation.com/assets/aa9f5b78e925c15ba26e364ab1a7e053d6678022b7c33c5c7c54fab324216d95.webp",
+    "stats": {
+      "HP": "1164.24",
+      "ATK": "476.28",
+      "DEF": "507.15",
+      "SPD": "98",
+      "MaxEnergy": "90"
+    }
+  },
+  "Lynx": {
+    "name": "Lynx",
+    "img": "https://hsr.honeyhunterworld.com/img/character/lynx-character_action_side_icon.webp",
+    "rarity": "4",
+    "element": "Quantum",
+    "elementImg": "https://starrailstation.com/assets/f67326acd380eb6b452659943906fa6248745b7d58d634b399307b028b9605c0.webp",
+    "group": "Abundance",
+    "groupImg": "https://starrailstation.com/assets/aa9f5b78e925c15ba26e364ab1a7e053d6678022b7c33c5c7c54fab324216d95.webp",
+    "stats": {
+      "HP": "1058.4",
+      "ATK": "756.76",
+      "DEF": "363.83",
+      "SPD": "100",
+      "MaxEnergy": "100"
+    }
+  },
+  "Luocha": {
+    "name": "Luocha",
+    "img": "https://hsr.honeyhunterworld.com/img/character/luocha-character_action_side_icon.webp",
+    "rarity": "5",
+    "element": "Imaginary",
+    "elementImg": "https://starrailstation.com/assets/7a40dc5e267fd0b411f265237403a3408433f863d5d1b94b4a9d82e2bab33e32.webp",
+    "group": "Abundance",
+    "groupImg": "https://starrailstation.com/assets/aa9f5b78e925c15ba26e364ab1a7e053d6678022b7c33c5c7c54fab324216d95.webp",
+    "stats": {
+      "HP": "1280.66",
+      "ATK": "756.76",
+      "DEF": "363.83",
+      "SPD": "101",
+      "MaxEnergy": "100"
+    }
+  },
+  "Bailu": {
+    "name": "Bailu",
+    "img": "https://hsr.honeyhunterworld.com/img/character/bailu-character_action_side_icon.webp",
+    "rarity": "5",
+    "element": "Lightning",
+    "elementImg": "https://starrailstation.com/assets/2494da0973fa611a4ff07798992cf2496faa89f7557b6713da75ee5d11eed2ba.webp",
+    "group": "Abundance",
+    "groupImg": "https://starrailstation.com/assets/aa9f5b78e925c15ba26e364ab1a7e053d6678022b7c33c5c7c54fab324216d95.webp",
+    "stats": {
+      "HP": "1319.47",
+      "ATK": "562.72",
+      "DEF": "485.1",
+      "SPD": "98",
+      "MaxEnergy": "100"
     }
   }
 }

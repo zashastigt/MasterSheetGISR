@@ -14,7 +14,7 @@ export default function SelectCharacter({addCharacter}) {
                         <img alt={'characterPicture'} src={characterInfo[character].img}/>
                     </div>
                 ))}
-                <button onClick={() => setShow(!show)}>X</button>
+                <button className={'close'} onClick={() => setShow(!show)}>X</button>
             </div>
         )
     }

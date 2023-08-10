@@ -1,6 +1,8 @@
 .selectCharBox {
     position: absolute;
     display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
     border-radius: 20px 20px 20px 20px;
     border: #333333 solid 3px;
     background-color: #1a1c1d;
@@ -11,8 +13,20 @@
     z-index: 10;
 }
 
-.selectCharBox button {
-    height: fit-content;
+.selectCharBox .close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 30px;
+    width: 30px;
+    background-color: #333333;
+    color: #ddd;
+    border: none;
+    border-radius: 0 10px 0 20px;
+}
+
+.selectCharBox .close:hover {
+    color: #111;
 }
 
 .charBox {
