@@ -10,6 +10,7 @@ import {getSheetDataWithImagesStarRail} from '../data/addImagesToData.js'
 import SearchBar from '../Universal/SearchBar/searchBar.jsx'
 import '../Universal/SearchBar/searchBar.css'
 import Filters, {Filtering} from '../Universal/filterButton.jsx' 
+import ChangePage from '../assets/Icon_Character_Archive.webp'
 
 
 function ListSwitchStarRail() {
@@ -48,6 +49,10 @@ function ListSwitchStarRail() {
                     <div className={`slider ${listShown ? 'sliderLeft' : 'sliderRight'}`}></div>
                 </button>
                 <img alt={'weapon'} src={'https://hsr.honeyhunterworld.com/img/menu/weapon.webp?x5419'}/>
+                <a href={'../Genshin/'}>
+                    <img className={'switchGameImage'} src={ChangePage}/> 
+                </a>                  
+                
             </div>
             {listShown ?
                 <div className={'characterList'}>

@@ -5,7 +5,6 @@ import postData from "../../data/postData.js";
 
 export default function WeaponBox({gameWeapon, game}) {
     const [weapon, setWeapon] = useState(gameWeapon)
-    console.log(weapon)
     function ceColor(CE) {
         if (CE === 'R5' || CE === 'S5') {
             return 'all'
@@ -95,20 +94,20 @@ export default function WeaponBox({gameWeapon, game}) {
                                     {window.location.pathname.includes('StarRail') &&
                                         <>
                                             {weapon.CE[item] !== 'S5' &&
-                                                <button onClick={() => changeLevel('up', weapon.CE[item], item, weapon.Name)}>+</button>
+                                                <button className="up" onClick={() => changeLevel('up', weapon.CE[item], item, weapon.Name)}>+</button>
                                             }
                                             {weapon.CE[item] !== '' &&
-                                                <button onClick={() => changeLevel('down', weapon.CE[item], item, weapon.Name)}>-</button>
+                                                <button className="down" onClick={() => changeLevel('down', weapon.CE[item], item, weapon.Name)}>-</button>
                                             }
                                         </>
                                     }
                                     {window.location.pathname.includes('Genshin') &&
                                         <>
                                             {weapon.CE[item] !== 'R5' &&
-                                                <button onClick={() => changeLevel('up', weapon.CE[item], item, weapon.Name)}>+</button>
+                                                <button className="up" onClick={() => changeLevel('up', weapon.CE[item], item, weapon.Name)}>+</button>
                                             }
                                             {weapon.CE[item] !== '' &&
-                                                <button onClick={() => changeLevel('down', weapon.CE[item], item, weapon.Name)}>-</button>
+                                                <button className="down" onClick={() => changeLevel('down', weapon.CE[item], item, weapon.Name)}>-</button>
                                             }
                                         </>
                                     }
