@@ -1,10 +1,22 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import './characterBox.css'
 import postData from "../../data/postData.js";
 import convert from "../convertArrayObject.js";
 
-export default function CharacterBox({gameCharacter, game}) {
+export default function CharacterBox({gameCharacter, game, characterList, setCharacterList}) {
     const [character, setCharacter] = useState(gameCharacter)
+    const [levelChanged, setLevelChanged] = useState(false)
+
+    useEffect(() => {
+        if (!levelChanged) return
+        characterList.forEach((char, index) => {
+            if (char.Name === character.Name) {
+                characterList[index] = character
+                setCharacterList(characterList)
+            }
+            setLevelChanged(false)
+        });
+    }, [levelChanged])
 
     function ceColor(CE) {
         if (CE === 'C6' || CE === 'E6') {
@@ -62,6 +74,7 @@ export default function CharacterBox({gameCharacter, game}) {
 
             setCharacter({...character, CE: convert(newCE)})
             postData({Level: newData, Person: person, Name: character.Name, Game: game, Group: 'Character'})
+            setLevelChanged(true)
         }
     }
 

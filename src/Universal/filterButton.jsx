@@ -32,16 +32,16 @@ function GetFilterButton(listShown, filter, {setFilter}, key, label, url){
     )
 }
 
-export function Filtering(types, game, searchValue, filter, boxType) {
+export function Filtering(types, game, searchValue, filter, boxType, setStateObject) {
 
     if (boxType === 'Character') {
         return FilterCheckboxes(types, filter).filter(fsb => fsb.Name.toLowerCase().includes(searchValue.toLowerCase())).map(character => {
-            return <CharacterBox key={character.Name} gameCharacter={character} game={game} />
+            return <CharacterBox key={character.Name} gameCharacter={character} game={game} characterList={types} setCharacterList={setStateObject} />
         })
     }
     else if (boxType === 'Weapon') {
         return FilterCheckboxes(types, filter).filter(filter => filter.Name.toLowerCase().includes(searchValue.toLowerCase())).map(weapon => {
-            return <WeaponBox key={weapon.Name} gameWeapon={weapon} game={game} />
+            return <WeaponBox key={weapon.Name} gameWeapon={weapon} game={game} weaponList={types} setWeaponList={setStateObject} />
         })
     }
     

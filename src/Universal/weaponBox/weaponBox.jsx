@@ -1,10 +1,23 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import './weaponBox.css'
 import convert from "../convertArrayObject.js";
 import postData from "../../data/postData.js";
 
-export default function WeaponBox({gameWeapon, game}) {
+export default function WeaponBox({gameWeapon, game, weaponList, setWeaponList}) {
     const [weapon, setWeapon] = useState(gameWeapon)
+    const [levelChanged, setLevelChanged] = useState(false)
+
+    useEffect(() => {
+        if (!levelChanged) return
+        weaponList.forEach((wpn, index) => {
+            if (wpn.Name === weapon.Name) {
+                weaponList[index] = weapon
+                setWeaponList(weaponList)
+            }
+            setLevelChanged(false)
+        });
+    }, [levelChanged])
+
     function ceColor(CE) {
         if (CE === 'R5' || CE === 'S5') {
             return 'all'
@@ -71,6 +84,7 @@ export default function WeaponBox({gameWeapon, game}) {
 
             setWeapon({...weapon, CE: convert(newCE)})
             postData({Level: newData, Person: person, Name: weapon.Name, Game: game, Group: 'Weapon'})
+            setLevelChanged(true)
         }
     }
 

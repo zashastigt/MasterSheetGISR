@@ -35,9 +35,9 @@ function ListSwitchStarRail() {
         return <div>Loading...</div>
     }
 
-    const characterList = Filtering(starRailCharacters, 'StarRail', searchValue, filter, 'Character')
+    const characterList = Filtering(starRailCharacters, 'StarRail', searchValue, filter, 'Character', setStarRailCharacters)
 
-    const weaponList = Filtering(starRailWeapons, 'StarRail', searchValue, filter, 'Weapon')
+    const weaponList = Filtering(starRailWeapons, 'StarRail', searchValue, filter, 'Weapon', setStarRailWeapons)
 
     return (
         <>

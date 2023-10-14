@@ -34,9 +34,9 @@ function ListSwitchGenshin() {
         return <div>Loading...</div>
     }
 
-    const characterList = Filtering(genshinCharacters, 'Genshin', searchValue, filter, 'Character')
+    const characterList = Filtering(genshinCharacters, 'Genshin', searchValue, filter, 'Character', setGenshinCharacters)
 
-    const weaponList = Filtering(genshinWeapons, 'Genshin', searchValue, filter, 'Weapon')
+    const weaponList = Filtering(genshinWeapons, 'Genshin', searchValue, filter, 'Weapon', setGenshinWeapons)
 
     return (
         <>
