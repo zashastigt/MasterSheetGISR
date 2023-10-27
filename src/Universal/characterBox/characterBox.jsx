@@ -31,7 +31,6 @@ export default function CharacterBox({gameCharacter, game, characterList, setCha
     }
 
     function changeLevel(direction, data, person) {
-        console.log(`Clears handle: ${debounceTimeoutHandle}`)
         clearTimeout(debounceTimeoutHandle);
 
         if (direction === 'up' && (data === 'E6' || data === 'C6')) {
@@ -81,9 +80,8 @@ export default function CharacterBox({gameCharacter, game, characterList, setCha
 
 
             setDebounceTimeoutHandle(setTimeout(()=>{
-                postData({Level: newData, Person: person, Name: character.name, Game: game, Group: 'Character'})
+                postData({Level: newData, Person: person, Name: character.name, Game: game, Group: 'Character', Element: character.types.combatType.Element, Rank: character.rank, Path: character.types.pathType.Group})
             }, DEBOUNCE_TIMEOUT_MS));
-            console.log(`Sets handle: ${debounceTimeoutHandle}`)
             setLevelChanged(true)
         }
     }

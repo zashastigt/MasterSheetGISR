@@ -83,7 +83,7 @@ export default function WeaponBox({ gameWeapon, game, weaponList, setWeaponList 
             })
 
             setWeapon({ ...weapon, CE: convert(newCE) })
-            postData({ Level: newData, Person: person, Name: weapon.Name, Game: game, Group: 'Weapon' })
+            postData({ Level: newData, Person: person, Name: weapon.name, Game: game, Group: 'Weapon', Rank: weapon.rank, Path: weapon.types.pathType.Group })
             setLevelChanged(true)
         }
     }
