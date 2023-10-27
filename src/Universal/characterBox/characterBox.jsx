@@ -10,7 +10,7 @@ export default function CharacterBox({gameCharacter, game, characterList, setCha
     useEffect(() => {
         if (!levelChanged) return
         characterList.forEach((char, index) => {
-            if (char.Name === character.Name) {
+            if (char.name === character.name) {
                 characterList[index] = character
                 setCharacterList(characterList)
             }

@@ -27,13 +27,13 @@ async function getGIDataWithImages() {
     Character: await getGICharacterJson().then(function (data) {
       if (data.response !== 200) return
       data.data.items = changegGICharToImages(Object.values(data.data.items))
-      console.log(data.data.items)
+      
       return data.data.items
     }),
     Weapon: await getGIWeaponJson().then(function (data) {
       if (data.response !== 200) return
       data.data.items = changeGIWeaponToImages(Object.values(data.data.items))
-      console.log(data.data.items)
+      
       return data.data.items
     })
   }
