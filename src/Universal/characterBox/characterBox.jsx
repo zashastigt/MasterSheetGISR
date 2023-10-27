@@ -6,6 +6,8 @@ import convert from "../convertArrayObject.js";
 export default function CharacterBox({gameCharacter, game, characterList, setCharacterList}) {
     const [character, setCharacter] = useState(gameCharacter)
     const [levelChanged, setLevelChanged] = useState(false)
+    const [debounceTimeoutHandle, setDebounceTimeoutHandle] = useState()
+    const DEBOUNCE_TIMEOUT_MS = 1000;
 
     useEffect(() => {
         if (!levelChanged) return
@@ -29,6 +31,9 @@ export default function CharacterBox({gameCharacter, game, characterList, setCha
     }
 
     function changeLevel(direction, data, person) {
+        console.log(`Clears handle: ${debounceTimeoutHandle}`)
+        clearTimeout(debounceTimeoutHandle);
+
         if (direction === 'up' && (data === 'E6' || data === 'C6')) {
             console.log("Can't get much higher")
         } else if(direction === 'down' && data === '') {
@@ -73,7 +78,12 @@ export default function CharacterBox({gameCharacter, game, characterList, setCha
             })
 
             setCharacter({...character, CE: convert(newCE)})
-            postData({Level: newData, Person: person, Name: character.name, Game: game, Group: 'Character'})
+
+
+            setDebounceTimeoutHandle(setTimeout(()=>{
+                postData({Level: newData, Person: person, Name: character.name, Game: game, Group: 'Character'})
+            }, DEBOUNCE_TIMEOUT_MS));
+            console.log(`Sets handle: ${debounceTimeoutHandle}`)
             setLevelChanged(true)
         }
     }
