@@ -73,21 +73,21 @@ export default function CharacterBox({gameCharacter, game, characterList, setCha
             })
 
             setCharacter({...character, CE: convert(newCE)})
-            postData({Level: newData, Person: person, Name: character.Name, Game: game, Group: 'Character'})
+            postData({Level: newData, Person: person, Name: character.name, Game: game, Group: 'Character'})
             setLevelChanged(true)
         }
     }
 
     return(
-        <div key={character.Name} className={'characterBox'}>
+        <div key={character.name} className={'characterBox'}>
             <div className={'characterContainer'}>
                 <div className={`characterPortrait`}>
                     <img className={'characterImgSR'} alt={'img'} src={character.Img}/>
                 </div>
-                <div className={`rarityStrip ${parseInt(character.Rarity) === 5 ? 'rarityFiveStar' : 'rarityFourStar'}`}></div>
+                <div className={`rarityStrip ${parseInt(character.rank) === 5 ? 'rarityFiveStar' : 'rarityFourStar'}`}></div>
                 <div className={'characterInfo'}>
-                    <img className={'characterElement'} alt={'img'} src={character.Element}/>
-                    <img className={'characterGroup'} alt={'img'} src={character.Group}/>
+                    <img className={'characterElement'} alt={'img'} src={character.types.combatType.Img}/>
+                    <img className={'characterGroup'} alt={'img'} src={character.types.pathType.Img}/>
                 </div>
                 <div className={'characterCE'}>
                     {Object.keys(character.CE).map(item => (
@@ -120,7 +120,7 @@ export default function CharacterBox({gameCharacter, game, characterList, setCha
                     ))}
                 </div>
             </div>
-            <div className={'characterName'}>{character.Name}</div>
+            <div className={'characterName'}>{character.name}</div>
         </div>
     )
 }
