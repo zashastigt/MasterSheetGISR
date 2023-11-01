@@ -21,6 +21,7 @@ function GetFilterButton(listShown, filter, {setFilter}, key, label, url){
       useEffect(() => {
         setChecked(false)
         setFilter([])
+        setOpaque('')
       }, [listShown])
       
     return (
@@ -33,15 +34,14 @@ function GetFilterButton(listShown, filter, {setFilter}, key, label, url){
 }
 
 export function Filtering(types, game, searchValue, filter, boxType, setStateObject) {
-
     if (boxType === 'Character') {
-        return FilterCheckboxes(types, filter).filter(fsb => fsb.Name.toLowerCase().includes(searchValue.toLowerCase())).map(character => {
-            return <CharacterBox key={character.Name} gameCharacter={character} game={game} characterList={types} setCharacterList={setStateObject} />
+        return FilterCheckboxes(types, filter).filter(filter => filter.name.toLowerCase().includes(searchValue.toLowerCase())).map(character => {
+            return <CharacterBox key={character.id} gameCharacter={character} game={game} characterList={types} setCharacterList={setStateObject} />
         })
     }
     else if (boxType === 'Weapon') {
-        return FilterCheckboxes(types, filter).filter(filter => filter.Name.toLowerCase().includes(searchValue.toLowerCase())).map(weapon => {
-            return <WeaponBox key={weapon.Name} gameWeapon={weapon} game={game} weaponList={types} setWeaponList={setStateObject} />
+        return FilterCheckboxes(types, filter).filter(filter => filter.name.toLowerCase().includes(searchValue.toLowerCase())).map(weapon => {
+            return <WeaponBox key={weapon.name} gameWeapon={weapon} game={game} weaponList={types} setWeaponList={setStateObject} />
         })
     }
     
@@ -49,10 +49,10 @@ export function Filtering(types, game, searchValue, filter, boxType, setStateObj
 
 function FilterCheckboxes(types, filter) {
     if (filter.length !== 0 ) {
-        const element = types.filter(fil => fil.Element !== undefined && filter.some(f => fil.Element.toLowerCase().includes(f.toLowerCase())))
-        const group = types.filter(fil => fil.Group !== undefined && filter.some(f => fil.Group.toLowerCase().includes(f.toLowerCase())))
-        
-        if (element.length !== 0 && group.length !== 0) return element.filter(fil => group.some(f => fil.Name.includes(f.Name)))
+        const element = types.filter(fil => fil.types.combatType !== undefined && filter.some(f => fil.types.combatType.Element.toLowerCase().includes(f.toLowerCase())))
+        const group = types.filter(fil => fil.types.pathType !== undefined && filter.some(f => fil.types.pathType.Group.toLowerCase().includes(f.toLowerCase())))
+
+        if (element.length !== 0 && group.length !== 0) return element.filter(fil => group.some(f => fil.name.includes(f.name)))
         else if (element.length !== 0 ) return element
         else if (group.length !== 0) return group
     }
