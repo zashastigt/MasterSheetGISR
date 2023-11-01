@@ -10,7 +10,7 @@ export default function WeaponBox({gameWeapon, game, weaponList, setWeaponList})
     useEffect(() => {
         if (!levelChanged) return
         weaponList.forEach((wpn, index) => {
-            if (wpn.Name === weapon.Name) {
+            if (wpn.name === weapon.name) {
                 weaponList[index] = weapon
                 setWeaponList(weaponList)
             }
