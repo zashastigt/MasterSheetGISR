@@ -1,265 +1,191 @@
-import {getSheetDataJson} from './fetchData.js'
-import giAnemo from '../assets/GenshinElementImgs/anemo.svg'
-import giCryo from '../assets/GenshinElementImgs/cryo.svg'
-import giDendro from '../assets/GenshinElementImgs/dendro.svg'
-import giElectro from '../assets/GenshinElementImgs/electro.svg'
-import giGeo from '../assets/GenshinElementImgs/geo.svg'
-import giHydro from '../assets/GenshinElementImgs/hydro.svg'
-import giPyro from '../assets/GenshinElementImgs/pyro.svg'
-import giSword from '../assets/GenshinWeaponImgs/Sword.png'
-import giClaymore from '../assets/GenshinWeaponImgs/Claymore.png'
-import giPolearm from '../assets/GenshinWeaponImgs/Polearm.png'
-import giBow from '../assets/GenshinWeaponImgs/Bow.png'
-import giCatalyst from '../assets/GenshinWeaponImgs/Catalyst.png'
-import srFire from '../assets/StarRailElementImgs/Fire.webp'
-import srIce from '../assets/StarRailElementImgs/Ice.webp'
-import srImaginary from '../assets/StarRailElementImgs/Imaginary.webp'
-import srLightning from '../assets/StarRailElementImgs/Lightning.webp'
-import srPhysical from '../assets/StarRailElementImgs/Physical.webp'
-import srQuantum from '../assets/StarRailElementImgs/Quantum.webp'
-import srWind from '../assets/StarRailElementImgs/Wind.webp'
-import srAbundance from '../assets/StarRailPathImgs/Abundance.webp'
-import srDestruction from '../assets/StarRailPathImgs/Destruction.webp'
-import srErudition from '../assets/StarRailPathImgs/Erudition.webp'
-import srHarmony from '../assets/StarRailPathImgs/Harmony.webp'
-import srNihility from '../assets/StarRailPathImgs/Nihility.webp'
-import srPreservation from '../assets/StarRailPathImgs/Preservation.webp'
-import srHunt from '../assets/StarRailPathImgs/Hunt.webp'
+import { getGICharacterJson, getGIWeaponJson, getSRCharacterJson, getSRWeaponJson } from './fetchData.js'
 
-function getSheetDataWithImagesStarRail() {
-  return getSheetDataJson().then(function(data) {
-    data.StarRail.Characters = addImagesToStarRailCharacterData(data.StarRail.Characters)
-    data.StarRail.Characters = getStarRailCharacterImgs(data.StarRail.Characters)
-    data.StarRail.Weapons = addImagesToStarRailWeaponData(data.StarRail.Weapons)
-    data.StarRail.Weapons = getStarRailWeaponImgs(data.StarRail.Weapons)
-    return data.StarRail
-  })
+const GIElement = import.meta.glob('../assets/GenshinElementImgs/*.svg', { eager: true })
+const GIWeapon = import.meta.glob('../assets/GenshinWeaponImgs/*.png', { eager: true })
+const SRElement = import.meta.glob('../assets/StarRailElementImgs/*.webp', { eager: true })
+const SRPath = import.meta.glob('../assets/StarRailPathImgs/*.webp', { eager: true })
+
+async function getSRDataWithImages() {
+  return {
+    Character: await getSRCharacterJson().then(function (data) {
+      if (data.response !== 200) return
+      data.data.items = changeSRCharToImages(Object.values(data.data.items))
+
+      return data.data.items
+    }),
+    Weapon: await getSRWeaponJson().then(function (data) {
+      if (data.response !== 200) return
+      data.data.items = changeSRWeaponToImages(Object.values(data.data.items))
+      
+      return data.data.items
+    })
+  }
 }
 
-function getSheetDataWithImagesGenshin() {
-  return getSheetDataJson().then(function(data) {
-    data.Genshin.Characters = addImagesToGenshinCharacterData(data.Genshin.Characters)
-    data.Genshin.Characters = getGenshinCharacterImgs(data.Genshin.Characters)
-    data.Genshin.Weapons = addImagesToGenshinWeaponData(data.Genshin.Weapons)
-    data.Genshin.Weapons = getGenshinWeaponImgs(data.Genshin.Weapons)
-    return data.Genshin
-  });
+async function getGIDataWithImages() {
+  return {
+    Character: await getGICharacterJson().then(function (data) {
+      if (data.response !== 200) return
+      data.data.items = changegGICharToImages(Object.values(data.data.items))
+      
+      return data.data.items
+    }),
+    Weapon: await getGIWeaponJson().then(function (data) {
+      if (data.response !== 200) return
+      data.data.items = changeGIWeaponToImages(Object.values(data.data.items))
+      
+      return data.data.items
+    })
+  }
 }
 
-function getGenshinCharacterImgs(data) {
-  return data.map(character => {
-    let name = character.Name.toLowerCase().replaceAll(' ', '_')
-    if (name.includes('traveler')) {
-      name = 'traveler_electro'
-    }
-    return {...character, Img: 'https://paimon.moe/images/characters/' + name + '.png'}
-  })
+function getGICharImgs(char, data, index) {
+  if (char.name.includes('Traveler') && char.route.includes('Boy')) delete data[index]
+  return `https://api.ambr.top/assets/UI/${char.icon}.png`
+
 }
 
-function getGenshinWeaponImgs(data) {
-  return data.map(weapon => {
-    let name = weapon.Name.toLowerCase()
-        .replaceAll(' ', '_')
-        .replaceAll("'", '')
-    return {...weapon, Img: "https://paimon.moe/images/weapons/" + name + ".png"}
-  })
+function getGIWeaponImgs(weapon, data, index) {
+  if (weapon.rank === 1 || weapon.rank === 2) delete data[index]
+  return `https://api.ambr.top/assets/UI/${weapon.icon}.png`
 }
 
-function getStarRailCharacterImgs(data) {
-  return data.map(character => {
-    let name = character.Name.toLowerCase().replaceAll(' ', '-')
-    let which = ''
-    if (name.includes('trailblazer')) {
-      name = 'trailblazer'
-      switch (character.Element.split('/')[3].split('-')[0]) {
-        case 'Physical':
-          which = '-2'
-          break
-        case 'Fire':
-          which = '-4'
-          break
-        case 'Ice':
-          which = '-4'
-          break
-        case 'Lightning':
-          which = '-4'
-          break
-        case 'Quantum':
-          which = '-4'
-          break
-        case 'Imaginary':
-          which = '-4'
-          break
-        case 'Wind':
-          which = '-4'
-          break
-      }
-    }
-    return {...character, Img: 'https://hsr.honeyhunterworld.com/img/character/' + name + '-character' + which + '_action_side_icon.webp'}
-  })
+function getSRCharImgs(char, data, index) {
+  if (char.id > 8000 && char.id % 2 != 0) delete data[index]
+  return `https://api.yatta.top/hsr/assets/UI/avatar/medium/${char.icon}.png?`
 }
 
-function getStarRailWeaponImgs(data) {
-  return data.map(weapon => {
-    let name = weapon.Name.toLowerCase()
-        .replaceAll(' ', '-')
-        .replaceAll('!', '')
-        .replaceAll("'", '')
-        .replaceAll(',', '')
-    return {...weapon, Img: 'https://hsr.honeyhunterworld.com/img/item/' + name + '-item_icon.webp'}
-  })
-}
-  
-function addImagesToGenshinCharacterData(data) {
-  data.map((character) => {
-    switch (character.Element) {
-      case 'Anemo':
-        character.Element = giAnemo
-        break
-      case 'Cryo':
-        character.Element = giCryo
-        break
-      case 'Dendro':
-        character.Element = giDendro
-        break
-      case 'Electro':
-        character.Element = giElectro
-        break
-      case 'Geo':
-        character.Element = giGeo
-        break
-      case 'Hydro':
-        character.Element = giHydro
-        break
-      case 'Pyro':
-        character.Element = giPyro
-        break
-    }
-
-    switch (character.Group) {
-      case 'Sword':
-        character.Group = giSword
-        break
-      case 'Claymore':
-        character.Group = giClaymore
-        break
-      case 'Polearm':
-        character.Group = giPolearm
-        break
-      case 'Catalyst':
-        character.Group = giCatalyst
-        break
-      case 'Bow':
-        character.Group = giBow
-        break
-    }
-  })
-  return data
+function getSRWeaponImgs(weapon) {
+  return `https://api.yatta.top/hsr/assets/UI//equipment/medium/${weapon.icon}.png`
 }
 
-function addImagesToGenshinWeaponData(data) {
-  data.map((weapon) => {
-    switch (weapon.Group) {
-      case 'Sword':
-        weapon.Group = giSword
+function changegGICharToImages(data) {
+  data.map((character, index) => {
+    character['types'] = {}
+    switch (character.element) {
+      case 'Wind':
+        character.types['combatType'] = { 'Img': GIElement['../assets/GenshinElementImgs/anemo.svg'].default, 'Element': 'Anemo' };
+        delete data[index].element
         break
-      case 'Claymore':
-        weapon.Group = giClaymore
+      case 'Ice':
+        character.types['combatType']  = { 'Img': GIElement['../assets/GenshinElementImgs/cryo.svg'].default, 'Element': 'Cryo' };
+        delete data[index].element
         break
-      case 'Polearm':
-        weapon.Group = giPolearm
+      case 'Grass':
+        character.types['combatType']  = { 'Img': GIElement['../assets/GenshinElementImgs/dendro.svg'].default, 'Element': 'Dendro' };
+        delete data[index].element
         break
-      case 'Catalyst':
-        weapon.Group = giCatalyst
+      case 'Electric':
+        character.types['combatType']  = { 'Img': GIElement['../assets/GenshinElementImgs/electro.svg'].default, 'Element': 'Electro' };
+        delete data[index].element
         break
-      case 'Bow':
-        weapon.Group = giBow
+      case 'Rock':
+        character.types['combatType']  = { 'Img': GIElement['../assets/GenshinElementImgs/geo.svg'].default, 'Element': 'Geo' };
+        delete data[index].element
         break
-    }
-  })
-  return data
-}
-  
-function addImagesToStarRailCharacterData(data) {
-  data.map((character) => {
-    switch (character.Element) {
+      case 'Water':
+        character.types['combatType']  = { 'Img': GIElement['../assets/GenshinElementImgs/hydro.svg'].default, 'Element': 'Hydro' };
+        delete data[index].element
+        break
       case 'Fire':
-        character.Element = srFire;
+        character.types['combatType']  = { 'Img': GIElement['../assets/GenshinElementImgs/pyro.svg'].default, 'Element': 'Pyro' };
+        delete data[index].element
+        break
+    }
+
+    character.types['pathType'] = changeGIWeaponTypeToImages(character.weaponType)
+    delete data[index].weaponType
+    character['Img'] = getGICharImgs(character, data, index)
+  })
+
+  return data
+}
+
+function changeGIWeaponToImages(data) {
+  data.forEach((weapon, index) => {
+    weapon['types'] = {}
+    weapon.types['pathType'] = changeGIWeaponTypeToImages(weapon.type)
+    delete data[index].type
+    weapon['Img'] = getGIWeaponImgs(weapon, data, index)
+  })
+
+  return data
+}
+
+function changeGIWeaponTypeToImages(data) {
+  switch (data) {
+    case 'WEAPON_SWORD_ONE_HAND':
+      return { 'Img': GIWeapon['../assets/GenshinWeaponImgs/Sword.png'].default, 'Group': 'Sword' };
+    case 'WEAPON_CLAYMORE':
+      return { 'Img': GIWeapon['../assets/GenshinWeaponImgs/Claymore.png'].default, 'Group': 'Claymore' };
+    case 'WEAPON_POLE':
+      return { 'Img': GIWeapon['../assets/GenshinWeaponImgs/Polearm.png'].default, 'Group': 'Polearm' };
+    case 'WEAPON_CATALYST':
+      return { 'Img': GIWeapon['../assets/GenshinWeaponImgs/Catalyst.png'].default, 'Group': 'Catalyst' };
+    case 'WEAPON_BOW':
+      return { 'Img': GIWeapon['../assets/GenshinWeaponImgs/Bow.png'].default, 'Group': 'Bow' };
+  }
+}
+
+function changeSRCharToImages(data) {
+  data.map((character, index) => {
+    switch (character.types.combatType) {
+      case 'Fire':
+        character.types.combatType = { 'Img': SRElement['../assets/StarRailElementImgs/Fire.webp'].default, 'Element': character.types.combatType };
         break;
       case 'Ice':
-        character.Element = srIce;
+        character.types.combatType = { 'Img': SRElement['../assets/StarRailElementImgs/Ice.webp'].default, 'Element': character.types.combatType };
         break;
       case 'Imaginary':
-        character.Element = srImaginary;
+        character.types.combatType = { 'Img': SRElement['../assets/StarRailElementImgs/Imaginary.webp'].default, 'Element': character.types.combatType };
         break;
-      case 'Lightning':
-        character.Element = srLightning;
+      case 'Thunder':
+        character.types.combatType = { 'Img': SRElement['../assets/StarRailElementImgs/Lightning.webp'].default, 'Element': 'Lightning' };
         break;
       case 'Physical':
-        character.Element = srPhysical;
+        character.types.combatType = { 'Img': SRElement['../assets/StarRailElementImgs/Physical.webp'].default, 'Element': character.types.combatType };
         break;
       case 'Quantum':
-        character.Element = srQuantum;
+        character.types.combatType = { 'Img': SRElement['../assets/StarRailElementImgs/Quantum.webp'].default, 'Element': character.types.combatType };
         break;
       case 'Wind':
-        character.Element = srWind;
+        character.types.combatType = { 'Img': SRElement['../assets/StarRailElementImgs/Wind.webp'].default, 'Element': character.types.combatType };
         break;
     }
 
-    switch (character.Group) {
-      case 'Abundance':
-        character.Group = srAbundance;
-        break;
-      case 'Destruction':
-        character.Group = srDestruction;
-        break;
-      case 'Erudition':
-        character.Group = srErudition;
-        break;
-      case 'Harmony':
-        character.Group = srHarmony;
-        break;
-      case 'Nihility':
-        character.Group = srNihility;
-        break;
-      case 'Preservation':
-        character.Group = srPreservation;
-        break;
-      case 'Hunt':
-        character.Group = srHunt;
-        break;
-    }
+    character.types.pathType = changeSRPathToImages(character.types.pathType)
+    character['Img'] = getSRCharImgs(character, data, index)
   })
-  return data;
+
+  return data
 }
 
-function addImagesToStarRailWeaponData(data) {
-  data.map((weapon) => {
-    switch (weapon.Group) {
-      case 'Abundance':
-        weapon.Group = srAbundance;
-        break;
-      case 'Destruction':
-        weapon.Group = srDestruction;
-        break;
-      case 'Erudition':
-        weapon.Group = srErudition;
-        break;
-      case 'Harmony':
-        weapon.Group = srHarmony;
-        break;
-      case 'Nihility':
-        weapon.Group = srNihility;
-        break;
-      case 'Preservation':
-        weapon.Group = srPreservation;
-        break;
-      case 'Hunt':
-        weapon.Group = srHunt;
-        break;
-    }
+function changeSRWeaponToImages(data) {
+  data.forEach((weapon) => {
+    weapon.types.pathType = changeSRPathToImages(weapon.types.pathType)
+    weapon['Img'] = getSRWeaponImgs(weapon)
+
   })
-  return data;
+  return data
 }
 
-export {getSheetDataWithImagesStarRail, getSheetDataWithImagesGenshin}
+function changeSRPathToImages(data) {
+  switch (data) {
+    case 'Priest':
+      return data = { 'Img': SRPath['../assets/StarRailPathImgs/Abundance.webp'].default, 'Group': 'Abundance' };
+    case 'Warrior':
+      return data = { 'Img': SRPath['../assets/StarRailPathImgs/Destruction.webp'].default, 'Group': 'Destruction' };
+    case 'Mage':
+      return data = { 'Img': SRPath['../assets/StarRailPathImgs/Erudition.webp'].default, 'Group': 'Erudition' };
+    case 'Shaman':
+      return data = { 'Img': SRPath['../assets/StarRailPathImgs/Harmony.webp'].default, 'Group': 'Harmony' };
+    case 'Warlock':
+      return data = { 'Img': SRPath['../assets/StarRailPathImgs/Nihility.webp'].default, 'Group': 'Nihility' };
+    case 'Knight':
+      return data = { 'Img': SRPath['../assets/StarRailPathImgs/Preservation.webp'].default, 'Group': 'Preservation' };
+    case 'Rogue':
+      return data = { 'Img': SRPath['../assets/StarRailPathImgs/Hunt.webp'].default, 'Group': 'Hunt' };
+  }
+}
+
+export { getSRDataWithImages, getGIDataWithImages }

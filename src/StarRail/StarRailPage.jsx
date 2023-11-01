@@ -6,11 +6,13 @@ import '../Universal/gachaPage.css'
 import elementsSR from '../data/elementsSR.json'
 import paths from '../data/paths.json'
 import PityBox from "../Universal/pityBox/pityBox.jsx";
-import {getSheetDataWithImagesStarRail} from '../data/addImagesToData.js'
+import { getSRDataWithImages } from '../data/addImagesToData.js'
 import SearchBar from '../Universal/SearchBar/searchBar.jsx'
 import '../Universal/SearchBar/searchBar.css'
 import Filters, {Filtering} from '../Universal/filterButton.jsx' 
 import ChangePage from '../assets/Icon_Character_Archive.webp'
+import { AddDuplicatesToJson } from '../Universal/AddDuplicatesToJson'
+import { getSheetDataJson } from '../data/fetchData'
 
 
 function ListSwitchStarRail() {
@@ -23,12 +25,14 @@ function ListSwitchStarRail() {
     const [pity, setPity] = useState([])
 
     useEffect(() => {
-        getSheetDataWithImagesStarRail().then(data => {
-            setStarRailCharacters(data.Characters)
-            setStarRailWeapons(data.Weapons)
-            setPity(data.SRPity)
-            setLoading(false)
-        })
+        getSRDataWithImages().then(async (data) => {
+            return await getSheetDataJson().then((sheet) => {
+                setStarRailCharacters(AddDuplicatesToJson(data.Character, sheet.StarRail, sheet.StarRail.SRPity))
+                setStarRailWeapons(AddDuplicatesToJson(data.Weapon, sheet.StarRail, sheet.StarRail.SRPity))
+                setPity(sheet.StarRail.SRPity)
+                setLoading(false)
+            })
+        })       
     }, [])
 
     if (loading) {
