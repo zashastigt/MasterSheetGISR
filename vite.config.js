@@ -19,6 +19,7 @@ export default defineConfig({
                 main: resolve(root, 'index.html'),
                 genshin: resolve(root, 'Genshin', 'index.html'),
                 starRail: resolve(root, 'StarRail', 'index.html'),
+                starRailOptimizer: resolve(root, 'StarRailOptimizer', 'index.html')
             }
         }
     }

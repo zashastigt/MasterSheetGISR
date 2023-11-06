@@ -1,0 +1,116 @@
+#container_optimizer {
+    width: 100%;
+}
+
+.button_header_banner {
+    display: flex;
+    justify-content: center;
+    background-color: #252525;
+    width: 100%;
+    gap: 25%;
+}
+
+.text {
+    font-family: Roboto, Helvetica, Arial, sans-serif;
+    font-weight: 800;
+    font-size: 1.2em;
+}
+
+.button {
+    background-color: #252525;
+    color: #888;
+    border: none;
+    cursor: pointer;
+}
+
+.button_header {
+    padding: 8px;
+}
+
+.elements,
+.weapons {
+    top: 6%;
+}
+
+.newItem {
+    width: 100%;
+    margin: 10px 0 10px 0;
+    padding: 5px;
+}
+
+.addCharacterContainer {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1%;
+    margin: 20px 0 20px 0;
+}
+
+.relative {
+    position: relative;
+}
+
+.characterPortraitBox {
+    overflow: hidden;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.characterPortraitBox:hover {
+    scale: 1.1;
+}
+
+.revertScale {
+}
+
+.hideInteractions {
+    display: none !important;
+}
+
+.characterPortraitInfo {
+    opacity: 100%;
+}
+
+.characterPortraitInteractionButton {
+    display: flex;
+    position: absolute;
+    background: none;
+    border: none;
+    cursor: pointer;
+    align-self: flex-end;
+    border-radius: 50%;
+    background-color: #252525;
+    width: 34px;
+    height: 34px;
+    justify-content: center;
+    align-items: center;
+}
+
+.characterPortraitInteractionButtonImg {
+    filter: invert(.5);
+    width: 75%;
+}
+
+.rarityStripHorizontal {
+    position: relative;
+    height: 5px;
+}
+
+.portrait {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100px;
+    height: 300px;
+}
+
+.characterPortraitBoxHover {
+    width: 110px;
+    height: 320px;
+}
+
+.search {
+    align-self: center !important;
+    top: 5em !important;
+}

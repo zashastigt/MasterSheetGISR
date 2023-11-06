@@ -1,5 +1,6 @@
 import CharacterBox from '../Universal/characterBox/characterBox.jsx'
 import WeaponBox from '../Universal/weaponBox/weaponBox.jsx'
+import CharacterPortraitBox from '../Universal/characterPortraitBox/characterPortraitBox.jsx'
 import { useState, useEffect } from 'react'
 
 function GetFilterButton(listShown, filter, {setFilter}, key, label, url){
@@ -33,40 +34,40 @@ function GetFilterButton(listShown, filter, {setFilter}, key, label, url){
     )
 }
 
-export function Filtering(types, game, searchValue, filter, boxType, setStateObject) {
-    if (boxType === 'Character') {
-        return FilterCheckboxes(types, filter).filter(filter => filter.name.toLowerCase().includes(searchValue.toLowerCase())).map(character => {
-            return <CharacterBox key={character.id} gameCharacter={character} game={game} characterList={types} setCharacterList={setStateObject} />
+export function Filtering(params) {
+    if (params.isChar) {
+        return FilterCheckboxes(params.itemList, params.filter).filter(filter => filter.name.toLowerCase().includes(params.searchValue.toLowerCase())).map(character => {
+            if (!params.portraitOnly) return <CharacterBox key={character.id} gameCharacter={character} game={params.game} characterList={params.itemList} setCharacterList={params.setCurrentList} />
+            return <CharacterPortraitBox key={character.id} character={character} characterList={params.currentList} setCharacterList={params.setCurrentList} addCharacter={params.addItem} setAddCharacter={params.setAddItem} setCharData={params.onClick}/>
         })
     }
-    else if (boxType === 'Weapon') {
-        return FilterCheckboxes(types, filter).filter(filter => filter.name.toLowerCase().includes(searchValue.toLowerCase())).map(weapon => {
-            return <WeaponBox key={weapon.name} gameWeapon={weapon} game={game} weaponList={types} setWeaponList={setStateObject} />
+    else {
+        return FilterCheckboxes(params.itemList, params.filter).filter(filter => filter.name.toLowerCase().includes(params.searchValue.toLowerCase())).map(weapon => {
+            return <WeaponBox key={weapon.name} gameWeapon={weapon} game={params.game} weaponList={params.itemList} setWeaponList={params.setCurrentList} />
         })
-    }
-    
+    }   
 }
 
-function FilterCheckboxes(types, filter) {
+function FilterCheckboxes(itemList, filter) {
     if (filter.length !== 0 ) {
-        const element = types.filter(fil => fil.types.combatType !== undefined && filter.some(f => fil.types.combatType.Element.toLowerCase().includes(f.toLowerCase())))
-        const group = types.filter(fil => fil.types.pathType !== undefined && filter.some(f => fil.types.pathType.Group.toLowerCase().includes(f.toLowerCase())))
+        const element = itemList.filter(fil => fil.types.combatType !== undefined && filter.some(f => fil.types.combatType.Element.toLowerCase().includes(f.toLowerCase())))
+        const group = itemList.filter(fil => fil.types.pathType !== undefined && filter.some(f => fil.types.pathType.Group.toLowerCase().includes(f.toLowerCase())))
 
         if (element.length !== 0 && group.length !== 0) return element.filter(fil => group.some(f => fil.name.includes(f.name)))
-        else if (element.length !== 0 ) return element
-        else if (group.length !== 0) return group
+        return [...element, ...group]
+        
     }
 
-    return types
+    return itemList
 }
 
-export default function Filters({filter, setFilter, listShown, element, elementImgs, elementExt, group, groupImgs, groupExt}) {
+export default function Filters({filter, setFilter, listShown, element, elementImgs, elementExt, group, groupImgs, groupExt, hideEverything = false}) {
     return (
         <div className="filters">
-            <ul className={`elements ${listShown ? '' : 'elementsHidden'}`}>
+            <ul className={`elements ${!listShown || hideEverything ? 'elementsHidden' : ''}`}>
                 {Object.keys(element).map((k)=>GetFilterButton(listShown, filter, setFilter[k]={setFilter}, k, element[k].label,  new URL(`../assets/${elementImgs}/${element[k].urlKey}.${elementExt}`, import.meta.url).href))}
             </ul>
-            <ul className="weapons">
+            <ul className={`weapons ${hideEverything ? 'elementsHidden' : ''}`}>
                 {Object.keys(group).map((k)=>GetFilterButton(listShown, filter, setFilter[k]={setFilter}, k, group[k].label, new URL(`../assets/${groupImgs}/${group[k].urlKey}.${groupExt}`, import.meta.url).href))}
             </ul>
         </div>

@@ -14,14 +14,19 @@ function AddDuplicatesToJson(data, sheetData, pityPlayers) {
     })
 
     if (newItem) {
-        newData.sort((a, b) => {
-            if (a.rank !== b.rank) return (a.rank > b.rank) ? -1 : 1;
-            if (a.types.combatType !== undefined && a.types.combatType.Element !== b.types.combatType.Element) return (a.types.combatType.Element < b.types.combatType.Element) ? -1 : 1;
-            else if (a.types.pathType !== undefined && a.types.pathType.Path !== b.types.pathType.Path) return (a.types.pathType.Path < b.types.pathType.Path) ? -1 : 1;
-            return (a.name < b.name) ? -1 : 1;
-        })
+        sortingList(newData)
     }
     return newData
 }
 
-export { AddDuplicatesToJson }
+function sortingList(newData){
+    newData.sort((a, b) => {
+        if (a.rank !== b.rank) return (a.rank > b.rank) ? -1 : 1;
+        if (a.types.combatType !== undefined && a.types.combatType.Element !== b.types.combatType.Element) return (a.types.combatType.Element < b.types.combatType.Element) ? -1 : 1;
+        else if (a.types.pathType !== undefined && a.types.pathType.Path !== b.types.pathType.Path) return (a.types.pathType.Path < b.types.pathType.Path) ? -1 : 1;
+        return (a.name < b.name) ? -1 : 1;
+    })
+    return newData
+}
+
+export { AddDuplicatesToJson, sortingList }
