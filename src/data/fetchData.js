@@ -1,7 +1,7 @@
 export async function getSheetDataJson() {
     const key = (`; ${localStorage.getItem('Key')}`).split(`; `).pop().split(';')[0];
 
-    return await fetch(`https://script.google.com/macros/s/AKfycbx7PzbIMqJkAfpvu8TOvKyuovZ-62b42kKX4E3G2uibszHUQPyjSbHP_5rkJYL9_avcjQ/exec?cookie=${key}`)
+    return await fetch(`https://script.google.com/macros/s/AKfycbyCWwOg2GpjYL2a7rTOe1nj49WuZUOuOUbumMf2NKn15pHk8_RK2Mj8_F8tMNC1jWvKzg/exec?cookie=${key}`)
     .then(response => { return response.json() });
 }
 
