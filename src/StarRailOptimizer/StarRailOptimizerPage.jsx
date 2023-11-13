@@ -87,15 +87,80 @@ function MainSROptimizerPage() {
                 <button className='button_header button text' onClick={() => { setListShown(false); setAddItem(false); setRemoveFilters(true) }}>Relics</button>
             </div>
             <div className='container'>
-                <button className={`button newItem text ${charDataShown ? 'hideInteractions' : ''}`} onClick={() => setAddItem(!addItem)}>{listShown ? (addItem ? 'Cancel' : 'Add Character') : (addItem ? 'Cancel' : 'Add Relic')}</button>
+                <button
+                    className={`button newItem text ${charDataShown ? 'hideInteractions' : ''}`}
+                    onClick={() => setAddItem(!addItem)}>
+                    {listShown ? (addItem ? 'Cancel' : 'Add Character') : (addItem ? 'Cancel' : 'Add Relic')}
+                </button>
             </div>
-            {console.log(charData)}
             {charDataShown ?
+                <div className='container charDetailsBackground'>
+                    <div>
+                        <img alt={'img'} src={charData.Img} />
+                        <input type="range" min="1" max="80" />
+                    </div>
+                    <ul className='charStatBackground'>
+                        <li>
+                            <p>HP</p>
+                        </li>
+                        <li>
+                            <p>ATK</p>
+                        </li>
+                        <li>
+                            <p>DEF</p>
+                        </li>
+                        <li>
+                            <p>SPD</p>
+                        </li>
+                    </ul>
+                    <div>
+                        <input type="range" min="1" max="9"/>
+                        <ul>
 
+                        </ul>
+                    </div>
+                    <div>
+                        <input type="range" min="1" max="15"/>
+                        <ul>
 
+                        </ul>
+                    </div>
+                    <div>
+                        <input type="range" min="1" max="15"/>
+                        <ul>
 
-                <div className='container'>
-                    <img alt={'img'} src={charData.Img} />
+                        </ul>
+                    </div>
+                    <div>
+                        <input type="range" min="1" max="15"/>
+                        <ul>
+
+                        </ul>
+                    </div>
+                    <div>
+                        exitbox
+                    </div>
+                    <div>
+                        artifacts
+                        <div>
+                            head
+                        </div>
+                        <div>
+                            hands
+                        </div>
+                        <div>
+                            body
+                        </div>
+                        <div>
+                            boots
+                        </div>
+                        <div>
+                            sphere
+                        </div>
+                        <div>
+                            rope
+                        </div>
+                    </div>
                 </div>
                 :
                 listShown ?

@@ -46,35 +46,40 @@
     margin: 20px 0 20px 0;
 }
 
-.relative {
-    position: relative;
-}
-
 .characterPortraitBox {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: space-between;
+    align-items: center;
     overflow: hidden;
     background: none;
     border: none;
     cursor: pointer;
+    background-repeat: no-repeat;
+    background-position: 50% 0;
+    width: 100px;
+    height: 355px;
 }
 
 .characterPortraitBox:hover {
-    scale: 1.1;
-}
-
-.revertScale {
+    margin: -10px;
+    padding: 10px;
 }
 
 .hideInteractions {
-    display: none !important;
+    visibility: hidden !important;
 }
 
 .characterPortraitInfo {
+    margin-bottom: -10px;
+}
+
+.opaque {
     opacity: 100%;
 }
 
 .characterPortraitInteractionButton {
     display: flex;
-    position: absolute;
     background: none;
     border: none;
     cursor: pointer;
@@ -92,25 +97,23 @@
     width: 75%;
 }
 
-.rarityStripHorizontal {
-    position: relative;
-    height: 5px;
+.rarityFiveStarBorder {
+    border-bottom: 5px solid rgba(200,124,36);
 }
 
-.portrait {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100px;
-    height: 300px;
-}
-
-.characterPortraitBoxHover {
-    width: 110px;
-    height: 320px;
+.rarityFourStarBorder {
+    border-bottom: 5px solid rgba(148,112,187);
 }
 
 .search {
     align-self: center !important;
     top: 5em !important;
+}
+
+.charDetailsBackground {
+    background-color: #464545;
+}
+
+.charStatBackground {
+    background-color: #686868;
 }

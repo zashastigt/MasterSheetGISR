@@ -25,21 +25,23 @@ export default function CharacterPortraitBox({ character, characterList, setChar
     }
 
     return (
-        <div className={`characterPortraitBox`} onMouseOver={() => setVisible(true)} onMouseLeave={() => setVisible(false)} onClick={() => addCharacter ? handleAddClick(true) : handleAddClick(false)}>
-            <div className={`portrait ${visible ? '' : ''}`} >
-                {!addCharacter ?
-                    <div className={`characterPortraitInteractionButton ${!addCharacter && visible ? '' : 'hideInteractions'}`} onClick={() => handleRemoveClick()}>
-                        <img className={'characterPortraitInteractionButtonImg'} src={Trash} />
-                    </div>
-                    :
-                    ''}
-                <img alt={'img'} src={character.Img} className={`${visible ? 'revertScale' : ''}`} />
+        <div
+            className={`characterPortraitBox ${parseInt(character.rank) === 5 ? 'rarityFiveStarBorder' : 'rarityFourStarBorder'}`}
+            style={{ backgroundImage: `url(${character.Img})` }}
+            onMouseOver={() => setVisible(true)}
+            onMouseLeave={() => setVisible(false)}
+            onClick={() => addCharacter ? handleAddClick(true) : handleAddClick(false)}>
+            <div className={`${visible ? 'characterPortraitInfo' : ''}`}>
+                <img className={'opaque weapon'} alt={'img'} src={character.types.combatType.Img} />
+                <img className={'opaque weapon'} alt={'img'} src={character.types.pathType.Img} />
             </div>
-            <div className='relative'>
-                <img className={'characterPortraitInfo weapon'} alt={'img'} src={character.types.combatType.Img} />
-                <img className={'characterPortraitInfo weapon'} alt={'img'} src={character.types.pathType.Img} />
-            </div>
-            <div className={`rarityStripHorizontal ${parseInt(character.rank) === 5 ? 'rarityFiveStar' : 'rarityFourStar'}`}></div>
+            {!addCharacter ?
+                <div className={`characterPortraitInteractionButton ${!addCharacter && visible ? '' : 'hideInteractions'}`} onClick={(e) => { e.stopPropagation(); handleRemoveClick() }}>
+                    <img className={'characterPortraitInteractionButtonImg'} src={Trash} />
+                </div>
+                :
+                ''}
+
         </div>
     )
 }
