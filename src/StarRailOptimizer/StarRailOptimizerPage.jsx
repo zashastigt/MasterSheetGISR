@@ -9,6 +9,7 @@ import paths from '../data/paths.json'
 import Filters, { Filtering } from '../Universal/filterButton.jsx'
 import SearchBar from '../Universal/SearchBar/searchBar.jsx'
 import { sortingList } from '../Universal/AddDuplicatesToJson.js'
+import Characters from "./characters/characters.jsx";
 
 function MainSROptimizerPage() {
     const hasPageBeenRendered = useRef(false)
@@ -16,7 +17,7 @@ function MainSROptimizerPage() {
     const [searchValue, setSearchValue] = useState('')
     const [filter, setFilter] = useState([])
     const [removeFilters, setRemoveFilters] = useState(false)
-    const [listShown, setListShown] = useState(true)
+    const [listShown, setListShown] = useState('characters')
     const [addItem, setAddItem] = useState(false)
     const [characters, setCharacters] = useState({})
     const [addedCharacterList, setAddedCharacters] = useState([])
@@ -57,129 +58,36 @@ function MainSROptimizerPage() {
         return <div>Loading...</div>
     }
 
-    let characterList = []
-    if (addItem && listShown) {
-        characterList = Filtering({ itemList: characters, searchValue: searchValue, filter: filter, isChar: true, setCurrentList: setAddedCharacters, portraitOnly: true, setAddItem: setAddItem, currentList: addedCharacterList, addItem: addItem })
-    }
-
-    let currentCharacterList = []
-    if (Object.keys(addedCharacterList).length > 0 && !addItem && listShown) {
-        currentCharacterList = Filtering({ itemList: addedCharacterList, searchValue: searchValue, filter: filter, isChar: true, setCurrentList: setAddedCharacters, portraitOnly: true, currentList: addedCharacterList, onClick: setCharData })
+    function SelectedList() {
+        switch (listShown) {
+            case 'characters':
+                return (
+                    <Characters
+                        addedCharacterList={addedCharacterList}
+                    />
+                )
+            case 'relics':
+                return (
+                    <Relics />
+                )
+            case 'weapons':
+                return (
+                    <Weapons />
+                )
+        }
     }
 
     return (
         <>
-            <Filters
-                listShown={listShown}
-                filter={filter}
-                setFilter={setFilter}
-                element={elementsSR}
-                elementImgs={'StarRailElementImgs'}
-                elementExt={'webp'}
-                group={paths}
-                groupImgs={'StarRailPathImgs'}
-                groupExt={'webp'}
-                hideEverything={removeFilters} />
             <SearchBar searchValue={searchValue} setSearchValue={setSearchValue} />
-
             <div className="button_header_banner" >
-                <button className='button_header button text' onClick={() => { setListShown(true); setAddItem(false); setRemoveFilters(false) }}>Characters</button>
-                <button className='button_header button text' onClick={() => { setListShown(false); setAddItem(false); setRemoveFilters(true) }}>Relics</button>
+                <button className='button_header button text' onClick={() => { setListShown('characters')}}>Characters</button>
+                <button className='button_header button text' onClick={() => { setListShown('relics')}}>Relics</button>
             </div>
-            <div className='container'>
-                <button
-                    className={`button newItem text ${charDataShown ? 'hideInteractions' : ''}`}
-                    onClick={() => setAddItem(!addItem)}>
-                    {listShown ? (addItem ? 'Cancel' : 'Add Character') : (addItem ? 'Cancel' : 'Add Relic')}
-                </button>
-            </div>
-            {charDataShown ?
-                <div className='container charDetailsBackground'>
-                    <div>
-                        <img alt={'img'} src={charData.Img} />
-                        <input type="range" min="1" max="80" />
-                    </div>
-                    <ul className='charStatBackground'>
-                        <li>
-                            <p>HP</p>
-                        </li>
-                        <li>
-                            <p>ATK</p>
-                        </li>
-                        <li>
-                            <p>DEF</p>
-                        </li>
-                        <li>
-                            <p>SPD</p>
-                        </li>
-                    </ul>
-                    <div>
-                        <input type="range" min="1" max="9"/>
-                        <ul>
-
-                        </ul>
-                    </div>
-                    <div>
-                        <input type="range" min="1" max="15"/>
-                        <ul>
-
-                        </ul>
-                    </div>
-                    <div>
-                        <input type="range" min="1" max="15"/>
-                        <ul>
-
-                        </ul>
-                    </div>
-                    <div>
-                        <input type="range" min="1" max="15"/>
-                        <ul>
-
-                        </ul>
-                    </div>
-                    <div>
-                        exitbox
-                    </div>
-                    <div>
-                        artifacts
-                        <div>
-                            head
-                        </div>
-                        <div>
-                            hands
-                        </div>
-                        <div>
-                            body
-                        </div>
-                        <div>
-                            boots
-                        </div>
-                        <div>
-                            sphere
-                        </div>
-                        <div>
-                            rope
-                        </div>
-                    </div>
-                </div>
-                :
-                listShown ?
-                    <div className='container addCharacterContainer'>
-                        {addItem ?
-                            [characterList]
-                            :
-                            [currentCharacterList]
-                        }
-                    </div>
-                    :
-                    <div>
-                        {relics}
-                    </div>
-            }
+            <SelectedList />
         </>
     )
 }
-
 
 ReactDOM.createRoot(document.getElementById('root')).render(
     <React.StrictMode>
