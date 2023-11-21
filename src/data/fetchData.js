@@ -20,6 +20,17 @@ export async function getGICharacterJson() {
     .then(response => { return response.json() });
 }
 
+export async function getGICharacterStatJson() {
+    return await fetch(`https://api.ambr.top/v2/en/avatar`)
+        .then(response => { return response.json() }).then(data => {
+            Promise.all(
+            Object.keys(data.data.items).map( id =>
+                fetch(`https://api.ambr.top/v2/en/avatar/${id}`).then(response => {
+                    return response.json()})
+            ))
+        }).then(response => { return response.json() });
+}
+
 export async function getGIWeaponJson() {
     return await fetch(`https://api.ambr.top/v2/en/weapon`)
     .then(response => { return response.json() });
