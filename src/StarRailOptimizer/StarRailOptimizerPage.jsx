@@ -34,15 +34,6 @@ function MainSROptimizerPage() {
         })
     }, [])
 
-    useEffect(() => {
-        const storageList = JSON.parse(localStorage.getItem('CharacterList'))
-        if (storageList) setAddedCharacters(sortingList(storageList))
-
-    }, []);
-
-    useEffect(() => {
-        !hasPageBeenRendered.current ? hasPageBeenRendered.current = true : localStorage.setItem('CharacterList', JSON.stringify(addedCharacterList))
-    }, [addedCharacterList]);
 
     useEffect(() => {
         if (!hasPageBeenRendered.current) hasPageBeenRendered.current = true
@@ -63,7 +54,7 @@ function MainSROptimizerPage() {
             case 'characters':
                 return (
                     <Characters
-                        addedCharacterList={addedCharacterList}
+                        characters={characters}
                     />
                 )
             case 'relics':

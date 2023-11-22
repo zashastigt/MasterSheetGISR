@@ -9,7 +9,7 @@ import Filters, { Filtering } from '../../Universal/filterButton.jsx'
 import { sortingList } from '../../Universal/AddDuplicatesToJson.js'
 import CharacterInfo from "./characterInfo.jsx";
 
-export default function NewCharacter() {
+export default function NewCharacter(props) {
     const hasPageBeenRendered = useRef(false)
     const [loading, setLoading] = useState(true)
     const [searchValue, setSearchValue] = useState('')
@@ -24,43 +24,24 @@ export default function NewCharacter() {
     const [relics, setRelics] = useState([])
     const [weapons, setWeapons] = useState({})
 
-    useEffect(() => {
-        const storageList = JSON.parse(localStorage.getItem('CharacterList'))
-        if (storageList) setAddedCharacters(sortingList(storageList))
-
-    }, []);
-
-    useEffect(() => {
-        !hasPageBeenRendered.current ? hasPageBeenRendered.current = true : localStorage.setItem('CharacterList', JSON.stringify(addedCharacterList))
-    }, [addedCharacterList]);
-
-    useEffect(() => {
-        if (!hasPageBeenRendered.current) hasPageBeenRendered.current = true
-        else {
-            if (Object.keys(charData).length > 0) {
-                setRemoveFilters(true)
-                setCharDataShown(true)
-            }
-        }
-    }, [charData]);
-
-    let characterList = []
-    if (addItem && listShown) {
-        characterList = Filtering({ itemList: characters, searchValue: searchValue, filter: filter, isChar: true, setCurrentList: setAddedCharacters, portraitOnly: true, setAddItem: setAddItem, currentList: addedCharacterList, addItem: addItem })
-    }
-
-    let currentCharacterList = []
-    if (Object.keys(addedCharacterList).length > 0 && !addItem && listShown) {
-        currentCharacterList = Filtering({ itemList: addedCharacterList, searchValue: searchValue, filter: filter, isChar: true, setCurrentList: setAddedCharacters, portraitOnly: true, currentList: addedCharacterList, onClick: setCharData })
-    }
-
     return (
         <>
+            <Filters
+                listShown={listShown}
+                filter={filter}
+                setFilter={setFilter}
+                element={elementsSR}
+                elementImgs={'StarRailElementImgs'}
+                elementExt={'webp'}
+                group={paths}
+                groupImgs={'StarRailPathImgs'}
+                groupExt={'webp'}
+                hideEverything={removeFilters}
+            />
             <div className='container addCharacterContainer'>
-                        {addItem ?
-                            [characterList]
-                            :
-                            [currentCharacterList]
+                        {
+                            [props.characterList]
+
                         }
             </div>
 

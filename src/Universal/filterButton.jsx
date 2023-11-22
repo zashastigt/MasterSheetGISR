@@ -36,9 +36,25 @@ function GetFilterButton(listShown, filter, {setFilter}, key, label, url){
 
 export function Filtering(params) {
     if (params.isChar) {
-        return FilterCheckboxes(params.itemList, params.filter).filter(filter => filter.name.toLowerCase().includes(params.searchValue.toLowerCase())).map(character => {
-            if (!params.portraitOnly) return <CharacterBox key={character.id} gameCharacter={character} game={params.game} characterList={params.itemList} setCharacterList={params.setCurrentList} />
-            return <CharacterPortraitBox key={character.id} character={character} characterList={params.currentList} setCharacterList={params.setCurrentList} addCharacter={params.addItem} setAddCharacter={params.setAddItem} setCharData={params.onClick}/>
+        return FilterCheckboxes(params.itemList, params.filter).filter(filter =>
+            filter.name.toLowerCase().includes(params.searchValue.toLowerCase())).map(character => {
+                if (!params.portraitOnly)
+                    return <CharacterBox
+                        key={character.id}
+                        gameCharacter={character}
+                        game={params.game}
+                        characterList={params.itemList}
+                        setCharacterList={params.setCurrentList}
+                    />
+                return <CharacterPortraitBox
+                    key={character.id}
+                    character={character}
+                    characterList={params.currentList}
+                    setCharacterList={params.setCurrentList}
+                    addCharacter={params.addItem}
+                    setAddCharacter={params.setAddItem}
+                    setCharData={params.onClick}
+                />
         })
     }
     else {
