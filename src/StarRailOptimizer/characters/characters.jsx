@@ -46,9 +46,6 @@ export default function Characters(props) {
         })
     }
 
-    console.log(addItem)
-    console.log(listShown)
-
     let currentCharacterList = []
     if (Object.keys(addedCharacterList).length > 0 && !addItem && listShown) {
         currentCharacterList = Filtering({
@@ -62,8 +59,6 @@ export default function Characters(props) {
             onClick: setCharData
         })
     }
-    console.log(props.characters)
-    console.log(characterList)
 
     return (
         <>
