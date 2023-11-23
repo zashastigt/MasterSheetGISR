@@ -18,6 +18,7 @@ export default defineConfig({
             input: {
                 main: resolve(root, 'index.html'),
                 genshin: resolve(root, 'Genshin', 'index.html'),
+                genshinTeams: resolve(root,'Genshin', 'Teams', 'index.html'),
                 starRail: resolve(root, 'StarRail', 'index.html'),
             }
         }
