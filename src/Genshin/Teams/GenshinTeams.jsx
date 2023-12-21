@@ -5,6 +5,7 @@ import '../../Universal/SearchBar/searchBar.css'
 import './GenshinTeams.css'
 import {getGICharacterJson} from "../../data/fetchData.js";
 import Teams from "../../Universal/Teams/Teams.jsx";
+import {getGIDataWithImages} from "../../data/addImagesToData.js";
 
 
 function GenshinTeams() {
