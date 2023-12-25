@@ -2,4 +2,10 @@ body {
     background-color: #1a1c1d;
     color: #787168;
     margin: 0;
+    font-family: 'Fira Sans', sans-serif;
+    user-select: none;
+}
+
+body::-webkit-scrollbar {
+    display: none;
 }

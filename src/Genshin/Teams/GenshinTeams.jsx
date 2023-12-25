@@ -1,11 +1,9 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import ReactDOM from 'react-dom/client'
-import { useState, useEffect } from 'react'
 import '../../Universal/SearchBar/searchBar.css'
 import './GenshinTeams.css'
 import {getGICharacterJson} from "../../data/fetchData.js";
 import Teams from "../../Universal/Teams/Teams.jsx";
-import {getGIDataWithImages} from "../../data/addImagesToData.js";
 
 
 function GenshinTeams() {
@@ -25,10 +23,25 @@ function GenshinTeams() {
         return <div>Loading...</div>
     }
 
+    const filterCharacters = (characterstoFilter) => {
+        return Object.keys(genshinCharacters).reduce((result, key) => {
+            if (!characterstoFilter.includes(key)) {
+                result[key] = genshinCharacters[key];
+            }
+            return result;
+        }, {})
+    }
 
     return (
         <>
-           <Teams characters={genshinCharacters} />
+           <Teams characters={() => filterCharacters(
+               [
+                   '10000005-anemo',
+                   '10000005-dendro',
+                   '10000005-electro',
+                   '10000005-geo',
+                   '10000005-hydro']
+           )} />
         </>
     )
 }

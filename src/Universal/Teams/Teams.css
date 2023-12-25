@@ -1,15 +1,125 @@
+.popUp {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    height: 78%;
+    width: 88%;
+    top: 10%;
+    left: 5%;
+    background-color: #252525;
+    padding: 1%;
+    border-radius: 30px;
+    overflow: scroll;
+    z-index: 1;
+}
+
+.popUp::-webkit-scrollbar {
+    display: none;
+}
+
+.popUp > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #1a1c1d;
+}
+
+.popUp > #addTeamBox {
+    height: fit-content;
+}
+
+.popUp > #addTeamCharacters {
+    height: 70%;
+    overflow-y: scroll;
+}
+
+#addTeamCharacters::-webkit-scrollbar {
+    display: none;
+}
+
+.searchBox {
+    display: flex;
+    width: 80%;
+    background-color: #222324;
+    border: none;
+    border-radius: 25px;
+    padding: 0.75em;
+    margin: 10px;
+    color: #787168;
+    font-size: 18px;
+    top: 0.75em;
+    text-align: center;
+}
+
+#characterList {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+#characterPortrait {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    height: 150px;
+    width: 150px;
+    border: #222324 3px solid;
+    border-radius: 30%;
+    overflow: hidden;
+    background-color: #2A2C2D;
+}
+
+#characterPortrait > .characterImg {
+    height: 100%;
+}
+
+#characterPortrait> .elementImg {
+    position: absolute;
+    top: 57%;
+    left: 0;
+    background-color: #222324;
+    height: 30px;
+    border-radius: 0 50% 0 0;
+    padding: 3% 3% 1% 0;
+}
+
+#characterPortrait > div {
+    position: absolute;
+    top: 80%;
+    background-color: #222324;
+    height: fit-content;
+    padding: 3px;
+    width: 100%;
+    text-align: center;
+}
+
+#ownedList {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
 .TeamContainer {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
 }
 
-.team {
+#teamBox {
     display: flex;
-    background-color: #2A2C2D;
+    flex-direction: column;
 }
 
-.team > div {
+.team {
+    display: flex;
+    background-color: #222324;
+}
+
+.team > .teamSlot {
     display: flex;
     height: 100px;
     width: 100px;
@@ -18,4 +128,37 @@
     align-items: center;
     background-color: #333333;
     border-radius: 50%;
+}
+
+.team > div:hover {
+    background-color: #222324;
+}
+
+#teamList {
+    display: flex;
+    flex-direction: column;
+}
+
+#addTeam {
+
+}
+
+.teamSlot {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.teamSlot > img {
+    height: 100%;
+}
+
+.teamSlot > span {
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    width: 100%;
+    background-color: #333333;
+
 }
