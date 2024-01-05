@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import '../SearchBar/searchBar.css'
 import './Teams.css'
 
@@ -6,18 +6,41 @@ import './Teams.css'
 
 export default function Teams(props) {
     const [fullList, setFullList] = useState(props.characters)
-    const [ownedList, setOwnedList] = useState({})
-    const [teamList, setTeamList] = useState({})
-    const [usedList, setUsedList] = useState([])
+    const [ownedList, setOwnedList] = useState(() => {
+        const saved = localStorage.getItem("ownedList")
+        const initialValue = JSON.parse(saved)
+        return initialValue || {}
+    })
+    const [teamList, setTeamList] = useState(() => {
+        const saved = localStorage.getItem("teamList")
+        const initialValue = JSON.parse(saved)
+        return initialValue || {}
+    })
+    const [usedList, setUsedList] = useState(() => {
+        const saved = localStorage.getItem("usedList")
+        const initialValue = JSON.parse(saved)
+        return initialValue || []
+    })
 
     const [showFullList, setShowFullList] = useState(false)
     const [showAddTeam, setShowAddTeam] = useState(false)
 
+    useEffect(() => {
+        localStorage.setItem("ownedList", JSON.stringify(ownedList))
+        localStorage.setItem("teamList", JSON.stringify(teamList))
+        localStorage.setItem("usedList", JSON.stringify(usedList))
+    }, [ownedList, teamList, usedList])
+
     const getImage = (icon) => (`https://api.ambr.top/assets/UI/${icon}.png`)
 
     const removeTeam = (team) => {
+        console.log(Object.values(teamList[team]))
         const {[team]: _, ...newList} = teamList
         setTeamList(newList)
+
+        console.log(usedList)
+        usedList.filter(character => !Object.values(teamList[team]).includes(character))
+        console.log(usedList)
     }
 
     const CharacterPortrait = (props) => {
