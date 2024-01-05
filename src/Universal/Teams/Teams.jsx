@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import '../SearchBar/searchBar.css'
 import './Teams.css'
 
-
+const GIElement = import.meta.glob('../../assets/GenshinElementImgs/*.svg', { eager: true })
 
 export default function Teams(props) {
     const [fullList, setFullList] = useState(props.characters)
@@ -34,32 +34,27 @@ export default function Teams(props) {
     const getImage = (icon) => (`https://api.ambr.top/assets/UI/${icon}.png`)
 
     const removeTeam = (team) => {
-        console.log(Object.values(teamList[team]))
         const {[team]: _, ...newList} = teamList
         setTeamList(newList)
-
-        console.log(usedList)
         usedList.filter(character => !Object.values(teamList[team]).includes(character))
-        console.log(usedList)
     }
-
     const CharacterPortrait = (props) => {
         const addElement = () => {
             switch (fullList[props.character].element) {
                 case 'Wind':
-                    return '../../assets/GenshinElementImgs/anemo.svg'
+                    return GIElement['../../assets/GenshinElementImgs/anemo.svg'].default
                 case 'Ice':
-                    return '../../assets/GenshinElementImgs/cryo.svg'
+                    return GIElement['../../assets/GenshinElementImgs/cryo.svg'].default
                 case 'Grass':
-                    return '../../assets/GenshinElementImgs/dendro.svg'
+                    return GIElement['../../assets/GenshinElementImgs/dendro.svg'].default
                 case 'Electric':
-                    return '../../assets/GenshinElementImgs/electro.svg'
+                    return GIElement['../../assets/GenshinElementImgs/electro.svg'].default
                 case 'Rock':
-                    return '../../assets/GenshinElementImgs/geo.svg'
+                    return GIElement['../../assets/GenshinElementImgs/geo.svg'].default
                 case 'Water':
-                    return '../../assets/GenshinElementImgs/hydro.svg'
+                    return GIElement['../../assets/GenshinElementImgs/hydro.svg'].default
                 case 'Fire':
-                    return '../../assets/GenshinElementImgs/pyro.svg'
+                    return GIElement['../../assets/GenshinElementImgs/pyro.svg'].default
             }
         }
 
