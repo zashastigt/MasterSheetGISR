@@ -13,6 +13,7 @@ import Filters, {Filtering} from '../Universal/filterButton.jsx'
 import ChangePage from '../assets/Icon_Character_Archive.webp'
 import { AddDuplicatesToJson } from '../Universal/AddDuplicatesToJson'
 import { getSheetDataJson } from '../data/fetchData'
+import Header from "../Universal/header/header.jsx";
 
 
 function ListSwitchStarRail() {
@@ -47,16 +48,13 @@ function ListSwitchStarRail() {
         <>
             <Filters listShown={listShown} filter={filter} setFilter={setFilter} element={elementsSR} elementImgs={'StarRailElementImgs'} elementExt={'webp'} group={paths} groupImgs={'StarRailPathImgs'} groupExt={'webp'}/>
             <SearchBar searchValue={searchValue} setSearchValue={setSearchValue}/>
+            <Header Links={[['../StarRail/', 'Star Rail'], ['../Genshin/', 'Genshin Impact'], ['../Genshin/Teams/', 'Genshin Teams']]}/>
             <div className={`switch`}>
                 <img alt={'character'} src={'https://hsr.honeyhunterworld.com/img/menu/char.webp?x54196'}/>
                 <button className={``} onClick={() => setListShown(!listShown)}>
                     <div className={`slider ${listShown ? 'sliderLeft' : 'sliderRight'}`}></div>
                 </button>
                 <img alt={'weapon'} src={'https://hsr.honeyhunterworld.com/img/menu/weapon.webp?x5419'}/>
-                <a href={'../Genshin/'}>
-                    <img className={'switchGameImage'} src={ChangePage}/> 
-                </a>                  
-                
             </div>
             {listShown ?
                 <div className={'characterList'}>

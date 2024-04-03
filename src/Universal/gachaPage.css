@@ -90,7 +90,6 @@ body {
     border-color: #787168;
     width: fit-content;
     flex-direction: column;
-    padding: 0;
     margin: 0;
     position: fixed;
     padding: 10px
@@ -130,6 +129,10 @@ label {
     max-height: 50px;
     max-width: 50px;
     opacity: 50%;
+}
+
+.element:hover, .weapon:hover {
+    transform: rotate(5deg);
 }
 
 .opaque {

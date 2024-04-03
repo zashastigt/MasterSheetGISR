@@ -122,7 +122,7 @@ export default function PityBox({game, pities, setPities}) {
                     </div>
                     <div className={'pityInputCell'}>
                         <div>50/50</div>
-                        <div className={'star5'} onClick={() => {
+                        <div className={'star5 coinflip'} onClick={() => {
                             console.log(selectedPerson.Guarantee)
                             if (selectedPerson.Guarantee === 'No'){
                                 console.log(1)

@@ -4,6 +4,7 @@ import '../../Universal/SearchBar/searchBar.css'
 import './GenshinTeams.css'
 import {getGICharacterJson} from "../../data/fetchData.js";
 import Teams from "../../Universal/Teams/Teams.jsx";
+import Header from "../../Universal/header/header.jsx";
 
 
 function GenshinTeams() {
@@ -49,6 +50,7 @@ function GenshinTeams() {
 ReactDOM.createRoot(document.getElementById('root')).render(
     <React.StrictMode>
         <div className="container">
+            <Header Links={[['../../StarRail/', 'Star Rail'], ['../../Genshin/', 'Genshin Impact'], ['../Genshin/Teams/', 'Genshin Teams']]}/>
             <GenshinTeams />
         </div>
     </React.StrictMode>

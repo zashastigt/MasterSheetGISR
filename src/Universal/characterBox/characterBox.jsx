@@ -8,7 +8,6 @@ export default function CharacterBox({gameCharacter, game, characterList, setCha
     const [levelChanged, setLevelChanged] = useState(false)
     const [debounceTimeoutHandle, setDebounceTimeoutHandle] = useState()
     const DEBOUNCE_TIMEOUT_MS = 1000;
-
     useEffect(() => {
         if (!levelChanged) return
         characterList.forEach((char, index) => {
@@ -86,11 +85,14 @@ export default function CharacterBox({gameCharacter, game, characterList, setCha
         }
     }
 
+    console.log(game)
     return(
         <div key={character.name} className={'characterBox'}>
             <div className={'characterContainer'}>
                 <div className={`characterPortrait`}>
-                    <img className={'characterImgSR'} alt={'img'} src={character.Img}/>
+                    <a className={'characterImgLink'} href={game === 'StarRail' ? `https://hsr.yatta.top/en/archive/avatar/${character.id}/${character.name}` : `https://ambr.top/en/archive/avatar/${character.id}/${character.name}`} target={"_blank"}>
+                        <img className={'characterImgSR'} alt={'img'} src={character.Img}/>
+                    </a>
                 </div>
                 <div className={`rarityStrip ${parseInt(character.rank) === 5 ? 'rarityFiveStar' : 'rarityFourStar'}`}></div>
                 <div className={'characterInfo'}>
