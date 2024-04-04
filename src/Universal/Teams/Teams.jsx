@@ -4,7 +4,6 @@ import FullCharacterList from "./components/fullCharacterList.jsx";
 import '../SearchBar/searchBar.css'
 import './Teams.css'
 
-const GIElement = import.meta.glob('../../assets/GenshinElementImgs/*.svg', { eager: true })
 const getImage = (icon) => (`https://api.ambr.top/assets/UI/${icon}.png`)
 
 export default function Teams(props) {
