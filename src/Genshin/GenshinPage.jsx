@@ -49,11 +49,11 @@ function ListSwitchGenshin() {
             <SearchBar searchValue={searchValue} setSearchValue={setSearchValue} />
             <Header Links={[['../StarRail/', 'Star Rail'], ['../Genshin/', 'Genshin Impact'], ['../Genshin/Teams/', 'Genshin Teams']]}/>
             <div className={`switch`}>
-                <img alt={'character'} src={'https://genshin.honeyhunterworld.com/img/icons/char_35.webp?x50246'} />
+                <img alt={'character'} src={'../assets/charSR.webp'} />
                 <button className={``} onClick={() => setListShown(!listShown)}>
                     <div className={`slider ${listShown ? 'sliderLeft' : 'sliderRight'}`}></div>
                 </button>
-                <img className='moreWhite' alt={'weapon'} src={'https://genshin.honeyhunterworld.com/img/icons/weapons_35.webp?x50246'} />
+                <img className='moreWhite' alt={'weapon'} src={'../assets/weaponGI.webp'} />
             </div>
             {listShown ?
                 <div className={'characterList'}>

@@ -85,7 +85,6 @@ export default function CharacterBox({gameCharacter, game, characterList, setCha
         }
     }
 
-    console.log(game)
     return(
         <div key={character.name} className={'characterBox'}>
             <div className={'characterContainer'}>
