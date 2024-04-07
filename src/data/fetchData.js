@@ -16,7 +16,7 @@ export async function getSRWeaponJson() {
 }
 
 export async function getGICharacterJson() {
-    return await fetch(`https://bbs-api-os.hoyolab.com/game_record/genshin/api/character`)
+    return await fetch(`https://api.ambr.top/v2/en/avatar`)
     .then(response => { return response.json() });
 }
 

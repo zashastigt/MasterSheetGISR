@@ -5,7 +5,6 @@ import { useState, useEffect } from 'react'
 function GetFilterButton(listShown, filter, {setFilter}, key, label, url){
     const [cbChecked, setChecked] = useState(false)
     const [opaque, setOpaque] = useState('')
-    
     const handleChange = (event) => {
         setChecked(event.target.checked)
         if (event.target.checked) {
@@ -60,14 +59,26 @@ function FilterCheckboxes(types, filter) {
     return types
 }
 
-export default function Filters({filter, setFilter, listShown, element, elementImgs, elementExt, group, groupImgs, groupExt}) {
+export default function Filters({isMobile, filterLHidden, filterRHidden, filter, setFilter, listShown, element, elementImgs, elementExt, group, groupImgs, groupExt}) {
     return (
         <div className="filters">
-            <ul className={`elements ${listShown ? '' : 'elementsHidden'}`}>
-                {Object.keys(element).map((k)=>GetFilterButton(listShown, filter, setFilter[k]={setFilter}, k, element[k].label,  new URL(`../assets/${elementImgs}/${element[k].urlKey}.${elementExt}`, import.meta.url).href))}
+            <ul className={`elements ${listShown ? '' : 'elementsHidden'}`} style={filterLHidden || !isMobile ? {left: "0"} : {left: "-110px"}}>
+                {Object.keys(element).map((k)=>GetFilterButton(
+                    listShown,
+                    filter,
+                    setFilter[k]={setFilter},
+                    k, element[k].label,
+                    new URL(`../assets/${elementImgs}/${element[k].urlKey}.${elementExt}`,import.meta.url).href
+                ))}
             </ul>
-            <ul className="weapons">
-                {Object.keys(group).map((k)=>GetFilterButton(listShown, filter, setFilter[k]={setFilter}, k, group[k].label, new URL(`../assets/${groupImgs}/${group[k].urlKey}.${groupExt}`, import.meta.url).href))}
+            <ul className={"weapons"} style={filterRHidden || !isMobile ? {right: "0"} : {right: "-110px"}}>
+                {Object.keys(group).map((k)=>GetFilterButton(
+                    listShown,
+                    filter,
+                    setFilter[k]={setFilter},
+                    k, group[k].label,
+                    new URL(`../assets/${groupImgs}/${group[k].urlKey}.${groupExt}`, import.meta.url).href
+                ))}
             </ul>
         </div>
     )

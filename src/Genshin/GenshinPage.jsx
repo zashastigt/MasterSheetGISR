@@ -16,6 +16,7 @@ import ChangePage from '../assets/Icon_Character_Archive.webp'
 import { AddDuplicatesToJson } from '../Universal/AddDuplicatesToJson'
 import { getSheetDataJson } from '../data/fetchData'
 import Header from "../Universal/header/header.jsx";
+import {useMediaQuery} from "react-responsive";
 
 function ListSwitchGenshin() {
     const [listShown, setListShown] = useState(true)
@@ -24,7 +25,11 @@ function ListSwitchGenshin() {
     const [loading, setLoading] = useState(true)
     const [searchValue, setSearchValue] = useState('')
     const [filter, setFilter] = useState([])
+    const [filterLHidden, setFilterLHidden] = useState(false)
+    const [filterRHidden, setFilterRHidden] = useState(false)
     const [pity, setPity] = useState([])
+
+    const isMobile = useMediaQuery({query: `(max-width: 600px)`})
 
     useEffect(() => {
         getGIDataWithImages().then(async (data) => {
@@ -47,9 +52,29 @@ function ListSwitchGenshin() {
 
     return (
         <>
-            <Filters listShown={listShown} filter={filter} setFilter={setFilter} element={elementsGI} elementImgs={'GenshinElementImgs'} elementExt={'svg'} group={weapons} groupImgs={'GenshinWeaponImgs'} groupExt={'png'} />
+            <Filters
+                isMobile={isMobile}
+                filterLHidden={filterLHidden}
+                filterRHidden={filterRHidden}
+                listShown={listShown}
+                filter={filter}
+                setFilter={setFilter}
+                element={elementsGI}
+                elementImgs={'GenshinElementImgs'}
+                elementExt={'svg'}
+                group={weapons}
+                groupImgs={'GenshinWeaponImgs'}
+                groupExt={'png'}
+            />
             <SearchBar searchValue={searchValue} setSearchValue={setSearchValue} />
-            <Header Links={[['../StarRail/', 'Star Rail'], ['../Genshin/', 'Genshin Impact'], ['../Genshin/Teams/', 'Genshin Teams']]}/>
+            <Header
+                isMobile={isMobile}
+                filterLHidden={filterLHidden}
+                setFilterLHidden={setFilterLHidden}
+                filterRHidden={filterRHidden}
+                setFilterRHidden={setFilterRHidden}
+                Links={[['../StarRail/', 'Star Rail'], ['../Genshin/', 'Genshin Impact'], ['../Genshin/Teams/', 'Genshin Teams']]
+            }/>
             <div className={`switch`}>
                 <img alt={'character'} src={charGI} />
                 <button className={``} onClick={() => setListShown(!listShown)}>

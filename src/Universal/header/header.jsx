@@ -1,12 +1,8 @@
 import React, {useState} from 'react'
 import './header.css'
-import { useMediaQuery } from 'react-responsive'
-
 
 export default function Header(props) {
     const [showMenu, setShowMenu] = useState(false)
-    const isMobile = useMediaQuery({query: `(max-width: 600px)`})
-    console.log(showMenu)
 
     const Navigation = () => (
         <div className={'navigation'}>
@@ -18,17 +14,17 @@ export default function Header(props) {
 
     return (
         <div id={'header'}>
-            {isMobile &&
+            {props.isMobile &&
                 <>
                     <div className={'mobileHeader'}>
-                        <button>{'>'}</button>
+                        <button onClick={() => props.setFilterLHidden(!props.filterLHidden)}>{'>'}</button>
                         <button className={'navigationButton'} onClick={() => setShowMenu(!showMenu)}>navigation</button>
-                        <button>{'<'}</button>
+                        <button onClick={() => props.setFilterRHidden(!props.filterRHidden)}>{'<'}</button>
                     </div>
                     {showMenu && <Navigation />    }
                 </>
             }
-            {!isMobile && <Navigation />}
+            {!props.isMobile && <Navigation />}
         </div>
     )
 }
