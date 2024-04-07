@@ -18,7 +18,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 85%;
+    width: calc(100vw - 200px);
 }
 
 *:focus-visible {
@@ -80,6 +80,7 @@ body {
     flex-direction: column;
     position: fixed;
     height: 100vh;
+    z-index: 2;
 }
 
 .elements, .weapons {
@@ -168,6 +169,7 @@ input[type=checkbox] {
 .characterList {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .weaponList {
@@ -178,4 +180,19 @@ input[type=checkbox] {
 .switchGameImage {
     width: 35px;
     margin-left: 10px;
+}
+
+@media only screen and (max-width: 600px) {
+    .filters {
+        margin-top: 40px;
+    }
+
+    .switch {
+        margin-top: 38px;
+        position: fixed;
+    }
+
+    .characterList, .weaponList {
+        margin-top: 100px;
+    }
 }

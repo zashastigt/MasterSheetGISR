@@ -5,6 +5,8 @@ import './StarRailPage.css'
 import '../Universal/gachaPage.css'
 import elementsSR from '../data/elementsSR.json'
 import paths from '../data/paths.json'
+import charSR from '../assets/charSR.webp'
+import weaponSR from '../assets/weaponSR.webp'
 import PityBox from "../Universal/pityBox/pityBox.jsx";
 import { getSRDataWithImages } from '../data/addImagesToData.js'
 import SearchBar from '../Universal/SearchBar/searchBar.jsx'
@@ -50,11 +52,11 @@ function ListSwitchStarRail() {
             <SearchBar searchValue={searchValue} setSearchValue={setSearchValue}/>
             <Header Links={[['../StarRail/', 'Star Rail'], ['../Genshin/', 'Genshin Impact'], ['../Genshin/Teams/', 'Genshin Teams']]}/>
             <div className={`switch`}>
-                <img alt={'character'} src={'../assets/charSR.webp'}/>
+                <img alt={'character'} src={charSR}/>
                 <button className={``} onClick={() => setListShown(!listShown)}>
                     <div className={`slider ${listShown ? 'sliderLeft' : 'sliderRight'}`}></div>
                 </button>
-                <img alt={'weapon'} src={'../assets/weaponSR.webp'}/>
+                <img alt={'weapon'} src={weaponSR}/>
             </div>
             {listShown ?
                 <div className={'characterList'}>

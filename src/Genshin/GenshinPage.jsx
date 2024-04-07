@@ -5,6 +5,8 @@ import './GenshinPage.css'
 import '../Universal/gachaPage.css'
 import elementsGI from '../data/elementsGI.json'
 import weapons from '../data/weapons.json'
+import charGI from '../assets/charGI.webp'
+import weaponGI from '../assets/weaponsGI.webp'
 import { getGIDataWithImages } from '../data/addImagesToData.js'
 import SearchBar from '../Universal/SearchBar/searchBar.jsx'
 import '../Universal/SearchBar/searchBar.css'
@@ -49,11 +51,11 @@ function ListSwitchGenshin() {
             <SearchBar searchValue={searchValue} setSearchValue={setSearchValue} />
             <Header Links={[['../StarRail/', 'Star Rail'], ['../Genshin/', 'Genshin Impact'], ['../Genshin/Teams/', 'Genshin Teams']]}/>
             <div className={`switch`}>
-                <img alt={'character'} src={'../assets/charSR.webp'} />
+                <img alt={'character'} src={charGI} />
                 <button className={``} onClick={() => setListShown(!listShown)}>
                     <div className={`slider ${listShown ? 'sliderLeft' : 'sliderRight'}`}></div>
                 </button>
-                <img className='moreWhite' alt={'weapon'} src={'../assets/weaponGI.webp'} />
+                <img className='moreWhite' alt={'weapon'} src={weaponGI} />
             </div>
             {listShown ?
                 <div className={'characterList'}>
