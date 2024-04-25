@@ -92,7 +92,8 @@ function changegGICharToImages(data) {
         delete data[index].element
         break
     }
-
+    character['kind'] = 'Character'
+    character['game'] = 'Genshin'
     character.types['pathType'] = changeGIWeaponTypeToImages(character.weaponType)
     delete data[index].weaponType
     character['Img'] = getGICharImgs(character, data, index)
@@ -103,6 +104,8 @@ function changegGICharToImages(data) {
 
 function changeGIWeaponToImages(data) {
   data.forEach((weapon, index) => {
+    weapon['kind'] = 'Weapon'
+    weapon['game'] = 'Genshin'
     weapon['types'] = {}
     weapon.types['pathType'] = changeGIWeaponTypeToImages(weapon.type)
     delete data[index].type
@@ -153,6 +156,8 @@ function changeSRCharToImages(data) {
         break;
     }
 
+    character['kind'] = 'Character'
+    character['game'] = 'StarRail'
     character.types.pathType = changeSRPathToImages(character.types.pathType)
     character['Img'] = getSRCharImgs(character, data, index)
   })
@@ -162,6 +167,8 @@ function changeSRCharToImages(data) {
 
 function changeSRWeaponToImages(data) {
   data.forEach((weapon) => {
+    weapon['kind'] = 'Character'
+    weapon['game'] = 'StarRail'
     weapon.types.pathType = changeSRPathToImages(weapon.types.pathType)
     weapon['Img'] = getSRWeaponImgs(weapon)
 

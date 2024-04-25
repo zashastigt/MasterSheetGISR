@@ -1,3 +1,5 @@
+import postData from "../data/postData.js";
+
 function AddDuplicatesToJson(data, sheetData, pityPlayers) {
     let newItem = false
     let newData = data.map(key => {
@@ -5,6 +7,21 @@ function AddDuplicatesToJson(data, sheetData, pityPlayers) {
         else if (key.name.includes('Trailblazer')) return { ...key, CE: sheetData.Characters[`${key.name} ${key.types.combatType.Element}`].CE }
         else if (sheetData.Weapons[key.name] !== undefined && key.name == sheetData.Weapons[key.name].Name) return { ...key, CE: sheetData.Weapons[key.name].CE }
         else if (key.name.includes('Traveler'))  return { ...key,  CE: sheetData.Characters[`${key.name} ${key.types.combatType.Element}`].CE }
+
+        let postItem = {
+            Level: '',
+            Person: 'Wilco',
+            Name: key.name,
+            Game: key.game,
+            Group: key.kind,
+            Rank: key.rank,
+            Path: key.types.pathType.Group
+        }
+
+        if (key.kind == 'Character') {
+            postItem['Element'] = key.types.combatType.Element
+        }
+        postData(postItem)
 
         const newCE = {}
         newItem = true
