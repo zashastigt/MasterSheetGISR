@@ -167,7 +167,7 @@ function changeSRCharToImages(data) {
 
 function changeSRWeaponToImages(data) {
   data.forEach((weapon) => {
-    weapon['kind'] = 'Character'
+    weapon['kind'] = 'Weapon'
     weapon['game'] = 'StarRail'
     weapon.types.pathType = changeSRPathToImages(weapon.types.pathType)
     weapon['Img'] = getSRWeaponImgs(weapon)
